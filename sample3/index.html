@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <script>
+        function calculate() {
+            // Get the input values
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var operator = document.getElementById("operator").value;
+
+            // Check for invalid input
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Invalid input!");
+                return;
+            }
+
+            // Perform the calculation based on the operator
+            var result;
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 === 0) {
+                        alert("Cannot divide by zero!");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+                case "^":
+                    result = Math.pow(num1, num2);
+                    break;
+                case "sqrt":
+                    if (num1 < 0) {
+                        alert("Cannot take square root of a negative number!");
+                        return;
+                    }
+                    result = Math.sqrt(num1);
+                    break;
+                default:
+                    alert("Invalid operator!");
+                    return;
+            }
+
+            // Display the result
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Advanced Calculator</h1>
+    <input type="number" id="num1">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="^">^</option>
+        <option value="sqrt">sqrt</option>
+    </select>
+    <input type="number" id="num2">
+    <button onclick="calculate()">Calculate</button>
+    <input type="number" id="result" readonly>
+</body>
+
+</html>
