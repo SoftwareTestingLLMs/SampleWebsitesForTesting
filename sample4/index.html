@@ -109,21 +109,9 @@
   <button id="toggle-button">Toggle Anki Mode</button>
   <script>
     const cards = [
-      {
-        question: "What is the capital of France?",
-        answer: "Paris",
-        level: 1
-      },
-      {
-        question: "What is the largest planet in our solar system?",
-        answer: "Jupiter",
-        level: 1
-      },
-      {
-        question: "What is the formula for water?",
-        answer: "H2O",
-        level: 1
-      }
+      { question: "What is the capital of France?", answer: "Paris", level: 1 },
+      { question: "What is the largest planet in our solar system?", answer: "Jupiter", level: 1 },
+      { question: "What is the formula for water?", answer: "H2O", level: 1 }
     ];
 
     let currentCardIndex = 0;
@@ -137,16 +125,16 @@
     function showCard(card) {
       const cardElement = document.getElementById("card");
       cardElement.innerHTML = `
-          <h2>${card.question}</h2>
-          <p>Click to reveal the answer</p>
-        `;
+    <h2>${card.question}</h2>
+    <p>Click to reveal the answer</p>
+  `;
       cardElement.addEventListener("click", () => {
         cardElement.innerHTML = `
-            <h2>${card.question}</h2>
-            <p>${card.answer}</p>
-            <button id="correct-button">Correct</button>
-            <button id="incorrect-button">Incorrect</button>
-          `;
+      <h2>${card.question}</h2>
+      <p>${card.answer}</p>
+      <button id="correct-button">Correct</button>
+      <button id="incorrect-button">Incorrect</button>
+    `;
         const correctButton = document.getElementById("correct-button");
         const incorrectButton = document.getElementById("incorrect-button");
         correctButton.addEventListener("click", () => {
@@ -192,13 +180,13 @@
       showCard(newCard);
     }
 
-    function sortCardsbyLevel() {
+    function sortCardsByLevel() {
       cards.sort((card1, card2) => card2.level - card1.level);
       const card = getNextCard();
       showCard(card);
     }
 
-    function filterCardsbyLevel() {
+    function filterCardsByLevel() {
       const level = prompt("Enter level:");
       const filteredCards = cards.filter((card) => card.level >= level);
       const card = filteredCards[currentCardIndex];
@@ -251,12 +239,12 @@
 
     const sortButton = document.getElementById("sort-button");
     sortButton.addEventListener("click", () => {
-      sortCardsbyLevel();
+      sortCardsByLevel();
     });
 
     const filterButton = document.getElementById("filter-button");
     filterButton.addEventListener("click", () => {
-      filterCardsbyLevel();
+      filterCardsByLevel();
     });
 
     const toggleButton = document.getElementById("toggle-button");
@@ -274,23 +262,23 @@
     function showAnkiCard(card) {
       const cardElement = document.getElementById("card");
       cardElement.innerHTML = `
-          <div class="card">
-            <div class="card__content card__front">
-              <h2 class="card__question">${card.question}</h2>
-              <button class="card__reveal-button">Reveal Answer</button>
-            </div>
-            <div class="card__content card__back">
-              <h2 class="card__question">${card.question}</h2>
-              <p class="card__answer">${card.answer}</p>
-              <div class="card__review-buttons">
-                <button class="card__review-button btn--easy">Easy</button>
-                <button class="card__review-button btn--good">Good</button>
-                <button class="card__review-button btn--hard">Hard</button>
-                <button class="card__review-button btn--again">Again</button>
-              </div>
-            </div>
-          </div>
-        `;
+    <div class="card">
+      <div class="card__content card__front">
+        <h2 class="card__question">${card.question}</h2>
+        <button class="card__reveal-button">Reveal Answer</button>
+      </div>
+      <div class="card__content card__back">
+        <h2 class="card__question">${card.question}</h2>
+        <p class="card__answer">${card.answer}</p>
+        <div class="card__review-buttons">
+          <button class="card__review-button btn--easy">Easy</button>
+          <button class="card__review-button btn--good">Good</button>
+          <button class="card__review-button btn--hard">Hard</button>
+          <button class="card__review-button btn--again">Again</button>
+        </div>
+      </div>
+    </div>
+  `;
       const revealButton = document.querySelector(".card__reveal-button");
       revealButton.addEventListener("click", () => {
         const frontCard = document.querySelector(".card__front");
