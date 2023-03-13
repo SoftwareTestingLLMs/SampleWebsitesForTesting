@@ -22,6 +22,12 @@ response = completion["choices"][0]["message"]["content"]
 print(response)
 
 # Extract code between <StartCode> and <EndCode> labels
+# Check if both labels are present in response, throw an error otherwise
+if "<StartCode>" not in response:
+    raise ValueError("StartCode label is missing in response")
+if "<EndCode>" not in response:
+    raise ValueError("EndCode label is missing in response")
+
 start_index = response.find("<StartCode>") + len("<StartCode>")
 end_index = response.find("<EndCode>")
 code_string = response[start_index:end_index]
