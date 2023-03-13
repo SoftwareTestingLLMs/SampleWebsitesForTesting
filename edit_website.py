@@ -1,11 +1,17 @@
 import json
 import openai
 
+filename = "sample1/index.html"
+
 # Get OpenAI API key from file
 with open("openai_key.json", "r") as file:
     openai.api_key = json.load(file)["key"]
 
-task = "Hi how are you?"
+# Read code from file
+with open(filename, "r") as file:
+    code = file.read()
+
+task = "Revise the following code: " + code
 
 completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
