@@ -11,7 +11,7 @@ with open("openai_key.json", "r") as file:
 with open(filename, "r") as file:
     code = file.read()
 
-task = "Revise the following code: " + code
+task = f"Revise the following code: {code}. Begin the code with the label <StartCode> and end to code with the label <EndCode>."
 
 completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
