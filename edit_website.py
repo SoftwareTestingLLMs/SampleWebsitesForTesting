@@ -1,5 +1,6 @@
 import json
 import openai
+import re
 
 filename = "sample1/index.html"
 
@@ -10,6 +11,9 @@ with open("openai_key.json", "r") as file:
 # Read HTML code from file
 with open(filename, "r") as file:
     code = file.read()
+
+# Remove all space from code
+code   = re.sub(r"[\n\t\s]*", "", code)
 
 task = f"Revise the following code: {code}. Begin the code with the label <StartCode> and end the code with the label <EndCode>."
 
