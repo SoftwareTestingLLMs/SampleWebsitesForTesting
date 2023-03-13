@@ -106,7 +106,6 @@
   <button id="edit-button">Edit Card</button>
   <button id="sort-button">Sort by Level</button>
   <button id="filter-button">Filter by Level</button>
-  <button id="toggle-button">Toggle Anki Mode</button>
   <script>
     const cards = [
       { question: "What is the capital of France?", answer: "Paris", level: 1 },
@@ -124,17 +123,14 @@
 
     function showCard(card) {
       const cardElement = document.getElementById("card");
-      cardElement.innerHTML = `
-    <h2>${card.question}</h2>
-    <p>Click to reveal the answer</p>
-  `;
+      cardElement.innerHTML = `<h2>${card.question}</h2><p>Click to reveal the answer</p>`;
       cardElement.addEventListener("click", () => {
         cardElement.innerHTML = `
-      <h2>${card.question}</h2>
-      <p>${card.answer}</p>
-      <button id="correct-button">Correct</button>
-      <button id="incorrect-button">Incorrect</button>
-    `;
+          <h2>${card.question}</h2>
+          <p>${card.answer}</p>
+          <button id="correct-button">Correct</button>
+          <button id="incorrect-button">Incorrect</button>
+        `;
         const correctButton = document.getElementById("correct-button");
         const incorrectButton = document.getElementById("incorrect-button");
         correctButton.addEventListener("click", () => {
@@ -247,38 +243,26 @@
       filterCardsByLevel();
     });
 
-    const toggleButton = document.getElementById("toggle-button");
-    toggleButton.addEventListener("click", () => {
-      const card = getNextCard();
-      if (toggleButton.textContent === "Toggle Anki Mode") {
-        toggleButton.textContent = "Toggle Normal Mode";
-        showAnkiCard(card);
-      } else {
-        toggleButton.textContent = "Toggle Anki Mode";
-        showCard(card);
-      }
-    });
-
     function showAnkiCard(card) {
       const cardElement = document.getElementById("card");
       cardElement.innerHTML = `
-    <div class="card">
-      <div class="card__content card__front">
-        <h2 class="card__question">${card.question}</h2>
-        <button class="card__reveal-button">Reveal Answer</button>
-      </div>
-      <div class="card__content card__back">
-        <h2 class="card__question">${card.question}</h2>
-        <p class="card__answer">${card.answer}</p>
-        <div class="card__review-buttons">
-          <button class="card__review-button btn--easy">Easy</button>
-          <button class="card__review-button btn--good">Good</button>
-          <button class="card__review-button btn--hard">Hard</button>
-          <button class="card__review-button btn--again">Again</button>
+        <div class="card">
+          <div class="card__content card__front">
+            <h2 class="card__question">${card.question}</h2>
+            <button class="card__reveal-button">Reveal Answer</button>
+          </div>
+          <div class="card__content card__back">
+            <h2 class="card__question">${card.question}</h2>
+            <p class="card__answer">${card.answer}</p>
+            <div class="card__review-buttons">
+              <button class="card__review-button btn--easy">Easy</button>
+              <button class="card__review-button btn--good">Good</button>
+              <button class="card__review-button btn--hard">Hard</button>
+              <button class="card__review-button btn--again">Again</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  `;
+      `;
       const revealButton = document.querySelector(".card__reveal-button");
       revealButton.addEventListener("click", () => {
         const frontCard = document.querySelector(".card__front");
@@ -294,6 +278,21 @@
         });
       });
     }
+
+    const toggleButton = document.getElementById("toggle-button");
+    toggleButton.addEventListener("click", () => {
+      const card = getNextCard();
+      if (toggleButton.textContent === "ToggleAnkiMode") {
+        toggleButton.textContent = "ToggleNormalMode";
+        showAnkiCard(card);
+      } else {
+        toggleButton.textContent = "ToggleAnkiMode";
+        showCard(card);
+      }
+    });
+
+    const card = getNextCard();
+    showCard(card);
   </script>
 </body>
 
