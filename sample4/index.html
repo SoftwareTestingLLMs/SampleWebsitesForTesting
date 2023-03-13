@@ -3,201 +3,6 @@
 
 <head>
   <title>Spaced Repetition Flashcards</title>
-</head>
-
-<body>
-  <h1>Spaced Repetition Flashcards</h1>
-  <div id="card"></div>
-  <button id="next-button">Next</button>
-  <button id="shuffle-button">Shuffle</button>
-  <button id="reset-button">Reset</button>
-  <button id="add-button">Add Card</button>
-  <button id="delete-button">Delete Card</button>
-  <button id="edit-button">Edit Card</button>
-  <button id="sort-button">Sort by Level</button>
-  <button id="filter-button">Filter by Level</button>
-  <button id="toggle-button">Toggle Anki Mode</button>
-  <script>
-    const cards = [
-      { question: "What is the capital of France?", answer: "Paris", level: 1 },
-      { question: "What is the largest planet in our solar system?", answer: "Jupiter", level: 1 },
-      { question: "What is the formula for water?", answer: "H2O", level: 1 },
-    ];
-
-    let currentCardIndex = 0;
-
-    function getNextCard() {
-      const card = cards[currentCardIndex];
-      currentCardIndex = (currentCardIndex + 1) % cards.length;
-      return card;
-    }
-
-    function showCard(card) {
-      const cardElement = document.getElementById("card");
-      cardElement.innerHTML = `<h2>${card.question}</h2><p>Click to reveal the answer</p>`;
-      cardElement.addEventListener("click", () => {
-        cardElement.innerHTML = `<h2>${card.question}</h2><p>${card.answer}</p><button id="correct-button">Correct</button><button id="incorrect-button">Incorrect</button>`;
-        const correctButton = document.getElementById("correct-button");
-        const incorrectButton = document.getElementById("incorrect-button");
-        correctButton.addEventListener("click", () => {
-          card.level++;
-          const nextCard = getNextCard();
-          showCard(nextCard);
-        });
-        incorrectButton.addEventListener("click", () => {
-          card.level = 1;
-          const nextCard = getNextCard();
-          showCard(nextCard);
-        });
-      });
-    }
-
-    function resetCards() {
-      cards.forEach((card) => (card.level = 1));
-      currentCardIndex = 0;
-      shuffleCards();
-    }
-
-    function addCard() {
-      const question = prompt("Enter the question:");
-      const answer = prompt("Enter the answer:");
-      const newCard = { question, answer, level: 1 };
-      cards.push(newCard);
-    }
-
-    function deleteCard() {
-      cards.splice(currentCardIndex, 1);
-      currentCardIndex = currentCardIndex % cards.length;
-      const card = getNextCard();
-      showCard(card);
-    }
-
-    function editCard() {
-      const card = cards[currentCardIndex];
-      const newQuestion = prompt("Enter the new question:", card.question);
-      const newAnswer = prompt("Enter the new answer:", card.answer);
-      card.question = newQuestion;
-      card.answer = newAnswer;
-      const newCard = getNextCard();
-      showCard(newCard);
-    }
-
-    function sortCardsbyLevel() {
-      cards.sort((card1, card2) => (card2.level - card1.level));
-      const card = getNextCard();
-      showCard(card);
-    }
-
-    function filterCardsbyLevel() {
-      const level = prompt("Enter level:");
-      const filteredCards = cards.filter((card) => card.level >= level);
-      const card = filteredCards[currentCardIndex];
-      showCard(card);
-    }
-
-    function shuffleCards() {
-      for (let i = cards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [cards[i], cards[j]] = [cards[j], cards[i]];
-      }
-    }
-
-    const nextButton = document.getElementById("next-button");
-    nextButton.addEventListener("click", () => {
-      const card = getNextCard();
-      showCard(card);
-    });
-
-    const shuffleButton = document.getElementById("shuffle-button");
-    shuffleButton.addEventListener("click", () => {
-      shuffleCards();
-      const card = getNextCard();
-      showCard(card);
-    });
-
-    const resetButton = document.getElementById("reset-button");
-    resetButton.addEventListener("click", () => {
-      resetCards();
-      const card = getNextCard();
-      showCard(card);
-    });
-
-    const addButton = document.getElementById("add-button");
-    addButton.addEventListener("click", () => {
-      addCard();
-      const card = getNextCard();
-      showCard(card);
-    });
-
-    const deleteButton = document.getElementById("delete-button");
-    deleteButton.addEventListener("click", () => {
-      deleteCard();
-    });
-
-    const editButton = document.getElementById("edit-button");
-    editButton.addEventListener("click", () => {
-      editCard();
-    });
-
-    const sortButton = document.getElementById("sort-button");
-    sortButton.addEventListener("click", () => {
-      sortCardsbyLevel();
-    });
-
-    const filterButton = document.getElementById("filter-button");
-    filterButton.addEventListener("click", () => {
-      filterCardsbyLevel();
-    });
-
-    const toggleButton = document.getElementById("toggle-button");
-    toggleButton.addEventListener("click", () => {
-      const card = getNextCard();
-      if (toggleButton.textContent === "Toggle Anki Mode") {
-        toggleButton.textContent = "Toggle Normal Mode";
-        showAnkiCard(card);
-      } else {
-        toggleButton.textContent = "Toggle Anki Mode";
-        showCard(card);
-      }
-    });
-
-    function showAnkiCard(card) {
-      const cardElement = document.getElementById("card");
-      cardElement.innerHTML = `
-      <div class="card">
-        <div class="card__content card__front">
-          <h2 class="card__question">${card.question}</h2>
-          <button class="card__reveal-button">Reveal Answer</button>
-        </div>
-        <div class="card__content card__back">
-          <h2 class="card__question">${card.question}</h2>
-          <p class="card__answer">${card.answer}</p>
-          <div class="card__review-buttons">
-            <button class="card__review-button btn--easy">Easy</button>
-            <button class="card__review-button btn--good">Good</button>
-            <button class="card__review-button btn--hard">Hard</button>
-            <button class="card__review-button btn--again">Again</button>
-          </div>
-        </div>
-      </div>
-      `;
-      const revealButton = document.querySelector(".card__reveal-button");
-      revealButton.addEventListener("click", () => {
-        const frontCard = document.querySelector(".card__front");
-        const backCard = document.querySelector(".card__back");
-        frontCard.style.transform = "rotateY(-180deg)";
-        backCard.style.transform = "rotateY(0deg)";
-      });
-      const reviewButtons = document.querySelectorAll(".card__review-button");
-      reviewButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const nextCard = getNextCard();
-          showAnkiCard(nextCard);
-        });
-      });
-    }
-
-  </script>
   <style>
     .card {
       height: 300px;
@@ -288,6 +93,220 @@
       margin-left: auto;
     }
   </style>
+</head>
+
+<body>
+  <h1>Spaced Repetition Flashcards</h1>
+  <div id="card"></div>
+  <button id="next-button">Next</button>
+  <button id="shuffle-button">Shuffle</button>
+  <button id="reset-button">Reset</button>
+  <button id="add-button">Add Card</button>
+  <button id="delete-button">Delete Card</button>
+  <button id="edit-button">Edit Card</button>
+  <button id="sort-button">Sort by Level</button>
+  <button id="filter-button">Filter by Level</button>
+  <button id="toggle-button">Toggle Anki Mode</button>
+  <script>
+    const cards = [
+      {
+        question: "What is the capital of France?",
+        answer: "Paris",
+        level: 1
+      },
+      {
+        question: "What is the largest planet in our solar system?",
+        answer: "Jupiter",
+        level: 1
+      },
+      {
+        question: "What is the formula for water?",
+        answer: "H2O",
+        level: 1
+      }
+    ];
+
+    let currentCardIndex = 0;
+
+    function getNextCard() {
+      const card = cards[currentCardIndex];
+      currentCardIndex = (currentCardIndex + 1) % cards.length;
+      return card;
+    }
+
+    function showCard(card) {
+      const cardElement = document.getElementById("card");
+      cardElement.innerHTML = `
+          <h2>${card.question}</h2>
+          <p>Click to reveal the answer</p>
+        `;
+      cardElement.addEventListener("click", () => {
+        cardElement.innerHTML = `
+            <h2>${card.question}</h2>
+            <p>${card.answer}</p>
+            <button id="correct-button">Correct</button>
+            <button id="incorrect-button">Incorrect</button>
+          `;
+        const correctButton = document.getElementById("correct-button");
+        const incorrectButton = document.getElementById("incorrect-button");
+        correctButton.addEventListener("click", () => {
+          card.level++;
+          const nextCard = getNextCard();
+          showCard(nextCard);
+        });
+        incorrectButton.addEventListener("click", () => {
+          card.level = 1;
+          const nextCard = getNextCard();
+          showCard(nextCard);
+        });
+      });
+    }
+
+    function resetCards() {
+      cards.forEach((card) => (card.level = 1));
+      currentCardIndex = 0;
+      shuffleCards();
+    }
+
+    function addCard() {
+      const question = prompt("Enter the question:");
+      const answer = prompt("Enter the answer:");
+      const newCard = { question, answer, level: 1 };
+      cards.push(newCard);
+    }
+
+    function deleteCard() {
+      cards.splice(currentCardIndex, 1);
+      currentCardIndex = currentCardIndex % cards.length;
+      const card = getNextCard();
+      showCard(card);
+    }
+
+    function editCard() {
+      const card = cards[currentCardIndex];
+      const newQuestion = prompt("Enter the new question:", card.question);
+      const newAnswer = prompt("Enter the new answer:", card.answer);
+      card.question = newQuestion;
+      card.answer = newAnswer;
+      const newCard = getNextCard();
+      showCard(newCard);
+    }
+
+    function sortCardsbyLevel() {
+      cards.sort((card1, card2) => card2.level - card1.level);
+      const card = getNextCard();
+      showCard(card);
+    }
+
+    function filterCardsbyLevel() {
+      const level = prompt("Enter level:");
+      const filteredCards = cards.filter((card) => card.level >= level);
+      const card = filteredCards[currentCardIndex];
+      showCard(card);
+    }
+
+    function shuffleCards() {
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+    }
+
+    const nextButton = document.getElementById("next-button");
+    nextButton.addEventListener("click", () => {
+      const card = getNextCard();
+      showCard(card);
+    });
+
+    const shuffleButton = document.getElementById("shuffle-button");
+    shuffleButton.addEventListener("click", () => {
+      shuffleCards();
+      const card = getNextCard();
+      showCard(card);
+    });
+
+    const resetButton = document.getElementById("reset-button");
+    resetButton.addEventListener("click", () => {
+      resetCards();
+      const card = getNextCard();
+      showCard(card);
+    });
+
+    const addButton = document.getElementById("add-button");
+    addButton.addEventListener("click", () => {
+      addCard();
+      const card = getNextCard();
+      showCard(card);
+    });
+
+    const deleteButton = document.getElementById("delete-button");
+    deleteButton.addEventListener("click", () => {
+      deleteCard();
+    });
+
+    const editButton = document.getElementById("edit-button");
+    editButton.addEventListener("click", () => {
+      editCard();
+    });
+
+    const sortButton = document.getElementById("sort-button");
+    sortButton.addEventListener("click", () => {
+      sortCardsbyLevel();
+    });
+
+    const filterButton = document.getElementById("filter-button");
+    filterButton.addEventListener("click", () => {
+      filterCardsbyLevel();
+    });
+
+    const toggleButton = document.getElementById("toggle-button");
+    toggleButton.addEventListener("click", () => {
+      const card = getNextCard();
+      if (toggleButton.textContent === "Toggle Anki Mode") {
+        toggleButton.textContent = "Toggle Normal Mode";
+        showAnkiCard(card);
+      } else {
+        toggleButton.textContent = "Toggle Anki Mode";
+        showCard(card);
+      }
+    });
+
+    function showAnkiCard(card) {
+      const cardElement = document.getElementById("card");
+      cardElement.innerHTML = `
+          <div class="card">
+            <div class="card__content card__front">
+              <h2 class="card__question">${card.question}</h2>
+              <button class="card__reveal-button">Reveal Answer</button>
+            </div>
+            <div class="card__content card__back">
+              <h2 class="card__question">${card.question}</h2>
+              <p class="card__answer">${card.answer}</p>
+              <div class="card__review-buttons">
+                <button class="card__review-button btn--easy">Easy</button>
+                <button class="card__review-button btn--good">Good</button>
+                <button class="card__review-button btn--hard">Hard</button>
+                <button class="card__review-button btn--again">Again</button>
+              </div>
+            </div>
+          </div>
+        `;
+      const revealButton = document.querySelector(".card__reveal-button");
+      revealButton.addEventListener("click", () => {
+        const frontCard = document.querySelector(".card__front");
+        const backCard = document.querySelector(".card__back");
+        frontCard.style.transform = "rotateY(-180deg)";
+        backCard.style.transform = "rotateY(0deg)";
+      });
+      const reviewButtons = document.querySelectorAll(".card__review-button");
+      reviewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextCard = getNextCard();
+          showAnkiCard(nextCard);
+        });
+      });
+    }
+  </script>
 </body>
 
 </html>
