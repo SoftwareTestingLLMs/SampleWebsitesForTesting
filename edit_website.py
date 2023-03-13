@@ -3,15 +3,15 @@ import openai
 
 filename = "sample1/index.html"
 
-# Get OpenAI API key from file
+# Read OpenAI API key from file
 with open("openai_key.json", "r") as file:
     openai.api_key = json.load(file)["key"]
 
-# Read code from file
+# Read HTML code from file
 with open(filename, "r") as file:
     code = file.read()
 
-task = f"Revise the following code: {code}. Begin the code with the label <StartCode> and end to code with the label <EndCode>."
+task = f"Revise the following code: {code}. Begin the code with the label <StartCode> and end the code with the label <EndCode>."
 
 completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
@@ -30,4 +30,4 @@ code_string = response[start_index:end_index]
 with open(filename, "w") as file:
     file.write(code_string)
 
-print("File updated successfully!")
+print(f"{filename} updated successfully!")
