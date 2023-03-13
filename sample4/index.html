@@ -16,6 +16,7 @@
   <button id="edit-button">Edit Card</button>
   <button id="sort-button">Sort by Level</button>
   <button id="filter-button">Filter by Level</button>
+  <button id="toggle-button">Toggle Anki Mode</button>
   <script>
     const cards = [
       { question: "What is the capital of France?", answer: "Paris", level: 1 },
@@ -148,7 +149,145 @@
       filterCardsbyLevel();
     });
 
+    const toggleButton = document.getElementById("toggle-button");
+    toggleButton.addEventListener("click", () => {
+      const card = getNextCard();
+      if (toggleButton.textContent === "Toggle Anki Mode") {
+        toggleButton.textContent = "Toggle Normal Mode";
+        showAnkiCard(card);
+      } else {
+        toggleButton.textContent = "Toggle Anki Mode";
+        showCard(card);
+      }
+    });
+
+    function showAnkiCard(card) {
+      const cardElement = document.getElementById("card");
+      cardElement.innerHTML = `
+      <div class="card">
+        <div class="card__content card__front">
+          <h2 class="card__question">${card.question}</h2>
+          <button class="card__reveal-button">Reveal Answer</button>
+        </div>
+        <div class="card__content card__back">
+          <h2 class="card__question">${card.question}</h2>
+          <p class="card__answer">${card.answer}</p>
+          <div class="card__review-buttons">
+            <button class="card__review-button btn--easy">Easy</button>
+            <button class="card__review-button btn--good">Good</button>
+            <button class="card__review-button btn--hard">Hard</button>
+            <button class="card__review-button btn--again">Again</button>
+          </div>
+        </div>
+      </div>
+      `;
+      const revealButton = document.querySelector(".card__reveal-button");
+      revealButton.addEventListener("click", () => {
+        const frontCard = document.querySelector(".card__front");
+        const backCard = document.querySelector(".card__back");
+        frontCard.style.transform = "rotateY(-180deg)";
+        backCard.style.transform = "rotateY(0deg)";
+      });
+      const reviewButtons = document.querySelectorAll(".card__review-button");
+      reviewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextCard = getNextCard();
+          showAnkiCard(nextCard);
+        });
+      });
+    }
+
   </script>
+  <style>
+    .card {
+      height: 300px;
+      width: 200px;
+      perspective: 1000px;
+      position: relative;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .card__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .card__front {
+      background-color: white;
+      border: 3px solid #00aaff;
+    }
+
+    .card__back {
+      background-color: #00aaff;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .card__question {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .card__answer {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .card__reveal-button {
+      background-color: #00aaff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .card__review-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .card__review-button {
+      background-color: #00aaff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .btn--easy {
+      background-color: #00aa00;
+    }
+
+    .btn--good {
+      background-color: #f8e71c;
+    }
+
+    .btn--hard {
+      background-color: #d50000;
+    }
+
+    .btn--again {
+      background-color: #d50000;
+      margin-left: auto;
+    }
+  </style>
 </body>
 
 </html>
