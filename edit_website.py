@@ -25,3 +25,9 @@ print(response)
 start_index = response.find("<StartCode>") + len("<StartCode>")
 end_index = response.find("<EndCode>")
 code_string = response[start_index:end_index]
+
+# Overwrite file with revised code
+with open(filename, "w") as file:
+    file.write(code_string)
+
+print("File updated successfully!")
