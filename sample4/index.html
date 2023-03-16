@@ -2,167 +2,165 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Enhanced Anki-like App</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-		}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Anki-like App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
 
-		.container {
-			max-width: 800px;
-			margin: 0 auto;
-		}
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-		.flashcard {
-			border: 1px solid #ccc;
-			padding: 20px;
-			margin: 20px 0;
-			text-align: center;
-			cursor: pointer;
-		}
+    .flashcard {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+      cursor: pointer;
+    }
 
-		.answer {
-			display: none;
-		}
+    .answer {
+      display: none;
+    }
 
-		.edit-form {
-			display: none;
-		}
+    .edit-form {
+      display: none;
+    }
 
-		.new-flashcard-form {
-			margin-bottom: 20px;
-		}
-	</style>
+    .new-flashcard-form {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
-	<div class="container">
-		<h1>Enhanced Anki-like App</h1>
+  <div class="container">
+    <h1>Enhanced Anki-like App</h1>
+    <form class="new-flashcard-form" onsubmit="addFlashcard(event);">
+      <label for="question">Question:</label>
+      <input type="text" id="question" required>
+      <label for="answer">Answer:</label>
+      <input type="text" id="answer" required>
+      <button type="submit">Add Flashcard</button>
+    </form>
+    <div id="flashcards-container">
+      <!-- Flashcards will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    class Flashcard {
+      constructor(id, question, answer, nextReview) {
+        this.id = id;
+        this.question = question;
+        this.answer = answer;
+        this.nextReview = nextReview || new Date().getTime();
+      }
+    }
 
-		<form class="new-flashcard-form" onsubmit="addFlashcard(event);">
-			<label for="question">Question:</label>
-			<input type="text" id="question" required>
-			<label for="answer">Answer:</label>
-			<input type="text" id="answer" required>
-			<button type="submit">Add Flashcard</button>
-		</form>
+    const flashcards = JSON.parse(localStorage.getItem('flashcards')) || [];
 
-		<div id="flashcards-container">
-			<!-- Flashcards will be dynamically added here -->
-		</div>
-	</div>
-	<script>
-		class Flashcard {
-			constructor(id, question, answer, nextReview) {
-				this.id = id;
-				this.question = question;
-				this.answer = answer;
-				this.nextReview = nextReview || new Date().getTime();
-			}
-		}
+    function saveFlashcards() {
+      localStorage.setItem('flashcards', JSON.stringify(flashcards));
+    }
 
-		const flashcards = JSON.parse(localStorage.getItem('flashcards')) || [];
+    function addFlashcard(event) {
+      event.preventDefault();
 
-		function saveFlashcards() {
-			localStorage.setItem('flashcards', JSON.stringify(flashcards));
-		}
+      const questionInput = document.getElementById('question');
+      const answerInput = document.getElementById('answer');
+      const id = flashcards.length ? flashcards[flashcards.length - 1].id + 1 : 1;
+      const newFlashcard = new Flashcard(id, questionInput.value, answerInput.value);
 
-		function addFlashcard(event) {
-			event.preventDefault();
+      flashcards.push(newFlashcard);
+      saveFlashcards();
+      renderFlashcards();
 
-			const questionInput = document.getElementById('question');
-			const answerInput = document.getElementById('answer');
+      questionInput.value = '';
+      answerInput.value = '';
+    }
 
-			const id = flashcards.length ? flashcards[flashcards.length - 1].id + 1 : 1;
-			const newFlashcard = new Flashcard(id, questionInput.value, answerInput.value);
+    function renderFlashcards() {
+      const container = document.getElementById('flashcards-container');
+      container.innerHTML = '';
 
-			flashcards.push(newFlashcard);
-			saveFlashcards();
-			renderFlashcards();
+      flashcards.forEach(flashcard => {
+        if (new Date().getTime() >= flashcard.nextReview) {
+          const flashcardDiv = document.createElement('div');
+          flashcardDiv.className = 'flashcard';
+          flashcardDiv.id = `flashcard-${flashcard.id}`;
+          flashcardDiv.innerHTML = `
+              <div class="question" onclick="toggleAnswer(this);">
+                ${flashcard.question}
+              </div>
+              <div class="answer">
+                ${flashcard.answer}
+              </div>
+              <button onclick="editFlashcard(${flashcard.id});">Edit</button>
+              <form class="edit-form" onsubmit="updateFlashcard(event, ${flashcard.id});">
+                <label for="edit-question">Question:</label>
+                <input type="text" id="edit-question" value="${flashcard.question}" required>
+                <label for="edit-answer">Answer:</label>
+                <input type="text" id="edit-answer" value="${flashcard.answer}" required>
+                <button type="submit">Update</button>
+              </form>
+            `;
+          container.appendChild(flashcardDiv);
+        }
+      });
+    }
 
-			questionInput.value = '';
-			answerInput.value = '';
-		}
+    function toggleAnswer(element) {
+      const answer = element.nextElementSibling;
 
-		function renderFlashcards() {
-			const container = document.getElementById('flashcards-container');
-			container.innerHTML = '';
+      if (answer.style.display === 'none') {
+        answer.style.display = 'block';
+      } else {
+        answer.style.display = 'none';
+      }
+    }
 
-			flashcards.forEach(flashcard => {
-				if (new Date().getTime() >= flashcard.nextReview) {
-					const flashcardDiv = document.createElement('div');
-					flashcardDiv.className = 'flashcard';
-					flashcardDiv.id = `flashcard-${flashcard.id}`;
+    function editFlashcard(id) {
+      const flashcardDiv = document.getElementById(`flashcard-${id}`);
+      const form = flashcardDiv.querySelector('.edit-form');
 
-					flashcardDiv.innerHTML = `
-                        <div class="question" onclick="toggleAnswer(this);">
-                            ${flashcard.question}
-                        </div>
-                        <div class="answer">
-                            ${flashcard.answer}
-                        </div>
-                        <button onclick="editFlashcard(${flashcard.id});">Edit</button>
-                        <form class="edit-form" onsubmit="updateFlashcard(event, ${flashcard.id});">
-                            <label for="edit-question">Question:</label>
-							<input type="text" id="edit-question" value="${flashcard.question}" required>
-							<label for="edit-answer">Answer:</label>
-							<input type="text" id="edit-answer" value="${flashcard.answer}" required>
-							<button type="submit">Update</button>
-						</form>`;
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
 
-					container.appendChild(flashcardDiv);
-				}
-			});
-		}
+    function updateFlashcard(event, id) {
+      event.preventDefault();
 
-		function toggleAnswer(element) {
-			const answer = element.nextElementSibling;
-			if (answer.style.display === 'none') {
-				answer.style.display = 'block';
-			} else {
-				answer.style.display = 'none';
-			}
-		}
+      const flashcardDiv = document.getElementById(`flashcard-${id}`);
+      const form = flashcardDiv.querySelector('.edit-form');
+      const questionInput = form.querySelector('#edit-question');
+      const answerInput = form.querySelector('#edit-answer');
+      const flashcard = flashcards.find(flashcard => flashcard.id === id);
 
-		function editFlashcard(id) {
-			const flashcardDiv = document.getElementById(`flashcard-${id}`);
-			const form = flashcardDiv.querySelector('.edit-form');
-			form.style.display = form.style.display === 'none' ? 'block' : 'none';
-		}
+      flashcard.question = questionInput.value;
+      flashcard.answer = answerInput.value;
+      saveFlashcards();
+      renderFlashcards();
+    }
 
-		function updateFlashcard(event, id) {
-			event.preventDefault();
+    function getNextReview() {
+      const baseDelay = 12 * 60 * 60 * 1000; // 12 hours
 
-			const flashcardDiv = document.getElementById(`flashcard-${id}`);
-			const form = flashcardDiv.querySelector('.edit-form');
+      return new Date().getTime() + baseDelay;
+    }
 
-			const questionInput = form.querySelector('#edit-question');
-			const answerInput = form.querySelector('#edit-answer');
+    function reviewFlashcard(id) {
+      const flashcard = flashcards.find(flashcard => flashcard.id === id);
 
-			const flashcard = flashcards.find(flashcard => flashcard.id === id);
-			flashcard.question = questionInput.value;
-			flashcard.answer = answerInput.value;
+      flashcard.nextReview = getNextReview();
+      saveFlashcards();
+      renderFlashcards();
+    }
 
-			saveFlashcards();
-			renderFlashcards();
-		}
-
-		function getNextReview() {
-			const baseDelay = 12 * 60 * 60 * 1000; // 12 hours
-			return new Date().getTime() + baseDelay;
-		}
-
-		function reviewFlashcard(id) {
-			const flashcard = flashcards.find(flashcard => flashcard.id === id);
-			flashcard.nextReview = getNextReview();
-			saveFlashcards();
-			renderFlashcards();
-		}
-
-		renderFlashcards();
-	</script>
+    renderFlashcards();
+  </script>
 </body>
 
 </html>
