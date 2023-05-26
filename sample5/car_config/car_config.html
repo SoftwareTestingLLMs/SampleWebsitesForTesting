@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturalNets</title>
+    <link rel="stylesheet" href="car_config.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="box" id="settings">
+            <button id="btn_settings" onclick=changeFunctionality(this)>Settings</button>
+        </div>
+        <div class="box">
+            <button class="btn_menu" id="btn_txt_printer" onclick="changeFunctionality(this)">Text Printer</button>
+            <button class="btn_menu" id="btn_calculator" onclick="changeFunctionality(this)">Calculator</button>
+            <button class="btn_menu" id="btn_car_config" onclick="changeFunctionality(this)">Car Configuration</button>
+        </div>
+        <div class="box">
+            <p id="title_car_config">Choose a car Configuration:</p>
+            <div id="selec_car_config_grp">
+                <div class="txt_config">
+                    <p>First select the car model:</p>
+                    <select class="car_config_selec" name="model" id="model">
+                        <option value="null">0</option>
+                        <option value="one">1</option>
+                    </select>
+                </div>
+                <div class="txt_config">
+                    <p>Now choose the tires:</p>
+                    <select class="car_config_selec" name="tire" id="tire">
+                        <option value="null">0</option>
+                    </select>
+                </div>
+
+                <div class="txt_config">
+                    <p>Next the interior design:</p>
+                    <select class="car_config_selec" name="desgin" id="desgin">
+                        <option value="null">0</option>
+                    </select>
+                </div>
+
+                <div class="txt_config">
+                    <p>Finally the propulsion system:</p>
+                    <select class="car_config_selec" name="system" id="system">
+                        <option value="null">0</option>
+                    </select>
+                </div>
+
+            </div>
+            <button id="btn_display_config" onclick=displayConfig()>Show Configuration</button>
+        </div>
+    </main>
+</body>
+<script src="car_config.js"></script>
+<script src="../settings/algo_car_config.js"></script>
+
+</html>
