@@ -25,4 +25,3 @@ function displayConfig() {
     modelInput = selectorModel.options[selectorModel.selectedIndex].text;
     localStorage.setItem('modelInput', modelInput);
 }
-
