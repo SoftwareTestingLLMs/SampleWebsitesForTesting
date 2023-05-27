@@ -25,29 +25,27 @@
             <div id="selec_car_config_grp">
                 <div class="txt_config">
                     <p>First select the car model:</p>
-                    <select class="car_config_selec" name="model" id="model">
-                        <option value="null">0</option>
-                        <option value="one">1</option>
+                    <select class="car_config_selec" name="model" id="model" onchange="addOption();"
+                        onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
-                <div class="txt_config">
+                <div class="txt_config" id="Tire" style="display:none">
                     <p>Now choose the tires:</p>
-                    <select class="car_config_selec" name="tire" id="tire">
-                        <option value="null">0</option>
-                    </select>
+                    <select class="car_config_selec" name="tire" id="tire" onchange="addOption();"
+                        onfocus="this.selectedIndex = -1;"> </select>
                 </div>
 
-                <div class="txt_config">
+                <div class="txt_config" id="Interior" style="display: none;">
                     <p>Next the interior design:</p>
-                    <select class="car_config_selec" name="desgin" id="desgin">
-                        <option value="null">0</option>
+                    <select class="car_config_selec" name="desgin" id="desgin" onchange="addOption();"
+                        onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 
-                <div class="txt_config">
+                <div class="txt_config" id="Engine" style="display: none;">
                     <p>Finally the propulsion system:</p>
-                    <select class="car_config_selec" name="system" id="system">
-                        <option value="null">0</option>
+                    <select class="car_config_selec" name="system" id="system" onchange="addOption();"
+                        onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 
@@ -57,4 +55,5 @@
     </main>
 </body>
 <script src="car_config.js"></script>
+
 </html>

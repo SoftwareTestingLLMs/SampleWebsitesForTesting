@@ -5,9 +5,12 @@ const GO_UP_ONE_DIR = "../";
 const carFirstLetter = 'abcdefghijklmnopqrstuvwxyz'.split('');
 let i =0;
 let definedCars =[];
-
+const carProperties = ["Tire", "Interior", "Engine", "Valid", "Name"];
+let displayCarProperties = 0;
 
 getValidCars();
+addValidCars();
+
 
 function changeFunctionality(btn) {
     let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
@@ -27,14 +30,20 @@ function getValidCars(){
     }
 }
 
-
-function printText() {
-    document.getElementById("txt_content").innerHTML = localStorage.getItem("modelInput");
+function addValidCars(){
+    for (let carNum = 0; carNum < definedCars.length; carNum++) {
+        selectorModel = document.getElementById("model");
+        option = document.createElement("option");
+        option.text = definedCars[carNum].get(carProperties[4]);
+        selectorModel.add(option);        
+    }
 }
 
-function displayConfig() {
-    selectorModel = document.getElementById("model");
-    modelInput = selectorModel.options[selectorModel.selectedIndex].text;
-    localStorage.setItem('modelInput', modelInput);
+function addOption(){
+    console.log("ss");
+
 }
 
+function displayPropConfig(){
+    
+}
