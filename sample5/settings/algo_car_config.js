@@ -1,21 +1,21 @@
-const carProperties = ["Tire", "Interior", "Engine", "Valid","Name"];
+const carProperties = ["Tire", "Interior", "Engine", "Valid", "Name"];
 const aTire = ['20', '22'];
 const aInterior = ["modern", "vintage"];
 const aEngine = ["Combustion Engine A", "Combustion Engine C",];
 const aValid = [true];
-const aName= ["Car A"];
+const aName = ["Car A"];
 
 const bTire = ['18', '19', '20'];
 const bInterior = ["modern", "sport"];
 const bEngine = ["Electric Motor A", "Electric Motor B"];
 const bValid = [true];
-const bName= ["Car B"];
+const bName = ["Car B"];
 
 const cTire = ['19', '20', '22'];
 const cInterior = ["vintage", "sport"];
 const cEngine = ["Combustion Engine B", "Combustion Engine C", "Electric Motor A", "Electric Motor B"];
 const cValid = [true];
-const cName= ["Car C"];
+const cName = ["Car C"];
 
 const carFirstLetter = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const userDefinedCar = createCar();
@@ -31,7 +31,7 @@ function createCar() {
 
             if (eval(letter.concat(carProperties[0])) != "undefined") {
                 carSpecificProp = carProperties.map((prop, i) =>
-                    [prop, [eval(letter.concat(prop)), eval(letter.concat(prop)), eval(letter.concat(prop)), eval(letter.concat(prop)),eval(letter.concat(prop))][i]]);
+                    [prop, [eval(letter.concat(prop)), eval(letter.concat(prop)), eval(letter.concat(prop)), eval(letter.concat(prop)), eval(letter.concat(prop))][i]]);
                 standardCars.push(new Map(carSpecificProp));
             }
         } catch (error) {
@@ -44,7 +44,8 @@ function createCar() {
 
 function algo() {
     addConfigProp();
-    console.log(determineValidCars());
+    determineValidCars();
+    saveValidCars();
 
 }
 
@@ -62,18 +63,27 @@ function addConfigProp() {
 
 function determineValidCars() {
     for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
-        definedCars[carNum].set(carProperties[3],[true]);
+        definedCars[carNum].set(carProperties[3], [true]);
         for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
             if (definedCars[carNum].get(carProperties[propNum]).length == 0) {
-                definedCars[carNum].set(carProperties[3],[false]);
+                definedCars[carNum].set(carProperties[3], [false]);
             }
         }
     }
+    console.log(definedCars);
 
-    return definedCars.filter(car => car.get(carProperties[3]).includes(false));
+    return definedCars.filter(car => car.get(carProperties[3]).includes(true));
 }
 
+function saveValidCars() {
+    for (let carNum = 0; carNum < definedCars.length; carNum++) {
+        if (definedCars[carNum].get(carProperties[3])[0]) {
+            console.log(carFirstLetter[carNum])
+            localStorage.setItem(carFirstLetter[carNum], JSON.stringify(Array.from(definedCars[carNum].entries())));
 
+        }
+    }
+}
 
 
 
