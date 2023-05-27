@@ -23,34 +23,42 @@
         <div class="box">
             <p id="title_car_config">Choose a car Configuration:</p>
             <div id="selec_car_config_grp">
-                <div class="txt_config">
+                <div class="car_config" id="Model_div">
                     <p>First select the car model:</p>
-                    <select class="car_config_selec" name="model" id="model" onchange="addOption();"
+                    <select class="car_config_selec" name="Model" id="Model"
+                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
+                        <option value="nothing">""</option>
                     </select>
                 </div>
-                <div class="txt_config" id="Tire" style="display:none">
+                <div class="car_config" id="Tire_div" style="display: none;">
                     <p>Now choose the tires:</p>
-                    <select class="car_config_selec" name="tire" id="tire" onchange="addOption();"
-                        onfocus="this.selectedIndex = -1;"> </select>
-                </div>
-
-                <div class="txt_config" id="Interior" style="display: none;">
-                    <p>Next the interior design:</p>
-                    <select class="car_config_selec" name="desgin" id="desgin" onchange="addOption();"
+                    <select class="car_config_selec" name="Tire" id="Tire"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
+                        <option value="nothing">""</option>
                     </select>
                 </div>
 
-                <div class="txt_config" id="Engine" style="display: none;">
-                    <p>Finally the propulsion system:</p>
-                    <select class="car_config_selec" name="system" id="system" onchange="addOption();"
+                <div class="car_config" id="Interior_div" style="display: none;">
+                    <p>Next the interior design:</p>
+                    <select class="car_config_selec" name="Interior" id="Interior"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
+                        <option value="nothing">""</option>
+                    </select>
+                </div>
+
+                <div class="car_config" id="Engine_div" style="display: none;">
+                    <p>Finally the propulsion system:</p>
+                    <select class="car_config_selec" name="Engine" id="Engine" onchange="displayConfigBtn();"
+                        onfocus="this.selectedIndex = -1;">
+                        <option value="nothing">""</option>
                     </select>
                 </div>
 
             </div>
-            <button id="btn_display_config" onclick=displayConfig()>Show Configuration</button>
+            <button id="btn_display_config" style="display: none;" onclick=displayResultConfig()>Show Configuration</button>
         </div>
     </main>
 </body>
