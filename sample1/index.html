@@ -4,9 +4,52 @@
 <head>
 	<title>Button Calculator</title>
 	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #F3F3F3;
+			font-family: Arial, sans-serif;
+		}
+
+		#calculator {
+			border: 1px solid #BDBDBD;
+			border-radius: 5px;
+			padding: 20px;
+			background-color: #FFF;
+			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+		}
+
+		#display {
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 5px;
+		}
+
+		button {
+			width: 40px;
+			height: 40px;
+			margin: 2px;
+			border: none;
+			color: #FFF;
+			border-radius: 5px;
+		}
+
 		.number-btn {
-			width: 30px;
-			height: 30px;
+			background-color: #4CAF50;
+		}
+
+		.operator-btn {
+			background-color: #FF5722;
+		}
+
+		.clear-btn {
+			background-color: #F44336;
+		}
+
+		.equals-btn {
+			background-color: #3F51B5;
 		}
 	</style>
 	<script>
@@ -75,31 +118,33 @@
 </head>
 
 <body>
-	<h1>Button Calculator</h1>
-	<input type="text" id="display" readonly><br>
+	<div id="calculator">
+		<h1>Button Calculator</h1>
+		<input type="text" id="display" readonly><br>
 
-	<button class="number-btn" onclick="pressButton('1')">1</button>
-	<button class="number-btn" onclick="pressButton('2')">2</button>
-	<button class="number-btn" onclick="pressButton('3')">3</button>
-	<button onclick="pressButton('+')">+</button><br>
+		<button class="number-btn" onclick="pressButton('1')">1</button>
+		<button class="number-btn" onclick="pressButton('2')">2</button>
+		<button class="number-btn" onclick="pressButton('3')">3</button>
+		<button class="operator-btn" onclick="pressButton('+')">+</button><br>
 
-	<button class="number-btn" onclick="pressButton('4')">4</button>
-	<button class="number-btn" onclick="pressButton('5')">5</button>
-	<button class="number-btn" onclick="pressButton('6')">6</button>
-	<button onclick="pressButton('-')">-</button><br>
+		<button class="number-btn" onclick="pressButton('4')">4</button>
+		<button class="number-btn" onclick="pressButton('5')">5</button>
+		<button class="number-btn" onclick="pressButton('6')">6</button>
+		<button class="operator-btn" onclick="pressButton('-')">-</button><br>
 
-	<button class="number-btn" onclick="pressButton('7')">7</button>
-	<button class="number-btn" onclick="pressButton('8')">8</button>
-	<button class="number-btn" onclick="pressButton('9')">9</button>
-	<button onclick="pressButton('*')">*</button><br>
+		<button class="number-btn" onclick="pressButton('7')">7</button>
+		<button class="number-btn" onclick="pressButton('8')">8</button>
+		<button class="number-btn" onclick="pressButton('9')">9</button>
+		<button class="operator-btn" onclick="pressButton('*')">*</button><br>
 
-	<button class="number-btn" onclick="pressButton('0')">0</button>
-	<button onclick="pressButton('/')">/</button>
-	<button onclick="pressButton('^')">^</button>
-	<button onclick="pressButton('sqrt')">sqrt</button><br>
+		<button class="number-btn" onclick="pressButton('0')">0</button>
+		<button class="operator-btn" onclick="pressButton('/')">/</button>
+		<button class="operator-btn" onclick="pressButton('^')">^</button>
+		<button class="operator-btn" onclick="pressButton('sqrt')">sqrt</button><br>
 
-	<button onclick="calculate()">=</button>
-	<button onclick="clearDisplay()">C</button>
+		<button class="equals-btn" onclick="calculate()">=</button>
+		<button class="clear-btn" onclick="clearDisplay()">C</button>
+	</div>
 </body>
 
 </html>
