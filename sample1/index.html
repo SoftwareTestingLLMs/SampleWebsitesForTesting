@@ -6,19 +6,22 @@
 	<style>
 		body {
 			display: flex;
-			justify-content: center;
+			flex-direction: column;
 			align-items: center;
 			height: 100vh;
 			background-color: #F3F3F3;
 			font-family: Arial, sans-serif;
 		}
 
-		#calculator {
+		#calculator,
+		#coverage {
 			border: 1px solid #BDBDBD;
 			border-radius: 5px;
 			padding: 20px;
 			background-color: #FFF;
 			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+			width: 250px;
+			margin-bottom: 20px;
 		}
 
 		#display {
@@ -51,13 +54,20 @@
 		.equals-btn {
 			background-color: #3F51B5;
 		}
+
+		#coverage h2,
+		#coverage h3 {
+			margin: 0;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #BDBDBD;
+		}
 	</style>
+
 	<script>
 		var operator = null;
 		var operand1 = null;
 		var operand2 = null;
 
-		// Code coverage counters
 		var coverage = {
 			pressButton: 0,
 			calculate: 0,
@@ -144,27 +154,20 @@
 			displayCoverage();
 		}
 
-		// Function to display coverage
 		function displayCoverage() {
-			var coverageDiv = document.getElementById("coverage");
-			var coverageHtml = '<h2>Code coverage:</h2>';
-
-			coverageHtml += `pressButton: ${coverage.pressButton} times<br>`;
-			coverageHtml += `calculate: ${coverage.calculate} times<br>`;
-			coverageHtml += `clearDisplay: ${coverage.clearDisplay} times<br>`;
-			coverageHtml += '<h3>calculate switch cases:</h3>';
-
-			for (let operator in coverage.calculate_switch) {
-				coverageHtml += `${operator}: ${coverage.calculate_switch[operator]} times<br>`;
-			}
-
-			coverageDiv.innerHTML = coverageHtml;
+			let coverageDiv = document.getElementById("coverage");
+			coverageDiv.innerHTML = `
+				<h2>Code coverage:</h2>
+				<p>pressButton: ${coverage.pressButton} times</p>
+				<p>calculate: ${coverage.calculate} times</p>
+				<p>clearDisplay: ${coverage.clearDisplay} times</p>
+				<h3>calculate switch cases:</h3>
+				${Object.keys(coverage.calculate_switch).map(operator =>
+				`<p>${operator}: ${coverage.calculate_switch[operator]} times</p>`
+			).join('')}
+			`;
 		}
 
-		// Call displayCoverage on page unload
-		window.onbeforeunload = displayCoverage;
-
-		// Call displayCoverage initially to display the initial coverage
 		window.onload = displayCoverage;
 	</script>
 </head>
