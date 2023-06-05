@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Button Calculator</title>
+	<title>Calculator</title>
 	<style>
 		body {
 			display: flex;
@@ -83,6 +83,7 @@
 			} else {
 				display.value += value;
 			}
+			displayCoverage();
 		}
 
 		function calculate() {
@@ -131,6 +132,7 @@
 			operand1 = result;
 			operand2 = null;
 			operator = null;
+			displayCoverage();
 		}
 
 		function clearDisplay() {
@@ -139,28 +141,37 @@
 			operator = null;
 			operand1 = null;
 			operand2 = null;
+			displayCoverage();
 		}
 
 		// Function to display coverage
 		function displayCoverage() {
-			console.log('Code coverage:');
-			console.log(`pressButton: ${coverage.pressButton} times`);
-			console.log(`calculate: ${coverage.calculate} times`);
-			console.log(`clearDisplay: ${coverage.clearDisplay} times`);
-			console.log('calculate switch cases:');
+			var coverageDiv = document.getElementById("coverage");
+			var coverageHtml = '<h2>Code coverage:</h2>';
+
+			coverageHtml += `pressButton: ${coverage.pressButton} times<br>`;
+			coverageHtml += `calculate: ${coverage.calculate} times<br>`;
+			coverageHtml += `clearDisplay: ${coverage.clearDisplay} times<br>`;
+			coverageHtml += '<h3>calculate switch cases:</h3>';
+
 			for (let operator in coverage.calculate_switch) {
-				console.log(`${operator}: ${coverage.calculate_switch[operator]} times`);
+				coverageHtml += `${operator}: ${coverage.calculate_switch[operator]} times<br>`;
 			}
+
+			coverageDiv.innerHTML = coverageHtml;
 		}
 
 		// Call displayCoverage on page unload
 		window.onbeforeunload = displayCoverage;
+
+		// Call displayCoverage initially to display the initial coverage
+		window.onload = displayCoverage;
 	</script>
 </head>
 
 <body>
 	<div id="calculator">
-		<h1>Button Calculator</h1>
+		<h1>Calculator</h1>
 		<input type="text" id="display" readonly><br>
 
 		<button class="number-btn" onclick="pressButton('1')">1</button>
@@ -186,6 +197,7 @@
 		<button class="equals-btn" onclick="calculate()">=</button>
 		<button class="clear-btn" onclick="clearDisplay()">C</button>
 	</div>
+	<div id="coverage"></div>
 </body>
 
 </html>
