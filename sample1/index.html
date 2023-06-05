@@ -10,21 +10,66 @@
 		}
 	</style>
 	<script>
+		var operator = null;
+		var operand1 = null;
+		var operand2 = null;
+
 		function pressButton(value) {
-			document.getElementById("display").value += value;
+			let display = document.getElementById("display");
+			if (isNaN(value)) {
+				operator = value;
+				operand1 = parseFloat(display.value);
+				display.value = "";
+			} else {
+				display.value += value;
+			}
 		}
 
 		function calculate() {
-			try {
-				let result = eval(document.getElementById("display").value);
-				document.getElementById("display").value = result;
-			} catch {
-				alert("Invalid input!");
+			operand2 = parseFloat(document.getElementById("display").value);
+			let result = null;
+			switch (operator) {
+				case '+':
+					result = operand1 + operand2;
+					break;
+				case '-':
+					result = operand1 - operand2;
+					break;
+				case '*':
+					result = operand1 * operand2;
+					break;
+				case '/':
+					if (operand2 !== 0) {
+						result = operand1 / operand2;
+					} else {
+						alert("Cannot divide by zero!");
+					}
+					break;
+				case '^':
+					result = Math.pow(operand1, operand2);
+					break;
+				case 'sqrt':
+					if (operand1 >= 0) {
+						result = Math.sqrt(operand1);
+					} else {
+						alert("Cannot take square root of a negative number!");
+					}
+					break;
+				default:
+					alert("Invalid operator!");
+					return;
 			}
+			document.getElementById("display").value = result;
+			operand1 = result;
+			operand2 = null;
+			operator = null;
 		}
 
 		function clearDisplay() {
 			document.getElementById("display").value = "";
+			operator = null;
+			operand1 = null;
+			operand2 = null;
 		}
 	</script>
 </head>
