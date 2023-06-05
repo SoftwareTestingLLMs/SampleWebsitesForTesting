@@ -57,7 +57,24 @@
 		var operand1 = null;
 		var operand2 = null;
 
+		// Code coverage counters
+		var coverage = {
+			pressButton: 0,
+			calculate: 0,
+			clearDisplay: 0,
+			calculate_switch: {
+				'+': 0,
+				'-': 0,
+				'*': 0,
+				'/': 0,
+				'^': 0,
+				'sqrt': 0,
+				'default': 0
+			}
+		};
+
 		function pressButton(value) {
+			coverage.pressButton++;
 			let display = document.getElementById("display");
 			if (isNaN(value)) {
 				operator = value;
@@ -69,19 +86,24 @@
 		}
 
 		function calculate() {
+			coverage.calculate++;
 			operand2 = parseFloat(document.getElementById("display").value);
 			let result = null;
 			switch (operator) {
 				case '+':
+					coverage.calculate_switch['+']++;
 					result = operand1 + operand2;
 					break;
 				case '-':
+					coverage.calculate_switch['-']++;
 					result = operand1 - operand2;
 					break;
 				case '*':
+					coverage.calculate_switch['*']++;
 					result = operand1 * operand2;
 					break;
 				case '/':
+					coverage.calculate_switch['/']++;
 					if (operand2 !== 0) {
 						result = operand1 / operand2;
 					} else {
@@ -89,9 +111,11 @@
 					}
 					break;
 				case '^':
+					coverage.calculate_switch['^']++;
 					result = Math.pow(operand1, operand2);
 					break;
 				case 'sqrt':
+					coverage.calculate_switch['sqrt']++;
 					if (operand1 >= 0) {
 						result = Math.sqrt(operand1);
 					} else {
@@ -99,6 +123,7 @@
 					}
 					break;
 				default:
+					coverage.calculate_switch['default']++;
 					alert("Invalid operator!");
 					return;
 			}
@@ -109,11 +134,27 @@
 		}
 
 		function clearDisplay() {
+			coverage.clearDisplay++;
 			document.getElementById("display").value = "";
 			operator = null;
 			operand1 = null;
 			operand2 = null;
 		}
+
+		// Function to display coverage
+		function displayCoverage() {
+			console.log('Code coverage:');
+			console.log(`pressButton: ${coverage.pressButton} times`);
+			console.log(`calculate: ${coverage.calculate} times`);
+			console.log(`clearDisplay: ${coverage.clearDisplay} times`);
+			console.log('calculate switch cases:');
+			for (let operator in coverage.calculate_switch) {
+				console.log(`${operator}: ${coverage.calculate_switch[operator]} times`);
+			}
+		}
+
+		// Call displayCoverage on page unload
+		window.onbeforeunload = displayCoverage;
 	</script>
 </head>
 
