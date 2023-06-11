@@ -73,9 +73,8 @@ function changeFunctionality(btn) {
 function getValidCars() {
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
-    carArrays = localStorage.getItem(carName);
+    carArrays = localStorage.getItem(carName)?localStorage.getItem(carName):true;
     userDefinedCar[carNum].set(carProperties[3], eval(carArrays));
-    console.log(userDefinedCar);
   }
 }
 
