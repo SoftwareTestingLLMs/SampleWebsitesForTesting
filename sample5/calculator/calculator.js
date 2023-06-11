@@ -11,8 +11,9 @@ const selecArithmetic = document.getElementById("calc_rule");
 const selecFirstDigit = document.getElementById("first_digit");
 const selecSecondDigit = document.getElementById("second_digit");
 
-const settingsArithmetic = JSON.parse(localStorage.getItem("arithmetic"));
-const numSys = localStorage.getItem("numSys");
+const settingsArithmetic = JSON.parse(localStorage.getItem("arithmetic")) == null? ["addition"]:JSON.parse(localStorage.getItem("arithmetic")) ;
+console.log(settingsArithmetic)
+const numSys = localStorage.getItem("numSys")==null?"decimal":localStorage.getItem("numSys");
 
 onLoad();
 
