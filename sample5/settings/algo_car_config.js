@@ -56,7 +56,6 @@ function algo() {
   addConfigProp();
   console.log("Valid page: ");
   console.log(determineValidCars());
-  // saveValidCars();
 }
 
 function addConfigProp() {

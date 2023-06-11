@@ -1,4 +1,5 @@
 /*Basic style of website*/
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 .container {
     display: grid;

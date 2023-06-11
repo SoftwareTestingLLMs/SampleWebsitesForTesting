@@ -17,7 +17,7 @@ function changeFunctionality(btn) {
 
 function openSettingPage(btn) {
 
-}
+} 
 
 
 
