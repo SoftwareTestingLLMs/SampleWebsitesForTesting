@@ -26,7 +26,6 @@ function closeSettings() {
     selectorSys = document.getElementById("num_sys");
     numSys = selectorSys.options[selectorSys.selectedIndex].value;
     localStorage.setItem("numSys", numSys);
-    console.log(numSys)
 
     //Save arithmetic in storage
     selectionArithmetic = document.querySelectorAll('input[name="arithmetic"]:checked');
