@@ -1,76 +1,73 @@
 /*Basic style of website*/
 .container {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1em;
-    grid-template-rows: 50px 245px 245px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1em;
+  grid-template-rows: 50px 245px 245px;
 }
 
-
 .btn_menu {
-    height: 25px;
-    width: 150px;
-    margin: 10px;
+  height: 25px;
+  width: 150px;
+  margin: 10px;
 }
 
 .box:nth-child(1) {
-
-    background-color: blueviolet;
-    grid-column-start: 1;
-    grid-column-end: 6;
-    font-size: 30px;
-    color: black;
-    display: flex;
-    align-items: end;
-    justify-content: start;
+  background-color: blueviolet;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  font-size: 30px;
+  color: black;
+  display: flex;
+  align-items: end;
+  justify-content: start;
 }
 
 .box:nth-child(2) {
-    background-color: brown;
-    grid-row-start: 2;
-    grid-row-end: end;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    writing-mode: vertical-lr;
-    display: flex;
-    align-items: center;
-    justify-content: start;
+  background-color: brown;
+  grid-row-start: 2;
+  grid-row-end: end;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 .box:nth-child(3) {
-    background-color: coral;
-    grid-row-start: 2;
-    grid-row-end: end;
-    grid-column-start: 2;
-    grid-column-end: 6;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: center;
+  background-color: coral;
+  grid-row-start: 2;
+  grid-row-end: end;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
 }
 
 /*Special style for functionality to print text*/
 
 .btn_printer {
-    height: 25px;
-    width: 150px;
-    margin: 10px;
-
+  height: 25px;
+  width: 150px;
+  margin: 10px;
 }
 
 .txt_config {
-    border: 3px solid black;
-    padding: 5px;
-    margin: 10px;
-    width: 200px;
-    text-align: center;
+  border: 3px solid black;
+  padding: 5px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
 }
 
-.car_cb_group{
-    border: 3px solid black;
-    padding: 5px;
-    margin: 10px;
-    width: 200px;
-    text-align: left;
+.car_cb_group {
+  border: 3px solid black;
+  padding: 5px;
+  margin: 10px;
+  width: 200px;
+  text-align: left;
 }

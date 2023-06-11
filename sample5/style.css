@@ -32,7 +32,7 @@
     font-size: 30px;
     color: black;
     display: flex;
-    align-items: end;
+    align-items: start;
     justify-content: start;
 }
 
@@ -42,9 +42,9 @@
     grid-row-end: end;
     grid-column-start: 1;
     grid-column-end: 2;
-    writing-mode: vertical-lr;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: start;
 }
 
