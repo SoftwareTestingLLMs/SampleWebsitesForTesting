@@ -27,12 +27,15 @@ function changeFunctionality(btn) {
 
 function getValidCars() {
     for (let carNum = 0; carNum < carFirstLetter.length; carNum++) {
-        carArrays = JSON.parse(localStorage.getItem(carFirstLetter[carNum]));
+        carArrays = JSON.parse(localStorage.getItem(carFirstLetter[carNum].toUpperCase()));
         if (carArrays) {
             definedCars[i] = new Map(carArrays);
             i++;
         }
     }
+    console.log("Valid:");
+    console.log(definedCars);
+
 }
 
 function addValidCars() {
@@ -109,7 +112,7 @@ function displayResultConfig() {
         resultConfig.push([[carProperties[propNum]], [value]])
     }
     console.log(resultConfig)
-}
+} 
 
 function resetConfig(){
     for (let propNum = 0; propNum < carProperties.length-2; propNum++) {

@@ -40,12 +40,13 @@ function createCar() {
 
     });
     return standardCars;
-}
+} 
 
 function algo() {
     addConfigProp();
-    determineValidCars();
-    saveValidCars();
+    console.log("Valid page: ");
+    console.log(determineValidCars());
+   // saveValidCars();
 
 }
 
@@ -70,18 +71,25 @@ function determineValidCars() {
             }
         }
     }
-    console.log(definedCars);
-
     return definedCars.filter(car => car.get(carProperties[3]).includes(true));
 }
 
 function saveValidCars() {
+    deleteSavedCars();
     for (let carNum = 0; carNum < definedCars.length; carNum++) {
         if (definedCars[carNum].get(carProperties[3])[0]) {
-            console.log(carFirstLetter[carNum])
-            localStorage.setItem(carFirstLetter[carNum], JSON.stringify(Array.from(definedCars[carNum].entries())));
+            console.log(carFirstLetter[carNum].toUpperCase())
+            localStorage.setItem(carFirstLetter[carNum].toUpperCase(), JSON.stringify(Array.from(definedCars[carNum].entries())));
 
         }
+    }
+}
+
+function deleteSavedCars(){
+    for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
+        let carName=userDefinedCar[carNum].get(carProperties[4])[0].replace("Car ","");
+        console.log(carName);
+        localStorage.removeItem(carName);
     }
 }
 

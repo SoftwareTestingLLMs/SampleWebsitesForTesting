@@ -53,6 +53,10 @@ function calcProp() {
     algo();
 }
 
+function closeSettings(){
+    saveValidCars();
+}
+
 
 
 
