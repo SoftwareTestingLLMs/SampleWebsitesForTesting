@@ -17,12 +17,11 @@ function changeFunctionality(btn) {
 }
 
 function printText() {
-    style = JSON.parse(localStorage.getItem("style"));
-    console.log(style);
-    color = localStorage.getItem("color");
-    fontSize = localStorage.getItem("fontSize");
-    font = localStorage.getItem("font");
-    numWords = localStorage.getItem("numWords");
+    style = JSON.parse(localStorage.getItem("style"))?JSON.parse(localStorage.getItem("style")):[];
+    color = localStorage.getItem("color")?localStorage.getItem("color"):"black";
+    fontSize = localStorage.getItem("fontSize")?localStorage.getItem("fontSize"):"12";
+    font = localStorage.getItem("font")?localStorage.getItem("font"):"DejaVu Sans";
+    numWords = localStorage.getItem("numWords")?localStorage.getItem("numWords"):"50";
 
     document.getElementById("txt_content").innerHTML =
         "Font Styles:" + BRACE_LEFT + style + BRACE_RIGHT + LINE_BREAK +
