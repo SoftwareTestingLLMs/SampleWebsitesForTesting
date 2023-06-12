@@ -34,6 +34,9 @@ function closeSettings() {
         selectedArithmetic.push(element.id);
     });
     localStorage.setItem("arithmetic", JSON.stringify(selectedArithmetic));
+
+    modal = document.getElementById("exampleModal");
+    modal.modal.s
 }
 
 

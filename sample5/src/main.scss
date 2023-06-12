@@ -1,5 +1,10 @@
-/*Basic style of website*/
+
+// $primary:red; 
+
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
 
 .container {
     display: grid;
@@ -11,7 +16,7 @@
 #btn_settings{
     border: none;
     background-color: inherit;
-    padding: 10px 10px;
+    padding: 6px 10px;
     font-size: 25px;
     cursor: pointer;
     display: inline-block;
