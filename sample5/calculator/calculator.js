@@ -30,8 +30,6 @@ const numSys =
 
 onLoad();
 
-
-
 function onLoad() {
   let actualOptions = [];
   let i = 0;
@@ -55,7 +53,7 @@ function changeFunctionality(btn) {
 }
 
 function printResult() {
- $("#exampleModal").modal("show")
+  $("#modalMinimu").modal("show");
   firstDigit = selecFirstDigit.options[selecFirstDigit.selectedIndex].text;
   secondDigit = selecSecondDigit.options[selecSecondDigit.selectedIndex].text;
   arithmetic = selecArithmetic.options[selecArithmetic.selectedIndex].text;
