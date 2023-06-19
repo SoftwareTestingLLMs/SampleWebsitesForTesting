@@ -2,25 +2,205 @@
 <html>
 
 <head>
-	<title>My JavaScript Application</title>
-	<script type="text/javascript">
-		function handleClick() {
-			var input = document.getElementById("inputField").value;
-			alert("You typed: " + input);
+	<title>Calculator</title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #F3F3F3;
+			font-family: Arial, sans-serif;
 		}
 
-		function clearField() {
-			document.getElementById("inputField").value = "";
+		#calculator,
+		#coverage {
+			border: 1px solid #BDBDBD;
+			border-radius: 5px;
+			padding: 20px;
+			background-color: #FFF;
+			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+			width: 250px;
+			margin: 40px;
 		}
+
+		#display {
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 5px;
+		}
+
+		button {
+			width: 40px;
+			height: 40px;
+			margin: 2px;
+			border: none;
+			color: #FFF;
+			border-radius: 5px;
+		}
+
+		.number-btn {
+			background-color: #4CAF50;
+		}
+
+		.operator-btn {
+			background-color: #FF5722;
+		}
+
+		.clear-btn {
+			background-color: #F44336;
+		}
+
+		.equals-btn {
+			background-color: #3F51B5;
+		}
+
+		#coverage h2,
+		#coverage h3 {
+			margin: 0;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #BDBDBD;
+		}
+	</style>
+
+	<script>
+		var operator = null;
+		var operand1 = null;
+		var operand2 = null;
+
+		var coverage = {
+			pressButton: 0,
+			calculate: 0,
+			clearDisplay: 0,
+			calculate_switch: {
+				'+': 0,
+				'-': 0,
+				'*': 0,
+				'/': 0,
+				'^': 0,
+				'sqrt': 0,
+				'default': 0
+			}
+		};
+
+		function pressButton(value) {
+			coverage.pressButton++;
+			let display = document.getElementById("display");
+			if (isNaN(value)) {
+				operator = value;
+				operand1 = parseFloat(display.value);
+				display.value = "";
+			} else {
+				display.value += value;
+			}
+			displayCoverage();
+		}
+
+		function calculate() {
+			coverage.calculate++;
+			operand2 = parseFloat(document.getElementById("display").value);
+			let result = null;
+			switch (operator) {
+				case '+':
+					coverage.calculate_switch['+']++;
+					result = operand1 + operand2;
+					break;
+				case '-':
+					coverage.calculate_switch['-']++;
+					result = operand1 - operand2;
+					break;
+				case '*':
+					coverage.calculate_switch['*']++;
+					result = operand1 * operand2;
+					break;
+				case '/':
+					coverage.calculate_switch['/']++;
+					if (operand2 !== 0) {
+						result = operand1 / operand2;
+					} else {
+						alert("Cannot divide by zero!");
+					}
+					break;
+				case '^':
+					coverage.calculate_switch['^']++;
+					result = Math.pow(operand1, operand2);
+					break;
+				case 'sqrt':
+					coverage.calculate_switch['sqrt']++;
+					if (operand1 >= 0) {
+						result = Math.sqrt(operand1);
+					} else {
+						alert("Cannot take square root of a negative number!");
+					}
+					break;
+				default:
+					coverage.calculate_switch['default']++;
+					alert("Invalid operator!");
+					return;
+			}
+			document.getElementById("display").value = result;
+			operand1 = result;
+			operand2 = null;
+			operator = null;
+			displayCoverage();
+		}
+
+		function clearDisplay() {
+			coverage.clearDisplay++;
+			document.getElementById("display").value = "";
+			operator = null;
+			operand1 = null;
+			operand2 = null;
+			displayCoverage();
+		}
+
+		function displayCoverage() {
+			let coverageDiv = document.getElementById("coverage");
+			coverageDiv.innerHTML = `
+				<h2>Code coverage:</h2>
+				<p>pressButton: ${coverage.pressButton} times</p>
+				<p>calculate: ${coverage.calculate} times</p>
+				<p>clearDisplay: ${coverage.clearDisplay} times</p>
+				<h3>calculate switch cases:</h3>
+				${Object.keys(coverage.calculate_switch).map(operator =>
+				`<p>${operator}: ${coverage.calculate_switch[operator]} times</p>`
+			).join('')}
+			`;
+		}
+
+		window.onload = displayCoverage;
 	</script>
 </head>
 
 <body>
-	<h1>My JavaScript Application</h1>
-	<label for="inputField">Type something:</label>
-	<input type="text" id="inputField"><br><br>
-	<button onclick="handleClick()">Click me!</button>
-	<button onclick="clearField()">Clear</button>
+	<div id="calculator">
+		<h1>Calculator</h1>
+		<input type="text" id="display" readonly><br>
+
+		<button class="number-btn" onclick="pressButton('1')">1</button>
+		<button class="number-btn" onclick="pressButton('2')">2</button>
+		<button class="number-btn" onclick="pressButton('3')">3</button>
+		<button class="operator-btn" onclick="pressButton('+')">+</button><br>
+
+		<button class="number-btn" onclick="pressButton('4')">4</button>
+		<button class="number-btn" onclick="pressButton('5')">5</button>
+		<button class="number-btn" onclick="pressButton('6')">6</button>
+		<button class="operator-btn" onclick="pressButton('-')">-</button><br>
+
+		<button class="number-btn" onclick="pressButton('7')">7</button>
+		<button class="number-btn" onclick="pressButton('8')">8</button>
+		<button class="number-btn" onclick="pressButton('9')">9</button>
+		<button class="operator-btn" onclick="pressButton('*')">*</button><br>
+
+		<button class="number-btn" onclick="pressButton('0')">0</button>
+		<button class="operator-btn" onclick="pressButton('/')">/</button>
+		<button class="operator-btn" onclick="pressButton('^')">^</button>
+		<button class="operator-btn" onclick="pressButton('sqrt')">sqrt</button><br>
+
+		<button class="equals-btn" onclick="calculate()">=</button>
+		<button class="clear-btn" onclick="clearDisplay()">C</button>
+	</div>
+	<div id="coverage"></div>
 </body>
 
 </html>
