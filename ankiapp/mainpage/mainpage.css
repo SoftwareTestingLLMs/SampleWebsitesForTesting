@@ -1,0 +1,319 @@
+#add_card {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    left: 700px;
+    background-color: #f0f0f0;
+  }
+
+#get_shared {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    left: 1000px;
+    background-color: #f0f0f0;
+  }
+
+#anki_login {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 50px;
+    left: 1300px;
+    background-color: #f0f0f0;
+  }
+
+#create_deck {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 650px;
+    left: 200px;
+    background-color: #f0f0f0;
+  }
+
+#delete_deck {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 650px;
+    left: 700px;
+    background-color: #f0f0f0;
+}
+
+#import_file {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 650px;
+    left: 1200px;
+    background-color: #f0f0f0;
+}
+
+#study_now {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 450px;
+    left: 700px;
+    background-color: #f0f0f0;
+}
+
+#deck_row_1 {
+    height: 30px;
+    width: 800px;
+    position: absolute;
+    border-style: solid;
+    top: 250px;
+    left: 370px;
+    margin: auto;
+  }
+
+#deck_row_2 {
+    height: 30px;
+    width: 800px;
+    position: absolute;
+    border-style: solid;
+    top: 282px;
+    left: 370px;
+    margin: auto;
+  }
+  
+#deck_row_3 {
+    height: 30px;
+    width: 800px;
+    position: absolute;
+    border-style: solid;
+    top: 314px;
+    left: 370px;
+    margin: auto;
+  }
+
+#deck_row_4 {
+    height: 30px;
+    width: 800px;
+    position: absolute;
+    border-style: solid;
+    top: 346px;
+    left: 370px;
+    margin: auto;
+  }
+
+#deck_row_5 {
+    height: 30px;
+    width: 800px;
+    position: absolute;
+    border-style: solid;
+    top: 378px;
+    left: 370px;
+    margin: auto;
+  }
+
+#current_profile {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 130px;
+    left: 200px;
+    margin: auto;
+  }
+
+#current_deck {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 130px;
+    left: 700px;
+    margin: auto;
+  }
+
+#current_account {
+    height: 30px;
+    width: 150px;
+    position: absolute;
+    top: 130px;
+    left: 1200px;
+    margin: auto;
+  }
+
+#file_dropdown {
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+  }
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.leads-to-external-website-popup-content {
+    height: 150px;
+    width: 600px;
+    position: absolute;
+    top: 200px;
+    left: 450px;  
+    background-color: #f0f0f0;
+    border: 1px solid #888888;
+    font-weight: bolder;
+}
+
+.add-card-popup-content {
+  height: 450px;
+  width: 550px;
+  position: absolute;
+  top: 100px;
+  left: 475px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+.show {
+    display: block;
+}
+
+#closeLeadsToExternalWebsitePopup {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 85px;
+  left: 250px;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+#add_card_button_1 {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 125px;
+  left: 425px;
+}
+
+#add_card_button_2 {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 225px;
+  left: 425px;
+}
+
+#add_card_button_3 {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 325px;
+  left: 425px;
+}
+
+#add_card_row_1 {
+  height: 50px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 115px;
+  left: 20px;
+}
+
+#add_card_row_2 {
+  height: 50px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 215px;
+  left: 20px;
+}
+
+#add_card_row_3 {
+  height: 50px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 315px;
+  left: 20px;
+}
+
+#close_add_card_popup {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 400px;
+  left: 425px;
+}
+
+#add_card_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 400px;
+  left: 300px;
+}
+
+.create-new-deck-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+#create_new_deck {
+  height: 30px;
+  width: 450px;
+  position: absolute;
+  border-style: solid;
+  top: 60px;
+  left: 10px;
+}
+
+#create_new_deck_close_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 110px;
+  left: 475px;
+}
+
+#create_new_deck_name_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 63px;
+  left: 475px;
+}
+
+.delete-deck-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
