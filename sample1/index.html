@@ -69,72 +69,88 @@
 		var operand2 = null;
 
 		var coverage = {
-			pressButton: 0,
-			calculate: 0,
-			clearDisplay: 0,
-			calculate_switch: {
-				'+': 0,
-				'-': 0,
-				'*': 0,
-				'/': 0,
-				'^': 0,
-				'sqrt': 0,
-				'default': 0
+			pressButton: {
+				enter: 0,
+				isNaN: 0,
+				elseBlock: 0,
+				exit: 0
+			},
+			calculate: {
+				enter: 0,
+				caseAdd: 0,
+				caseSubtract: 0,
+				caseMultiply: 0,
+				caseDivide: 0,
+				caseDivideByZero: 0,
+				casePower: 0,
+				caseSqrt: 0,
+				caseSqrtNegative: 0,
+				caseDefault: 0,
+				exit: 0
+			},
+			clearDisplay: {
+				enter: 0,
+				exit: 0
 			}
 		};
 
 		function pressButton(value) {
-			coverage.pressButton++;
+			coverage.pressButton.enter++;
 			let display = document.getElementById("display");
 			if (isNaN(value)) {
+				coverage.pressButton.isNaN++;
 				operator = value;
 				operand1 = parseFloat(display.value);
 				display.value = "";
 			} else {
+				coverage.pressButton.elseBlock++;
 				display.value += value;
 			}
+			coverage.pressButton.exit++;
 			displayCoverage();
 		}
 
 		function calculate() {
-			coverage.calculate++;
+			coverage.calculate.enter++;
 			operand2 = parseFloat(document.getElementById("display").value);
 			let result = null;
 			switch (operator) {
 				case '+':
-					coverage.calculate_switch['+']++;
+					coverage.calculate.caseAdd++;
 					result = operand1 + operand2;
 					break;
 				case '-':
-					coverage.calculate_switch['-']++;
+					coverage.calculate.caseSubtract++;
 					result = operand1 - operand2;
 					break;
 				case '*':
-					coverage.calculate_switch['*']++;
+					coverage.calculate.caseMultiply++;
 					result = operand1 * operand2;
 					break;
 				case '/':
-					coverage.calculate_switch['/']++;
+					coverage.calculate.caseDivide++;
 					if (operand2 !== 0) {
 						result = operand1 / operand2;
 					} else {
+						coverage.calculate.caseDivideByZero++;
 						alert("Cannot divide by zero!");
 					}
 					break;
 				case '^':
-					coverage.calculate_switch['^']++;
+					coverage.calculate.casePower++;
 					result = Math.pow(operand1, operand2);
 					break;
 				case 'sqrt':
-					coverage.calculate_switch['sqrt']++;
+					coverage.calculate.caseSqrt++;
 					if (operand1 >= 0) {
 						result = Math.sqrt(operand1);
 					} else {
+						coverage.calculate.caseSqrtNegative++;
 						alert("Cannot take square root of a negative number!");
 					}
 					break;
 				default:
-					coverage.calculate_switch['default']++;
+					coverage.calculate.caseDefault++;
 					alert("Invalid operator!");
 					return;
 			}
@@ -142,30 +158,31 @@
 			operand1 = result;
 			operand2 = null;
 			operator = null;
+			coverage.calculate.exit++;
 			displayCoverage();
 		}
 
 		function clearDisplay() {
-			coverage.clearDisplay++;
+			coverage.clearDisplay.enter++;
 			document.getElementById("display").value = "";
 			operator = null;
 			operand1 = null;
 			operand2 = null;
+			coverage.clearDisplay.exit++;
 			displayCoverage();
 		}
 
 		function displayCoverage() {
 			let coverageDiv = document.getElementById("coverage");
 			coverageDiv.innerHTML = `
-				<h2>Code coverage:</h2>
-				<p>pressButton: ${coverage.pressButton} times</p>
-				<p>calculate: ${coverage.calculate} times</p>
-				<p>clearDisplay: ${coverage.clearDisplay} times</p>
-				<h3>calculate switch cases:</h3>
-				${Object.keys(coverage.calculate_switch).map(operator =>
-				`<p>${operator}: ${coverage.calculate_switch[operator]} times</p>`
+		<h2>Code coverage:</h2>
+		${Object.keys(coverage).map(functionName => `
+			<h3>${functionName}:</h3>
+			${Object.keys(coverage[functionName]).map(blockName =>
+				`<p>${blockName}: ${coverage[functionName][blockName]} times</p>`
 			).join('')}
-			`;
+		`).join('')}
+	`;
 		}
 
 		window.onload = displayCoverage;
