@@ -32,7 +32,7 @@ function calcProp() {
         selectedTires.push(element.value);
 
     });
-
+    console.log(selectedTires)
     //Save interior in storage
     selectedInteriors.splice(0, selectedInteriors.length);
     selectionInterior = document.querySelectorAll('input[name="interior"]:checked');
@@ -47,8 +47,9 @@ function calcProp() {
         selectedEngines.push(element.value);
     });
 
+    addConfigProp();
 
-    algo();
+    determineInvalidCars();
 }
 
 function closeSettings(){

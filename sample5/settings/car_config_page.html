@@ -58,21 +58,15 @@
             <button class="btn_close" onclick=closeSettings()>Close</button>
     </main>
     <!-- Modal -->
-    <div class="modal fade" id="modalMinimu" tabindex="-1" aria-labelledby="modalMinimuLabel" data-bs-backdrop="static"
+    <div class="modal fade" id="modalDisabledCars" tabindex="-1" aria-labelledby="modalDisabledCarsLabel" data-bs-backdrop="static"
         data-bs-keyboard="false" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalMinimuLabel">Basic arithmetic</h5>
+                    <h5 class="modal-title" id="modalMinimuLabel">Folllowed cars are disabled:</h5>
                 </div>
                 <div class="modal-body">
-                    Please select minimum one arithmetic:
-                    <select class="form-select" id="minArithmetic" aria-label="minimum arithmetic">
-                        <option selected disabled>Open this select menu</option>
-                        <option value="addition">Addition</option>
-                        <option value="subtraction">Subtraction</option>
-                        <option value="multiplication">Multiplication</option>
-                    </select>
+                   <p id="txtDisabledCars"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btn_modal_close" class="btn btn-secondary"
@@ -84,5 +78,6 @@
 </body>
 <script src="algo_car_config.js"></script>
 <script src="car_config_page.js"></script>
-
+<script src="..\src\bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </html>
