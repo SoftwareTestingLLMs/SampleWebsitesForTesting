@@ -45,7 +45,7 @@ function onLoad() {
     }
   });
 }
-
+ 
 function changeFunctionality(btn) {
   let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
   path = location.pathname;
@@ -53,7 +53,6 @@ function changeFunctionality(btn) {
 }
 
 function printResult() {
-  $("#modalMinimu").modal("show");
   firstDigit = selecFirstDigit.options[selecFirstDigit.selectedIndex].text;
   secondDigit = selecSecondDigit.options[selecSecondDigit.selectedIndex].text;
   arithmetic = selecArithmetic.options[selecArithmetic.selectedIndex].text;

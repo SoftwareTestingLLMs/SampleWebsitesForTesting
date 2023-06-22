@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="settings.css">
 
 </head>
- 
+
 <body>
     <main class="container">
         <div class="box" id="txt_settings">Configure the settings of your model</div>
@@ -21,40 +21,66 @@
         </div>
         <div class="box">
             <div class="car_cb_group" id="tire_config">
-                <input type="checkbox" id="eighteen" value="18" name="tire" onchange="calcProp()" checked/>
+                <input type="checkbox" id="eighteen" value="18" name="tire" onchange="calcProp()" checked />
                 <label for="eighteen">18</label><br>
-                <input type="checkbox" id="nineteen" value="19" name="tire" onchange="calcProp()" checked/>
+                <input type="checkbox" id="nineteen" value="19" name="tire" onchange="calcProp()" checked />
                 <label for="nineteen">19</label><br>
-                <input type="checkbox" id="twenty" value="20" name="tire" onchange="calcProp()" checked/>
+                <input type="checkbox" id="twenty" value="20" name="tire" onchange="calcProp()" checked />
                 <label for="twenty">20</label><br>
-                <input type="checkbox" id="twentyTwo" value="22" name="tire" onchange="calcProp()" checked/>
+                <input type="checkbox" id="twentyTwo" value="22" name="tire" onchange="calcProp()" checked />
                 <label for="twentyTwo">22</label>
             </div>
             <div class="car_cb_group" id="interior_config">
-                <input type="checkbox" id="modern" name="interior" onchange="calcProp()" checked/>
+                <input type="checkbox" id="modern" name="interior" onchange="calcProp()" checked />
                 <label for="modern">Modern</label><br>
-                <input type="checkbox" id="sport" name="interior" onchange="calcProp()" checked/>
+                <input type="checkbox" id="sport" name="interior" onchange="calcProp()" checked />
                 <label for="sport">Sport</label><br>
-                <input type="checkbox" id="vintage" name="interior" onchange="calcProp()" checked/>
+                <input type="checkbox" id="vintage" name="interior" onchange="calcProp()" checked />
                 <label for="vintage">Vintage</label>
             </div>
             <div class="car_cb_group" id="engine_config">
-                <input type="checkbox" id="combustionA" value="Combustion Engine A" name="engine"
-                    onchange="calcProp()" checked/>
+                <input type="checkbox" id="combustionA" value="Combustion Engine A" name="engine" onchange="calcProp()"
+                    checked />
                 <label for="combustionA">Combustion Engine A</label><br>
-                <input type="checkbox" id="combustionB" value="Combustion Engine B" name="engine"
-                    onchange="calcProp()" checked/>
+                <input type="checkbox" id="combustionB" value="Combustion Engine B" name="engine" onchange="calcProp()"
+                    checked />
                 <label for="combustionB">Combustion Engine B</label><br>
-                <input type="checkbox" id="combustionC" value="Combustion Engine C" name="engine"
-                    onchange="calcProp()" checked/>
+                <input type="checkbox" id="combustionC" value="Combustion Engine C" name="engine" onchange="calcProp()"
+                    checked />
                 <label for="combustionC">Combustion Engine C</label><br>
-                <input type="checkbox" id="electricA" name="engine" value="Electric Motor A" onchange="calcProp()" checked/>
+                <input type="checkbox" id="electricA" name="engine" value="Electric Motor A" onchange="calcProp()"
+                    checked />
                 <label for="electricA">Electric Motor A</label><br>
-                <input type="checkbox" id="electricB" name="engine" value="Electric Motor B" onchange="calcProp()" checked/>
+                <input type="checkbox" id="electricB" name="engine" value="Electric Motor B" onchange="calcProp()"
+                    checked />
                 <label for="electricB">Electric Motor B</label>
             </div>
             <button class="btn_close" onclick=closeSettings()>Close</button>
     </main>
+    <!-- Modal -->
+    <div class="modal fade" id="modalMinimu" tabindex="-1" aria-labelledby="modalMinimuLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMinimuLabel">Basic arithmetic</h5>
+                </div>
+                <div class="modal-body">
+                    Please select minimum one arithmetic:
+                    <select class="form-select" id="minArithmetic" aria-label="minimum arithmetic">
+                        <option selected disabled>Open this select menu</option>
+                        <option value="addition">Addition</option>
+                        <option value="subtraction">Subtraction</option>
+                        <option value="multiplication">Multiplication</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="algo_car_config.js"></script>
 <script src="car_config_page.js"></script>

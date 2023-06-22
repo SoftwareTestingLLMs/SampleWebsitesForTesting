@@ -26,8 +26,6 @@ function openSettingPage(btn) {
 
 function calcProp() {
     //Save tires in storage
-    console.log("Change");
-
     selectionTire = document.querySelectorAll('input[name="tire"]:checked');
     selectedTires.splice(0, selectedTires.length);
     selectionTire.forEach(element => {
