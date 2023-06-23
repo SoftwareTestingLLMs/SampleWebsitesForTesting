@@ -34,6 +34,16 @@ const cName = ["Car C"];
 
 const carFirstLetter = "abcdefghijklmnopqrstuvwxyz".split("");
 const userDefinedCar = createCar();
+const stateFigPrinter = localStorage.getItem("stateFigPrinter")
+  ? localStorage.getItem("stateFigPrinter")
+  : "hidden";
+
+isFigPrinterActivated();
+
+function isFigPrinterActivated() {
+  document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
+}
+
 
 getValidCars();
 addValidCars();

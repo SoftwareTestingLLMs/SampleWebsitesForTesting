@@ -54,13 +54,5 @@ function closeSettings() {
      localStorage.setItem("style",JSON.stringify(selectedStyle));
 }
 
-/*function setChecked(selectedCB) {
-    allCBs = document.getElementById("cb_group").children;
-    for (let i = 0; i < allCBs.length; i++) {
-        allCBs[i].id == selectedCB.id ? allCBs[i].checked = true : allCBs[i].checked = false;
-
-    }
-}*/
-
 
 

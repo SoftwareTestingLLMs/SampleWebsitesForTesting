@@ -27,10 +27,19 @@ const numSys =
   localStorage.getItem("numSys") == null
     ? "decimal"
     : localStorage.getItem("numSys");
+const stateFigPrinter = localStorage.getItem("stateFigPrinter")
+  ? localStorage.getItem("stateFigPrinter")
+  : "hidden";
 
-onLoad();
+isFigPrinterActivated();
 
-function onLoad() {
+function isFigPrinterActivated() {
+  document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
+}
+
+readSettings();
+
+function readSettings() {
   let actualOptions = [];
   let i = 0;
   for (i = 0; i < selecArithmetic.length; i++) {
@@ -45,7 +54,7 @@ function onLoad() {
     }
   });
 }
- 
+
 function changeFunctionality(btn) {
   let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
   path = location.pathname;

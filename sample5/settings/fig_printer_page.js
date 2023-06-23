@@ -3,6 +3,7 @@ const HTML_ENDING = ".html";
 const SLASH = "/";
 const DEFAULT_COLOR = "black";
 const DEFAULT_FIGURE = "tree";
+const stateActivate = document.getElementById("activate");
 
 toggleSelection();
 
@@ -17,7 +18,6 @@ function changeFunctionality(btn) {
 function openSettingPage(btn) {}
 
 function toggleSelection() {
-  stateActivate = document.getElementById("activate");
   allColorRadios = document.querySelectorAll('input[name="color"]');
   allFigCbs = document.querySelectorAll('input[name="figure"]');
   allColorRadios.forEach((oneRadio) => {
@@ -35,11 +35,15 @@ function closeSettings() {
   selectedColor = selectionColor ? selectionColor.value : DEFAULT_COLOR;
   localStorage.setItem("color", selectedColor);
 
+  //Save status of figure printer in storage
+  state =  stateActivate.checked?"visible":"hidden"
+  localStorage.setItem("stateFigPrinter",state);
+
   //Save style in storage
   selectionFigure = document.querySelectorAll('input[name="figure"]:checked');
   let selectedFigure = [];
   selectionFigure.forEach((element) => {
-    selectedFigure.push(element.id);
+    selectedFigure.push(element.value);
   });
   localStorage.setItem("figure", JSON.stringify(selectedFigure));
 }
