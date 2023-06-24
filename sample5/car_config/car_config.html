@@ -29,7 +29,6 @@
                     <select class="car_config_selec" name="Model" id="Model"
                         onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
-                        <option value="nothing">""</option>
                     </select>
                 </div>
                 <div class="car_config" id="Tire_div" style="display: none;">
@@ -37,7 +36,6 @@
                     <select class="car_config_selec" name="Tire" id="Tire"
                         onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
-                        <option value="nothing">""</option>
                     </select>
                 </div>
 
@@ -46,7 +44,6 @@
                     <select class="car_config_selec" name="Interior" id="Interior"
                         onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
-                        <option value="nothing">""</option>
                     </select>
                 </div>
 
@@ -54,7 +51,6 @@
                     <p>Finally the propulsion system:</p>
                     <select class="car_config_selec" name="Engine" id="Engine" onchange="displayConfigBtn();"
                         onfocus="this.selectedIndex = -1;">
-                        <option value="nothing">""</option>
                     </select>
                 </div>
 
@@ -74,7 +70,7 @@
              </div>
              <div class="modal-footer">
                  <button type="button" id="btn_modal_close" class="btn btn-secondary"
-                     data-bs-dismiss="modal">Close</button>
+                     data-bs-dismiss="modal" onclick="resetConfig()">Close</button>
              </div>
          </div>
      </div>

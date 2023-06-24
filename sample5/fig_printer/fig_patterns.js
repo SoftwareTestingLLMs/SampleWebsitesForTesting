@@ -23,7 +23,7 @@ function heart() {
 
 function triangle() {
   let h = 5;
-  return Array(h)
+  tri= Array(h)
     .fill("*")
     .map(
       (s, i) =>
@@ -35,6 +35,8 @@ function triangle() {
         " ".repeat(h - i - 1)
     )
     .join("<br>");
+
+    return tri.concat(["<br>"]);
 }
 
 function pyramid() {
@@ -68,7 +70,7 @@ function diamond() {
   let string = "";
   // Upside pyramid
   for (let i = 1; i <= n; i++) {
-    // printing spaces
+    // printing spacres
     for (let j = n; j > i; j--) {
       string += "&nbsp &nbsp";
     }
