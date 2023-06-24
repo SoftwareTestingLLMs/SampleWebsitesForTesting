@@ -3,7 +3,6 @@ const HTML_ENDING = ".html";
 const SLASH = "/";
 const DEFAULT_COLOR = "black";
 const DEFAULT_STYLE = "";
-//let numWords = localStorage.getItem("numWords")? localStorage.getItem("numWords"):"50";
 
 function changeFunctionality(btn) {
   let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];

@@ -51,7 +51,10 @@ function readSettings() {
 function printText() {
   selectFigure = document.getElementById("figure_ops");
   selectedFig = selectFigure.options[selectFigure.selectedIndex].text;
-  console.log()
-  document.getElementById("txt_content").innerHTML = eval(selectedFig.toLowerCase()+"()")
-   
+  color = localStorage.getItem("color")
+    ? localStorage.getItem("color")
+    : "black";
+  document.getElementById("txt_content").innerHTML = eval(selectedFig.toLowerCase()+"()")+LINE_BREAK+
+  "Color." +
+  color.toUpperCase()    
 }

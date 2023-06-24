@@ -7,7 +7,7 @@ const DIV = "_div";
 let selectedTire = "";
 let selectedInterior = "";
 let selectedEngine = "";
-
+const LINE_BREAK = "<br>";
 const carProperties = ["Tire", "Interior", "Engine", "Valid", "Name"];
 const aTire = ["20", "22"];
 const aInterior = ["modern", "vintage"];
@@ -43,7 +43,6 @@ isFigPrinterActivated();
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
-
 
 getValidCars();
 addValidCars();
@@ -83,7 +82,9 @@ function changeFunctionality(btn) {
 function getValidCars() {
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
-    carArrays = localStorage.getItem(carName)?localStorage.getItem(carName):true;
+    carArrays = localStorage.getItem(carName)
+      ? localStorage.getItem(carName)
+      : true;
     userDefinedCar[carNum].set(carProperties[3], eval(carArrays));
   }
 }
@@ -154,13 +155,38 @@ function getNextConfig(element) {
 }
 
 function displayResultConfig() {
-  resultConfig = [];
-  resultConfig.push([["Selected Car"], basedCar.get(carProperties[4])]);
-  for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
-    selector = document.getElementById(carProperties[propNum]);
-    value = selector.options[selector.selectedIndex].text;
-    resultConfig.push([[carProperties[propNum]], [value]]);
-  }
+  string = "";
+
+  string +=
+    "Car: " +
+    (
+      basedCar
+        .get(carProperties[4])[0]
+        .replace("Car ", "")
+        .toLowerCase()
+        .charCodeAt(0) - 96
+    ).toString();
+  string += "<br>";
+
+  selector = document.getElementById(carProperties[0]);
+  value = selector.options[selector.selectedIndex].text;
+  string += "Tires: Tire " + value.charAt(0).toUpperCase() + value.slice(1);
+  string += "<br>";
+
+  selector = document.getElementById(carProperties[1]);
+  value = selector.options[selector.selectedIndex].text;
+  string +=
+    carProperties[1] + ": " + value.charAt(0).toUpperCase() + value.slice(1);
+  string += "<br>";
+
+  selector = document.getElementById(carProperties[2]);
+  value = selector.options[selector.selectedIndex].text;
+  value = value.replace("Engine", "");
+  string +=
+    carProperties[2] + ": " + value.charAt(0).toUpperCase() + value.slice(1);
+
+  $("#modalConfig").modal("show");
+  $("#conifgContent").html(string);
 }
 
 function resetConfig() {

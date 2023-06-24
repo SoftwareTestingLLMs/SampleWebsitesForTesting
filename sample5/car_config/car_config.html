@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +62,25 @@
             <button id="btn_display_config" style="display: none;" onclick=displayResultConfig()>Show Configuration</button>
         </div>
     </main>
+     <!-- Modal -->
+     <div class="modal fade" id="modalConfig" tabindex="-1" aria-labelledby="modalConfigLabel" data-bs-backdrop="static"
+     data-bs-keyboard="false" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="modalConfigLabel">Your Car Configuration:</h5>
+             </div>
+             <div class="modal-body" id="conifgContent">
+             </div>
+             <div class="modal-footer">
+                 <button type="button" id="btn_modal_close" class="btn btn-secondary"
+                     data-bs-dismiss="modal">Close</button>
+             </div>
+         </div>
+     </div>
+ </div>
 </body>
 <script src="car_config.js"></script>
-
+<script src="..\src\bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </html>
