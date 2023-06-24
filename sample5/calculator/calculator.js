@@ -58,7 +58,6 @@ function readSettings() {
     }
   });
 }
-
 function changeFunctionality(btn) {
   let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
   path = location.pathname;
