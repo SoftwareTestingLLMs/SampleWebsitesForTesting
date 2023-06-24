@@ -11,7 +11,7 @@ const settingFigures = JSON.parse(localStorage.getItem("figure"))
 const settingColor = localStorage.getItem("color")
   ? localStorage.getItem("color")
   : "black";
-  const stateFigPrinter = localStorage.getItem("stateFigPrinter")
+const stateFigPrinter = localStorage.getItem("stateFigPrinter")
   ? localStorage.getItem("stateFigPrinter")
   : "hidden";
 
@@ -40,6 +40,7 @@ function readSettings() {
 
   settingFigures.forEach((element) => {
     option = document.createElement("option");
+    element = element.charAt(0).toUpperCase() + element.slice(1);
     option.text = element;
     if (!actualOptions.includes(element)) {
       selecFigure.add(option);
@@ -47,14 +48,15 @@ function readSettings() {
   });
 }
 
-
 function printText() {
   selectFigure = document.getElementById("figure_ops");
   selectedFig = selectFigure.options[selectFigure.selectedIndex].text;
   color = localStorage.getItem("color")
     ? localStorage.getItem("color")
     : "black";
-  document.getElementById("txt_content").innerHTML = eval(selectedFig.toLowerCase()+"()")+LINE_BREAK+
-  "Color." +
-  color.toUpperCase()    
+  document.getElementById("txt_content").innerHTML =
+    eval(selectedFig.toLowerCase() + "()") +
+    LINE_BREAK +
+    "Color." +
+    color.toUpperCase();
 }
