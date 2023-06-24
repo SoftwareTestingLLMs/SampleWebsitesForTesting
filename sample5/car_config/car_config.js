@@ -183,7 +183,7 @@ function displayResultConfig() {
   value = selector.options[selector.selectedIndex].text;
   value = value.replace("Engine", "");
   string +=
-    carProperties[2] + ": " + value.charAt(0).toUpperCase() + value.slice(1);
+    "Propulsion System" + ": " + value.charAt(0).toUpperCase() + value.slice(1);
 
   $("#modalConfig").modal("show");
   $("#conifgContent").html(string);
