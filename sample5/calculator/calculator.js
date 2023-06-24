@@ -70,7 +70,11 @@ function printResult() {
   secondDigit = selecSecondDigit.options[selecSecondDigit.selectedIndex].text;
   arithmetic = selecArithmetic.options[selecArithmetic.selectedIndex].text;
   lastResult = eval(firstDigit + arithmetic + secondDigit);
-
+  console.log(lastResult)
+  if(isNaN(lastResult)|| lastResult==Infinity){
+    $("#modalError").modal("show");
+    lastResult=0;
+  }
   //Print Result
   document.getElementById("calc_result").innerHTML =
     "Last result: " + lastResult + LINE_BREAK + "Base." + numSys.toUpperCase();

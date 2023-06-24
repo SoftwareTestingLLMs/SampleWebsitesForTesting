@@ -51,7 +51,27 @@
         </div>
 
     </main>
+        <!-- Modal -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalErrorLabel">Error</h5>
+                </div>
+                <div class="modal-body">
+                   Warning, devision by zero detected!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script type="text/javascript" charset="UTF-8" src="calculator.js"></script>
+<script src="..\src\bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </html>
