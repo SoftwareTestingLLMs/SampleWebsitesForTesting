@@ -61,36 +61,6 @@ function changeFunctionality(btn) {
   location.href = GO_UP_ONE_DIR + htmpage + SLASH + htmpage + HTML_ENDING;
 }
 
-function printHeart() {
-  let result = [];
-  let heart = [];
-
-  for (var row = 0; row <= 5; row++) {
-    for (var col = 0; col <= 6; col++) {
-      if ((col % 3 != 0 && row == 0) || (col % 3 == 0 && row == 1)) {
-        // document.write("* &nbsp");
-        heart.push("*");
-        heart.push(" ");
-
-      } else if (row - col == 2 || row + col == 8) {
-        // document.write("* &nbsp");
-        heart.push("*");
-        heart.push(" ");
-
-      } else {
-        // document.write("&nbsp &nbsp");
-        heart.push(" ");
-        heart.push(" ");
-
-      }
-    }
-    // document.write("<br>");
-    heart.push("<br>")
-
-  }
-  console.log(heart);
-  return heart;
-}
 
 function printResult() {
   firstDigit = selecFirstDigit.options[selecFirstDigit.selectedIndex].text;
@@ -99,5 +69,7 @@ function printResult() {
   lastResult = eval(firstDigit + arithmetic + secondDigit);
 
   //Print Result
-  document.getElementById("calc_result").innerHTML = printHeart()
+  document.getElementById("calc_result").innerHTML =
+      "Last result: " + lastResult + LINE_BREAK +
+      "Base." + numSys.toUpperCase();
 }

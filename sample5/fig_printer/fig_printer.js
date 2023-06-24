@@ -12,6 +12,15 @@ const settingFigures = JSON.parse(localStorage.getItem("figure"))
 const settingColor = localStorage.getItem("color")
   ? localStorage.getItem("color")
   : "black";
+  const stateFigPrinter = localStorage.getItem("stateFigPrinter")
+  ? localStorage.getItem("stateFigPrinter")
+  : "hidden";
+
+isFigPrinterActivated();
+
+function isFigPrinterActivated() {
+  document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
+}
 
 function changeFunctionality(btn) {
   let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
@@ -38,6 +47,37 @@ function readSettings() {
     }
   });
 }
+
+function printHeart() {
+  let result = [];
+  let heart = [];
+
+  for (var row = 0; row <= 5; row++) {
+    for (var col = 0; col <= 6; col++) {
+      if ((col % 3 != 0 && row == 0) || (col % 3 == 0 && row == 1)) {
+        // document.write("* &nbsp");
+        heart.push("*");
+        heart.push(" ");
+
+      } else if (row - col == 2 || row + col == 8) {
+        // document.write("* &nbsp");
+        heart.push("*");
+        heart.push(" ");
+
+      } else {
+        // document.write("&nbsp &nbsp");
+        heart.push(" ");
+        heart.push(" ");
+
+      }
+    }
+    // document.write("<br>");
+    heart.push("<br>")
+
+  }
+  console.log(heart);
+  return heart;
+} 
 
 function printText() {
   selectFigure = document.getElementById("figure_ops");
