@@ -11,6 +11,7 @@ const arithmeticString = [
   "multiplication",
   "division",
 ];
+const DEFAULT_OPTION = "addition";
 const arithmeticSymbol = ["+", "-", "*", "/"];
 let arithmeticArray = arithmeticString.map((x, i) => [x, arithmeticSymbol[i]]);
 let arithmeticMap = new Map(arithmeticArray);
@@ -45,6 +46,9 @@ function readSettings() {
   for (i = 0; i < selecArithmetic.length; i++) {
     actualOptions.push(selecArithmetic.options[i].text);
   }
+  if (actualOptions.length == 0) {
+    actualOptions.push(DEFAULT_OPTION);
+  }
 
   settingsArithmetic.forEach((element) => {
     option = document.createElement("option");
@@ -61,7 +65,6 @@ function changeFunctionality(btn) {
   location.href = GO_UP_ONE_DIR + htmpage + SLASH + htmpage + HTML_ENDING;
 }
 
-
 function printResult() {
   firstDigit = selecFirstDigit.options[selecFirstDigit.selectedIndex].text;
   secondDigit = selecSecondDigit.options[selecSecondDigit.selectedIndex].text;
@@ -70,6 +73,5 @@ function printResult() {
 
   //Print Result
   document.getElementById("calc_result").innerHTML =
-      "Last result: " + lastResult + LINE_BREAK +
-      "Base." + numSys.toUpperCase();
+    "Last result: " + lastResult + LINE_BREAK + "Base." + numSys.toUpperCase();
 }
