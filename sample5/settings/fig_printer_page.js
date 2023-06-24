@@ -27,7 +27,7 @@ function toggleSelection() {
   allFigCbs.forEach((oneCB) => {
     oneCB.disabled = !stateActivate.checked;
   });
-}
+} 
 
 function closeSettings() {
   //Save color in storage

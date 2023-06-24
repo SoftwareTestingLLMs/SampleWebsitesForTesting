@@ -1,7 +1,6 @@
 const SPLIT_FIRST_UNDERSCORE = /_(.*)/s;
 const HTML_ENDING = ".html";
 const SLASH = "/";
-const content = [12, "This is a Text"];
 const BRACE_LEFT = "[";
 const BRACE_RIGHT = "]";
 const LINE_BREAK = "<br>";
@@ -48,41 +47,11 @@ function readSettings() {
   });
 }
 
-function printHeart() {
-  let result = [];
-  let heart = [];
-
-  for (var row = 0; row <= 5; row++) {
-    for (var col = 0; col <= 6; col++) {
-      if ((col % 3 != 0 && row == 0) || (col % 3 == 0 && row == 1)) {
-        // document.write("* &nbsp");
-        heart.push("*");
-        heart.push(" ");
-
-      } else if (row - col == 2 || row + col == 8) {
-        // document.write("* &nbsp");
-        heart.push("*");
-        heart.push(" ");
-
-      } else {
-        // document.write("&nbsp &nbsp");
-        heart.push(" ");
-        heart.push(" ");
-
-      }
-    }
-    // document.write("<br>");
-    heart.push("<br>")
-
-  }
-  console.log(heart);
-  return heart;
-} 
 
 function printText() {
   selectFigure = document.getElementById("figure_ops");
   selectedFig = selectFigure.options[selectFigure.selectedIndex].text;
-
-  document.getElementById("txt_content").innerHTML =
-    "Color: Color." + settingColor.toUpperCase();
+  console.log()
+  document.getElementById("txt_content").innerHTML = eval(selectedFig.toLowerCase()+"()")
+   
 }
