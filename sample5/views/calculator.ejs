@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturalNets</title>
+    <link rel="stylesheet" type="text/css" href="/css/calculator.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="box" id="settings">
+            <button id="btn_settings" onclick=changeFunctionality(this)>Settings</button>
+        </div>
+        <div class="box">
+            <button class="btn_menu" id="btn_txt_printer" onclick="changeFunctionality(this)">Text Printer</button>
+            <button class="btn_menu" id="btn_calculator" onclick="changeFunctionality(this)">Calculator</button>
+            <button class="btn_menu" id="btn_car_config" onclick="changeFunctionality(this)">Car Configuration</button>
+            <button class="btn_menu" id="btn_fig_printer" onclick="changeFunctionality(this)">Figure Printer</button>
+
+
+        </div>
+        <div class="box">
+            <div id="calc_result">
+                CALCULATOR
+            </div>
+            <div class="btn_calc_group">
+                <select class="calc_selector" name="first_digit" id="first_digit">
+                    <option value="null">0</option>
+                    <option value="eins">1</option>
+                    <option value="zwei">2</option>
+                    <option value="drei">3</option>
+                    <option value="vier">4</option>
+                </select>
+                <select class="calc_selector" name="calc_rule" id="calc_rule">
+                    <!-- <option value="plus">+</option> -->
+                </select>
+                <select class="calc_selector" name="second_digit" id="second_digit">
+                    <option value="null">0</option>
+                    <option value="eins">1</option>
+                    <option value="zwei">2</option>
+                    <option value="drei">3</option>
+                    <option value="vier">4</option>
+                </select>
+            </div>
+            <button id="btn_calc_solution" onclick=printResult()>Calculate</button>
+        </div>
+
+    </main>
+        <!-- Modal -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalErrorLabel">Error</h5>
+                </div>
+                <div class="modal-body">
+                   Warning, devision by zero detected!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="application/javascript" src="js/calculator.js"></script>
+<script type="application/javascript" src="js/bootstrap.bundle.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</html>

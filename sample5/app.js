@@ -21,6 +21,10 @@ app.get("/", function (req, res) {
   res.render("index")
 });
 
+app.get("/calculator", function (req, res) {
+  res.render("calculator")
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
