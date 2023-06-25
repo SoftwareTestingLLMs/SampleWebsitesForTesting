@@ -1,19 +1,13 @@
-const SPLIT_FIRST_UNDERSCORE = /_(.*)/s;
-const HTML_ENDING = ".html"
-const SLASH = "/"
-const content = [12, "This is a Text"];
- 
-
-
-
 const express = require("express");
 const app = express();
 const port = 3000;
 const path = require('path');
+const settingsRouter = require(path.join(__dirname,"/routes/settings"))
 
 app.set("view engine","ejs")
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.use("/settings",settingsRouter)
 
 console.log(__dirname+"\n")
 
