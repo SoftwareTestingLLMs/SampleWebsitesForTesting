@@ -1,4 +1,3 @@
-/*Basic style of website*/
 .container {
   display: grid;
   grid-auto-flow: column;
