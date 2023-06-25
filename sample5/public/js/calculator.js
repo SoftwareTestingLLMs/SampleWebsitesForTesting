@@ -1,4 +1,5 @@
 /// <reference path="..\..\typings\index.d.ts" />
+let $ = require("jquery");
 
 const SPLIT_FIRST_UNDERSCORE = /_(.*)/s;
 const HTML_ENDING = ".html";
@@ -37,6 +38,8 @@ isFigPrinterActivated();
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
+
+
 
 readSettings();
 
