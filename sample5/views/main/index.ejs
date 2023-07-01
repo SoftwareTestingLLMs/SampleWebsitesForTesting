@@ -6,18 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NaturalNets</title>
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
 </head>
 
 <body>
   <main class="container">
     <div class="box" id="settings">
-      <button id="btn_settings"  >Settings</button>
+      <a class="btn btn-primary" id="btn_calculator" href="/setting/calculator_page" role="button">Settings</a>
     </div>
     <div class="box">
-      <button class="btn_menu" id="btn_txt_printer"  >Text Printer</button>
-      <button class="btn_menu" id="btn_calculator" onclick="calc()"  >Calculator</button>
-      <button class="btn_menu" id="btn_car_config"  >Car Configuration</button>
+      <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
+      <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
+      <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
     </div>
     <div class="box">
       <div id="content">
@@ -29,9 +29,7 @@
   </main>
   
 </body>
-<script type="application/javascript" src="js/index.js"></script>
+<script type="application/javascript" src="js/main/index.js"></script>
 <script type="application/javascript" src="js/bootstrap.bundle.min.js" ></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script type="application/javascript" src="js/clientjquery.js"></script>
-
 </html>

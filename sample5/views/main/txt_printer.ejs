@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturalNets</title>
+    <link rel="stylesheet" href="css/main/txt_printer.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="box" id="settings">
+            <a class="btn btn-primary" id="btn_settings" href="/setting/calculator_page" role="button">Settings</a>
+        </div>
+        <div class="box">
+            <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
+            <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
+            <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
+            <a class="btn btn-primary" id="btn_fig_printer" href="/fig_printer" role="button">Figure Printer</a>
+
+        </div>
+        <div class="box">
+            <div id="txt_content">
+                TEXT PRINTER
+            </div>
+            <button class="btn_printer" onclick=printText()>Print Text</button>
+        </div>
+    </main>
+</body>
+<script src="js/main/txt_printer.js"></script>
+
+</html>

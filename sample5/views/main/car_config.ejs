@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NaturalNets</title>
-    <link rel="stylesheet" href="car_config.css">
+    <link rel="stylesheet" href="css/main/car_config.css">
 
 </head>
 
 <body>
     <main class="container">
         <div class="box" id="settings">
-            <button id="btn_settings" onclick=changeFunctionality(this)>Settings</button>
+            <a class="btn btn-primary" id="btn_settings" href="/setting/calculator_page" role="button">Settings</a>
         </div>
         <div class="box">
-            <button class="btn_menu" id="btn_txt_printer" onclick="changeFunctionality(this)">Text Printer</button>
-            <button class="btn_menu" id="btn_calculator" onclick="changeFunctionality(this)">Calculator</button>
-            <button class="btn_menu" id="btn_car_config" onclick="changeFunctionality(this)">Car Configuration</button>
-            <button class="btn_menu" id="btn_fig_printer" onclick="changeFunctionality(this)">Figure Printer</button>
+            <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
+            <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
+            <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
+            <a class="btn btn-primary" id="btn_fig_printer" href="/fig_printer" role="button">Figure Printer</a>
         </div>
         <div class="box">
             <p id="title_car_config">Choose a car Configuration:</p>
@@ -55,28 +55,30 @@
                 </div>
 
             </div>
-            <button id="btn_display_config" style="display: none;" onclick=displayResultConfig()>Show Configuration</button>
+            <button id="btn_display_config" style="display: none;" onclick=displayResultConfig()>Show
+                Configuration</button>
         </div>
     </main>
-     <!-- Modal -->
-     <div class="modal fade" id="modalConfig" tabindex="-1" aria-labelledby="modalConfigLabel" data-bs-backdrop="static"
-     data-bs-keyboard="false" aria-hidden="true">
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="modalConfigLabel">Your Car Configuration:</h5>
-             </div>
-             <div class="modal-body" id="conifgContent">
-             </div>
-             <div class="modal-footer">
-                 <button type="button" id="btn_modal_close" class="btn btn-secondary"
-                     data-bs-dismiss="modal" onclick="resetConfig()">Close</button>
-             </div>
-         </div>
-     </div>
- </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalConfig" tabindex="-1" aria-labelledby="modalConfigLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfigLabel">Your Car Configuration:</h5>
+                </div>
+                <div class="modal-body" id="conifgContent">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-secondary" data-bs-dismiss="modal"
+                        onclick="resetConfig()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<script src="car_config.js"></script>
-<script src="..\src\bootstrap.bundle.min.js"></script>
+<script src="js/main/car_config.js"></script>
+<script type="application/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
 </html>

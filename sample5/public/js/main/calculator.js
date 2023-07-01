@@ -1,5 +1,4 @@
-/// <reference path="..\..\typings\index.d.ts" />
-let $ = require("jquery");
+/// <reference path="..\..\..\typings\index.d.ts" />
 
 const SPLIT_FIRST_UNDERSCORE = /_(.*)/s;
 const HTML_ENDING = ".html";
@@ -24,7 +23,6 @@ const settingsArithmetic =
   JSON.parse(localStorage.getItem("arithmetic")) == null
     ? ["addition"]
     : JSON.parse(localStorage.getItem("arithmetic"));
-console.log(settingsArithmetic);
 const numSys =
   localStorage.getItem("numSys") == null
     ? "decimal"
@@ -38,7 +36,6 @@ isFigPrinterActivated();
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
-
 
 
 readSettings();
@@ -72,11 +69,12 @@ function printResult() {
   secondDigit = selecSecondDigit.options[selecSecondDigit.selectedIndex].text;
   arithmetic = selecArithmetic.options[selecArithmetic.selectedIndex].text;
   lastResult = eval(firstDigit + arithmetic + secondDigit);
-  console.log(lastResult)
+
   if(isNaN(lastResult)|| lastResult==Infinity){
     $("#modalError").modal("show");
     lastResult=0;
   }
+
   //Print Result
   document.getElementById("calc_result").innerHTML =
     "Last result: " + lastResult + LINE_BREAK + "Base." + numSys.toUpperCase();

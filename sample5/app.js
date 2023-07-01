@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use("/setting",settingsRouter)
 
 
-app.set('views', path.join(__dirname, '/views/main_pages'));
+app.set('views', path.join(__dirname, '/views/main'));
 
 
 app.get("/", function (req, res) {
@@ -22,8 +22,21 @@ app.get("/calculator", function (req, res) {
   res.render("calculator")
 });
 
+app.get("/car_config", function (req, res) {
+  res.render("car_config")
+});
+
+app.get("/txt_printer", function (req, res) {
+  res.render("txt_printer")
+});
+
+app.get("/fig_printer", function (req, res) {
+  res.render("fig_printer")
+});
+
+
 app.listen(port, function () {
-  console.log(`Example app listening on port ${port}!`);
+  console.log(`App listening on port ${port}!`);
 });
 
 
