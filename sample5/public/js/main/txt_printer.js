@@ -1,43 +1,43 @@
-const SPLIT_FIRST_UNDERSCORE = /_(.*)/s;
-const HTML_ENDING = ".html";
-const SLASH = "/";
-const content = [12, "This is a Text"];
+let isTextPrinted = sessionStorage.getItem("isTxtPrinted")
+  ? sessionStorage.getItem("isTxtPrinted")
+  : false;
 const BRACE_LEFT = "[";
 const BRACE_RIGHT = "]";
 const LINE_BREAK = "<br>";
-const stateFigPrinter = localStorage.getItem("stateFigPrinter")
-  ? localStorage.getItem("stateFigPrinter")
+const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
+  ? sessionStorage.getItem("stateFigPrinter")
   : "hidden";
 
 isFigPrinterActivated();
+maintainPrinting();
 
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
 
-function changeFunctionality(btn) {
-  let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
-  path = location.pathname;
-  console.log(window.location.hostname);
-  console.log(path.replace(htmpage, ""));
-  location.href = "../" + htmpage + SLASH + htmpage + HTML_ENDING;
+function maintainPrinting() {
+  console.log(isTextPrinted);
+  if (isTextPrinted) {
+    printText();
+  }
 }
 
 function printText() {
-  style = JSON.parse(localStorage.getItem("style"))
-    ? JSON.parse(localStorage.getItem("style"))
+  isTextPrinted = sessionStorage.setItem("isTxtPrinted", true);
+  style = JSON.parse(sessionStorage.getItem("style"))
+    ? JSON.parse(sessionStorage.getItem("style"))
     : [];
-  color = localStorage.getItem("color")
-    ? localStorage.getItem("color")
+  color = sessionStorage.getItem("color")
+    ? sessionStorage.getItem("color")
     : "black";
-  fontSize = localStorage.getItem("fontSize")
-    ? localStorage.getItem("fontSize")
+  fontSize = sessionStorage.getItem("fontSize")
+    ? sessionStorage.getItem("fontSize")
     : "12";
-  font = localStorage.getItem("font")
-    ? localStorage.getItem("font")
+  font = sessionStorage.getItem("font")
+    ? sessionStorage.getItem("font")
     : "DejaVu Sans";
-  numWords = localStorage.getItem("numWords")
-    ? localStorage.getItem("numWords")
+  numWords = sessionStorage.getItem("numWords")
+    ? sessionStorage.getItem("numWords")
     : "50";
 
   document.getElementById("txt_content").innerHTML =
