@@ -6,7 +6,7 @@ function openSettingPage(btn) {}
 function checkReq() {
   selectionArithmetic = document.querySelectorAll(
     'input[name="arithmetic"]:checked'
-  );
+  ); 
   if (selectionArithmetic.length == 0) {
     $("#modalMinimu").modal("show");
     $("#btn_modal_close").on("click", function () {

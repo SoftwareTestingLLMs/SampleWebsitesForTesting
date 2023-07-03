@@ -1,12 +1,5 @@
 /// <reference path="..\..\..\typings\index.d.ts" />
 
-let isTextPrinted = sessionStorage.getItem("isTxtPrinted")
-  ? sessionStorage.getItem("isTxtPrinted")
-  : false;
-let firstDigit = "";
-let secondDigit = "";
-let arithmetic = "";
-let lastResult = 0 ? sessionStorage.getItem("isTxtPrinted") : false;
 const LINE_BREAK = "<br>";
 const arithmeticString = [
   "addition",
@@ -21,37 +14,52 @@ let arithmeticMap = new Map(arithmeticArray);
 const selecArithmetic = document.getElementById("calc_rule");
 const selecFirstDigit = document.getElementById("first_digit");
 const selecSecondDigit = document.getElementById("second_digit");
+
 const settingsArithmetic =
   JSON.parse(sessionStorage.getItem("arithmetic")) == null
     ? ["addition"]
     : JSON.parse(sessionStorage.getItem("arithmetic"));
+
 const numSys =
   sessionStorage.getItem("numSys") == null
     ? "decimal"
     : sessionStorage.getItem("numSys");
+
 const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
   ? sessionStorage.getItem("stateFigPrinter")
   : "hidden";
 
 isFigPrinterActivated();
+readSettings();
+maintainPrinting();
 
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
 
-readSettings();
-maintainPrinting();
+function updateCalc() {
+  sessionStorage.setItem("isCalcPrinted", "true");
+  printResult();
+}
+
 
 function maintainPrinting() {
-  if (isTextPrinted) {
-    firstDigit = sessionStorage.getItem("firstDigit", firstDigit);
-    secondDigit = sessionStorage.getItem("secondDigit", secondDigit);
-    arithmetic = sessionStorage.getItem("arithmetic", arithmetic);
-    lastResult = sessionStorage.getItem("lastResult", lastResult);
-    selecFirstDigit.options[selecFirstDigit.selectedIndex].text = firstDigit;
-    selecSecondDigit.options[selecSecondDigit.selectedIndex].text = secondDigit;
-    selecArithmetic.options[selecArithmetic.selectedIndex].text = arithmetic;
-    display();
+  if (sessionStorage.getItem("isCalcPrinted")) {
+    firstDigitValue = sessionStorage.getItem("printedFirstDigit");
+    secondDigitValue = sessionStorage.getItem("printedSecondDigit");
+    arithmeticValue = sessionStorage.getItem("printedArithmetic");
+    lastResult = sessionStorage.getItem("printedLastResult");
+
+    selecFirstDigit.value = firstDigitValue;
+    selecSecondDigit.value = secondDigitValue;
+    selecArithmetic.value = arithmeticValue;
+
+    document.getElementById("calc_result").innerHTML =
+      "Last result: " +
+      lastResult +
+      LINE_BREAK +
+      "Base." +
+      numSys.toUpperCase();
   }
 }
 
@@ -99,8 +107,17 @@ function readingInput() {
 }
 
 function saveInput() {
-  sessionStorage.setItem("firstDigit", firstDigit);
-  sessionStorage.setItem("secondDigit", secondDigit);
-  sessionStorage.setItem("arithmetic", arithmetic);
-  sessionStorage.setItem("lastResult", lastResult);
+  sessionStorage.setItem(
+    "printedFirstDigit",
+    selecFirstDigit.options[selecFirstDigit.selectedIndex].value
+  );
+  sessionStorage.setItem(
+    "printedSecondDigit",
+    selecSecondDigit.options[selecSecondDigit.selectedIndex].value
+  );
+  sessionStorage.setItem(
+    "printedArithmetic",
+    selecArithmetic.options[selecArithmetic.selectedIndex].value
+  );
+  sessionStorage.setItem("printedLastResult", lastResult);
 }
