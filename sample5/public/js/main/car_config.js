@@ -73,12 +73,6 @@ function createCar() {
   return standardCars;
 }
 
-function changeFunctionality(btn) {
-  let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
-  path = location.pathname;
-  location.href = GO_UP_ONE_DIR + htmpage + SLASH + htmpage + HTML_ENDING;
-}
-
 function getValidCars() {
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
@@ -104,6 +98,7 @@ function addValidCars() {
 function selectedCar() {
   selectorModel = document.getElementById("Model");
   carName = selectorModel.options[selectorModel.selectedIndex].text;
+  sessionStorage.setItem("selectedCarName", carName);
 
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     if (userDefinedCar[carNum].get(carProperties[4]) == carName) {
@@ -149,6 +144,26 @@ function getNextConfig(element) {
   configs = document.getElementsByClassName("car_config_selec");
   for (let i = 0; i < configs.length; i++) {
     if (configs[i].id == elementName) {
+      console.log(configs[i+1].id)
+      if (JSON.parse(sessionStorage.getItem("displayedProps")) != undefined) {
+
+        content = JSON.parse(sessionStorage.getItem("displayedProps"));
+        if (!content.includes(configs[i + 1].id)) {
+          console.log("IF");
+          content.push(configs[i + 1].id);
+        }
+
+      } else {
+
+        console.log("ELSE");
+
+        sessionStorage.setItem(
+          "displayedProps",
+          JSON.stringify([configs[i + 1].id])
+        );
+
+      }
+
       return configs[i + 1].id;
     }
   }
@@ -190,6 +205,7 @@ function displayResultConfig() {
 }
 
 function resetConfig() {
+  //DELETE PRINTED VALUES HIER
   for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
     configProp = document.getElementById(carProperties[propNum] + DIV);
     configProp.style.display = "none";
