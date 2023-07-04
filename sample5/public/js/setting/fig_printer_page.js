@@ -7,13 +7,7 @@ const stateActivate = document.getElementById("activate");
 
 toggleSelection();
 
-function changeFunctionality(btn) {
-  let htmpage = btn.id.split(SPLIT_FIRST_UNDERSCORE)[1];
-  path = location.pathname;
-  console.log(window.location.hostname);
-  console.log(path.replace(htmpage, ""));
-  location.href = "../" + htmpage + SLASH + htmpage + HTML_ENDING;
-}
+
 
 function openSettingPage(btn) {}
 

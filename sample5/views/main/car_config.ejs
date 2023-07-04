@@ -27,14 +27,14 @@
                 <div class="car_config" id="Model_div">
                     <p>First select the car model:</p>
                     <select class="car_config_selec" name="Model" id="Model"
-                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this))"
+                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this))"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
                 <div class="car_config" id="Tire_div" style="display: none;">
                     <p>Now choose the tires:</p>
                     <select class="car_config_selec" name="Tire" id="Tire"
-                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
@@ -42,15 +42,15 @@
                 <div class="car_config" id="Interior_div" style="display: none;">
                     <p>Next the interior design:</p>
                     <select class="car_config_selec" name="Interior" id="Interior"
-                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this))"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 
                 <div class="car_config" id="Engine_div" style="display: none;">
                     <p>Finally the propulsion system:</p>
-                    <select class="car_config_selec" name="Engine" id="Engine" onchange="displayConfigBtn();"
-                        onfocus="this.selectedIndex = -1;">
+                    <select class="car_config_selec" name="Engine" id="Engine"
+                        onchange="displayConfigBtn(); saveDisplayed('btn_display_config'); saveValue(this.id)" onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 

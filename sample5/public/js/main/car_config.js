@@ -99,6 +99,8 @@ function selectedCar() {
   selectorModel = document.getElementById("Model");
   carName = selectorModel.options[selectorModel.selectedIndex].text;
   sessionStorage.setItem("selectedCarName", carName);
+  sessionStorage.removeItem("displayedProps")
+  sessionStorage.removeItem("displayedValues")
 
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     if (userDefinedCar[carNum].get(carProperties[4]) == carName) {
@@ -144,26 +146,6 @@ function getNextConfig(element) {
   configs = document.getElementsByClassName("car_config_selec");
   for (let i = 0; i < configs.length; i++) {
     if (configs[i].id == elementName) {
-      console.log(configs[i+1].id)
-      if (JSON.parse(sessionStorage.getItem("displayedProps")) != undefined) {
-
-        content = JSON.parse(sessionStorage.getItem("displayedProps"));
-        if (!content.includes(configs[i + 1].id)) {
-          console.log("IF");
-          content.push(configs[i + 1].id);
-        }
-
-      } else {
-
-        console.log("ELSE");
-
-        sessionStorage.setItem(
-          "displayedProps",
-          JSON.stringify([configs[i + 1].id])
-        );
-
-      }
-
       return configs[i + 1].id;
     }
   }
@@ -212,4 +194,45 @@ function resetConfig() {
   }
   configBtn = document.getElementById("btn_display_config");
   configBtn.style.display = "none";
+  sessionStorage.removeItem("displayedProps")
+  sessionStorage.removeItem("displayedValues")
+
 }
+
+function saveDisplayed(element) {
+  content = JSON.parse(sessionStorage.getItem("displayedProps"))
+    ? JSON.parse(sessionStorage.getItem("displayedProps"))
+    : [];
+   if(!content.includes(element)) {
+    content.push(element)
+   }
+  sessionStorage.setItem("displayedProps", JSON.stringify(content));
+}
+
+function saveValue(element){
+  values = JSON.parse(sessionStorage.getItem("displayedValues"))
+  ? JSON.parse(sessionStorage.getItem("displayedValues")):[];
+
+  select = document.getElementById(element);
+  userInput = select.options[select.selectedIndex].text;
+  values.push(userInput)
+  sessionStorage.setItem("displayedValues", JSON.stringify(values));
+}
+
+function maintainState(){
+  props = JSON.parse(sessionStorage.getItem("displayedProps"))
+  ? JSON.parse(sessionStorage.getItem("displayedProps")):[];
+
+  values = JSON.parse(sessionStorage.getItem("displayedValues"))
+  ? JSON.parse(sessionStorage.getItem("displayedValues")):[];
+
+  car = sessionStorage.getItem("selectedCarName");
+
+  for (let propNum = 0; propNum < props.length; propNum++) {
+    configProp = document.getElementById(props[propNum] + DIV);
+    configProp.style.display = "block";
+  }
+
+}
+
+maintainState()
