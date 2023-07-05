@@ -5,14 +5,14 @@ const BRACE_LEFT = "[";
 const BRACE_RIGHT = "]";
 const LINE_BREAK = "<br>";
 const selecFigure = document.getElementById("figure_ops");
-const settingFigures = JSON.parse(localStorage.getItem("figure"))
-  ? JSON.parse(localStorage.getItem("figure"))
+const settingFigures = JSON.parse(sessionStorage.getItem("figure"))
+  ? JSON.parse(sessionStorage.getItem("figure"))
   : [];
-const settingColor = localStorage.getItem("color")
-  ? localStorage.getItem("color")
+const settingColor = sessionStorage.getItem("color")
+  ? sessionStorage.getItem("color")
   : "black";
-const stateFigPrinter = localStorage.getItem("stateFigPrinter")
-  ? localStorage.getItem("stateFigPrinter")
+const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
+  ? sessionStorage.getItem("stateFigPrinter")
   : "hidden";
 
 isFigPrinterActivated();
@@ -51,8 +51,8 @@ function readSettings() {
 function printText() {
   selectFigure = document.getElementById("figure_ops");
   selectedFig = selectFigure.options[selectFigure.selectedIndex].text;
-  color = localStorage.getItem("color")
-    ? localStorage.getItem("color")
+  color = sessionStorage.getItem("color")
+    ? sessionStorage.getItem("color")
     : "black";
   document.getElementById("txt_content").innerHTML =
     eval(selectedFig.toLowerCase() + "()") +

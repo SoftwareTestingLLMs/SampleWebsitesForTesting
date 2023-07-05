@@ -34,8 +34,8 @@ const cName = ["Car C"];
 
 const carFirstLetter = "abcdefghijklmnopqrstuvwxyz".split("");
 const userDefinedCar = createCar();
-const stateFigPrinter = localStorage.getItem("stateFigPrinter")
-  ? localStorage.getItem("stateFigPrinter")
+const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
+  ? sessionStorage.getItem("stateFigPrinter")
   : "hidden";
 
 isFigPrinterActivated();
@@ -76,8 +76,8 @@ function createCar() {
 function getValidCars() {
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
-    carArrays = localStorage.getItem(carName)
-      ? localStorage.getItem(carName)
+    carArrays = sessionStorage.getItem(carName)
+      ? sessionStorage.getItem(carName)
       : true;
     userDefinedCar[carNum].set(carProperties[3], eval(carArrays));
   }

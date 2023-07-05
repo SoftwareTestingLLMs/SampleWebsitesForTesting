@@ -60,8 +60,12 @@ function pyramid() {
         }
       }
     }
+    if(i==n){
+      string += "*&nbsp";
+    }
     string += "<br>";
   }
+  console.log(string)
   return string;
 }
 
