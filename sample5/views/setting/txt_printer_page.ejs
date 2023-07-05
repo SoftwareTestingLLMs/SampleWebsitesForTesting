@@ -27,52 +27,52 @@
         <div class="box">
             <div class="txt_config">
                 <p>Number of words:</p>
-                <select class="selec_number" name="number" id="number">
-                    <option value="fifty">50</option>
-                    <option value="hundred">100</option>
-                    <option value="two_hundred">200</option>
-                    <option value="four_hundred">400</option>
+                <select class="selec_number" onchange="saveNumber()" name="number" id="number">
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="400">400</option>
                 </select>
             </div>
             <div class="txt_config">
                 <p>Front size:</p>
-                <select class="selec_font_size" name="font_size" id="font_size">
-                    <option value="twelve">12</option>
-                    <option value="fourteen">14</option>
-                    <option value="sixteen">16</option>
-                    <option value="eighteen">18</option>
-                    <option value="twenty">20</option>
+                <select class="selec_font_size" onchange="saveFontSize()" name="font_size" id="font_size">
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+                    <option value="20">20</option>
                 </select>
             </div>
             <div class="txt_config">
                 <p>Front:</p>
-                <select class="selec_font" name="font" id="font">
-                    <option value="deja_vu">DejaVu Sans</option>
-                    <option value="lib_mono">Liberation Mono</option>
-                    <option value="nimbus">Nimbus Roman</option>
-                    <option value="ubuntu">Ubuntu</option>
+                <select class="selec_font" onchange="saveFont()" name="font" id="font">
+                    <option value="DejaVu Sans">DejaVu Sans</option>
+                    <option value="Liberation Mono">Liberation Mono</option>
+                    <option value="Nimbus Roman">Nimbus Roman</option>
+                    <option value="Ubuntu">Ubuntu</option>
                 </select>
             </div>
             <div class="txt_config">
                 <p>Color of text:</p>
-                <input type="radio" id="red" name="color" value="red">
+                <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
                 <label for="red">Red</label><br>
-                <input type="radio" id="blue" name="color" value="blue">
+                <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
                 <label for="blue">Blue</label><br>
-                <input type="radio" id="green" name="color" value="green">
+                <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
                 <label for="green">Green</label><br>
-                <input type="radio" id="black" name="color" value="black" checked>
+                <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
                 <label for="black">Black</label>
             </div>
             <div class="txt_config" id="cb_group">
-                <input type="checkbox" id="bold" name="style" />
+                <input type="checkbox" id="bold" onchange="saveStyle()" name="style" />
                 <label for="bold">Bold</label><br>
-                <input type="checkbox" id="italic" name="style" />
+                <input type="checkbox" id="italic" onchange="saveStyle()" name="style" />
                 <label for="italic">Italic</label><br>
-                <input type="checkbox" id="underline" name="style" />
+                <input type="checkbox" id="underline" onchange="saveStyle()" name="style" />
                 <label for="underline">Underline</label><br>
             </div>
-            <a class="btn btn-primary" id="btn_close" href="../txt_printer" onclick="closeSettings()" role="button">Close</a>
+            <a class="btn btn-primary" id="btn_close" href="../txt_printer" role="button">Close</a>
     </main>
 </body>
 <script src="../js/setting/txt_printer_page.js"></script>
