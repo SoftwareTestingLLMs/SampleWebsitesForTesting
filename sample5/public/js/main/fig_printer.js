@@ -16,6 +16,8 @@ const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
   : "hidden";
 
 isFigPrinterActivated();
+readSettings();
+maintainState()
 
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
@@ -29,7 +31,6 @@ function changeFunctionality(btn) {
   location.href = "../" + htmpage + SLASH + htmpage + HTML_ENDING;
 }
 
-readSettings();
 
 function readSettings() {
   let actualOptions = [];
@@ -42,21 +43,35 @@ function readSettings() {
     option = document.createElement("option");
     element = element.charAt(0).toUpperCase() + element.slice(1);
     option.text = element;
+    option.value = element;
     if (!actualOptions.includes(element)) {
       selecFigure.add(option);
     }
   });
 }
 
-function printText() {
+function readUserInput(){
   selectFigure = document.getElementById("figure_ops");
   selectedFig = selectFigure.options[selectFigure.selectedIndex].text;
   color = sessionStorage.getItem("color")
     ? sessionStorage.getItem("color")
     : "black";
+  sessionStorage.setItem("typeFig",selectedFig)
+}
+function printText() {
   document.getElementById("txt_content").innerHTML =
     eval(selectedFig.toLowerCase() + "()") +
     LINE_BREAK +
     "Color." +
     color.toUpperCase();
+}
+
+function maintainState(){
+  selectedFig = sessionStorage.getItem("typeFig")
+  selectFigure = document.getElementById("figure_ops");
+  selectFigure.value= selectedFig
+  color = sessionStorage.getItem("color")
+  ? sessionStorage.getItem("color")
+  : "black";
+  printText();
 }
