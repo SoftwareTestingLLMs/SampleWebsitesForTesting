@@ -27,7 +27,7 @@
                 <div class="car_config" id="Model_div">
                     <p>First select the car model:</p>
                     <select class="car_config_selec" name="Model" id="Model"
-                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this))"
+                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this));saveDisplayed(this.id);  saveDisplayed(getNextConfig(this)); saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>

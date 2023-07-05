@@ -99,8 +99,8 @@ function selectedCar() {
   selectorModel = document.getElementById("Model");
   carName = selectorModel.options[selectorModel.selectedIndex].text;
   sessionStorage.setItem("selectedCarName", carName);
-  sessionStorage.removeItem("displayedProps")
-  sessionStorage.removeItem("displayedValues")
+  sessionStorage.removeItem("displayedProps");
+  sessionStorage.removeItem("displayedValues");
 
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     if (userDefinedCar[carNum].get(carProperties[4]) == carName) {
@@ -119,7 +119,11 @@ function addOption(actualSelector) {
     selector.length = 0;
     for (let prop = 0; prop < addProperties.length; prop++) {
       option = document.createElement("option");
+      if (prop == 0) {
+        option.selected = true;
+      }
       option.text = addProperties[prop];
+      option.value = addProperties[prop];
       selector.add(option);
     }
   }
@@ -194,45 +198,63 @@ function resetConfig() {
   }
   configBtn = document.getElementById("btn_display_config");
   configBtn.style.display = "none";
-  sessionStorage.removeItem("displayedProps")
-  sessionStorage.removeItem("displayedValues")
-
+  sessionStorage.removeItem("displayedProps");
+  sessionStorage.removeItem("displayedValues");
 }
 
 function saveDisplayed(element) {
   content = JSON.parse(sessionStorage.getItem("displayedProps"))
     ? JSON.parse(sessionStorage.getItem("displayedProps"))
     : [];
-   if(!content.includes(element)) {
-    content.push(element)
-   }
+  if (!content.includes(element)) {
+    content.push(element);
+  }
   sessionStorage.setItem("displayedProps", JSON.stringify(content));
 }
 
-function saveValue(element){
+function saveValue(element) {
   values = JSON.parse(sessionStorage.getItem("displayedValues"))
-  ? JSON.parse(sessionStorage.getItem("displayedValues")):[];
+    ? JSON.parse(sessionStorage.getItem("displayedValues"))
+    : [];
 
+  replaceValueIndex = carProperties.indexOf(element) + 1;
   select = document.getElementById(element);
   userInput = select.options[select.selectedIndex].text;
-  values.push(userInput)
+  if (values.length >= replaceValueIndex) {
+    values[replaceValueIndex] = userInput;
+  } else {
+    values.push(userInput);
+  }
   sessionStorage.setItem("displayedValues", JSON.stringify(values));
 }
 
-function maintainState(){
+function maintainState() {
   props = JSON.parse(sessionStorage.getItem("displayedProps"))
-  ? JSON.parse(sessionStorage.getItem("displayedProps")):[];
+    ? JSON.parse(sessionStorage.getItem("displayedProps"))
+    : [];
 
   values = JSON.parse(sessionStorage.getItem("displayedValues"))
-  ? JSON.parse(sessionStorage.getItem("displayedValues")):[];
+    ? JSON.parse(sessionStorage.getItem("displayedValues"))
+    : [];
 
   car = sessionStorage.getItem("selectedCarName");
+  basedCar = userDefinedCar.filter(
+    (userCar) => userCar.get(carProperties[4])[0] == car
+  )[0];
 
   for (let propNum = 0; propNum < props.length; propNum++) {
-    configProp = document.getElementById(props[propNum] + DIV);
-    configProp.style.display = "block";
+    if (props[propNum].includes("btn")) {
+      displayConfigBtn()
+    } else {
+      configProp = document.getElementById(props[propNum] + DIV);
+      addOption(props[propNum]);
+      selector = document.getElementById(props[propNum]);
+      if (values[propNum]) {
+        selector.value = values[propNum];
+      }
+      configProp.style.display = "block";
+    }
   }
-
 }
 
-maintainState()
+maintainState();
