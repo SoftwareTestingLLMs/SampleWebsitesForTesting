@@ -35,11 +35,11 @@
                 <label for="twentyTwo">22</label>
             </div>
             <div class="car_cb_group" id="interior_config">
-                <input type="checkbox" id="modern" name="interior" onchange="calcProp()" checked />
+                <input type="checkbox" id="modern" value="modern" name="interior" onchange="calcProp()" checked />
                 <label for="modern">Modern</label><br>
-                <input type="checkbox" id="sport" name="interior" onchange="calcProp()" checked />
+                <input type="checkbox" id="sport" value="sport"  name="interior" onchange="calcProp()" checked />
                 <label for="sport">Sport</label><br>
-                <input type="checkbox" id="vintage" name="interior" onchange="calcProp()" checked />
+                <input type="checkbox" id="vintage" value="vintage" name="interior" onchange="calcProp()" checked />
                 <label for="vintage">Vintage</label>
             </div>
             <div class="car_cb_group" id="engine_config">
@@ -59,7 +59,7 @@
                     checked />
                 <label for="electricB">Electric Motor B</label>
             </div>
-            <a class="btn btn-primary" id="btn_close" href="../car_config" role="button">Close</a>
+            <a class="btn btn-primary" id="btn_close" onclick="closeSettings()" href="../car_config" role="button">Close</a>
     </main>
     <!-- Modal -->
     <div class="modal fade" id="modalDisabledCars" tabindex="-1" aria-labelledby="modalDisabledCarsLabel"

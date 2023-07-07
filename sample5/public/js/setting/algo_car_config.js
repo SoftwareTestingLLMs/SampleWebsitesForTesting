@@ -65,11 +65,9 @@ function addConfigProp() {
       );
     }
   }
-  console.log(definedCars);
 }
 
 function determineInvalidCars() {
-  console.log("derminition");
   let latestInValidCars = [];
   let isCarDisabled = false;
 
@@ -85,8 +83,6 @@ function determineInvalidCars() {
   }
 
   if (isCarDisabled) {
-    console.log(invalidCars);
-    console.log(latestInValidCars);
     $("#txtDisabledCars").text(
       latestInValidCars.filter((car) => !invalidCars.includes(car))
     );
@@ -98,8 +94,7 @@ function determineInvalidCars() {
 function saveValidCars() {
   deleteSavedCars();
   for (let carNum = 0; carNum < definedCars.length; carNum++) {
-    console.log(definedCars[carNum].get(carProperties[4])[0]);
-    localStorage.setItem(
+    sessionStorage.setItem(
       definedCars[carNum].get(carProperties[4])[0],
       definedCars[carNum].get(carProperties[3])[0]
     );
@@ -109,7 +104,6 @@ function saveValidCars() {
 function deleteSavedCars() {
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
-    console.log(carName);
-    localStorage.removeItem(carName);
+    sessionStorage.removeItem(carName);
   }
 }
