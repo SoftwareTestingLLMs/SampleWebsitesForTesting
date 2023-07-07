@@ -26,31 +26,32 @@
         <div class="box">
             <div class="fig_config">
                 <div class="fig_config" id="activateFigPrinter">
-                    <input type="checkbox" id="activate" onchange="toggleSelection()" />
+                    <input type="checkbox" id="activate" onchange="toggleSelection();saveState()" />
                     <label for="activate">Activate Figure Printer</label><br>
                 </div>
                 <div class="txt_config" id="cb_group">
-                    <input type="checkbox" id="pyramid" name="figure" checked value="pyramid" />
+                    <input type="checkbox" id="pyramid" onchange="saveFig()" name="figure" checked value="pyramid" />
                     <label for="pyramid">Pyramid</label><br>
-                    <input type="checkbox" id="heart" name="figure" value="heart" />
+                    <input type="checkbox" id="heart" onchange="saveFig()" name="figure" value="heart" />
                     <label for="heart">Heart</label><br>
-                    <input type="checkbox" id="triangle" name="figure" value="triangle" />
+                    <input type="checkbox" id="triangle" onchange="saveFig()" name="figure" value="triangle" />
                     <label for="triangle">Triangle</label><br>
-                    <input type="checkbox" id="diamond" name="figure" value="diamond" />
+                    <input type="checkbox" id="diamond" onchange="saveFig()" name="figure" value="diamond" />
                     <label for="diamond">Diamond</label><br>
                 </div>
                 <div class="txt_config">
-                    <input type="radio" id="red" name="color" value="red">
+                    <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
                     <label for="red">Red</label><br>
-                    <input type="radio" id="blue" name="color" value="blue">
+                    <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
                     <label for="blue">Blue</label><br>
-                    <input type="radio" id="green" name="color" value="green">
+                    <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
                     <label for="green">Green</label><br>
-                    <input type="radio" id="black" name="color" value="black" checked>
+                    <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
                     <label for="black">Black</label>
                 </div>
-                <a class="btn btn-primary" id="btn_close" onclick="closeSettings()" href="../txt_printer" role="button">Close</a>
-            </main>
+                <a class="btn btn-primary" id="btn_close" href="../txt_printer"
+                    role="button">Close</a>
+    </main>
 </body>
 <script src="../js/setting/fig_printer_page.js"></script>
 <script type="application/javascript" src="../js/bootstrap.bundle.min.js"></script>
