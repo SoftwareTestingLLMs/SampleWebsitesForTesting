@@ -26,23 +26,23 @@
         <div class="box">
             <div class="calc_config">
                 <p>Numeral System:</p>
-                <select class="selec_system" name="num_sys" id="num_sys">
+                <select class="selec_system" onchange="saveNumSys()" name="num_sys" id="num_sys">
                     <option value="decimal">Base 10</option>
                     <option value="binary">Base 2</option>
                     <option value="hex">Base 16</option>
                 </select>
             </div>
             <div class="calc_config" id="cb_group">
-                <input type="checkbox" id="addition" name="arithmetic" checked onchange=checkReq() />
+                <input type="checkbox" id="addition"  name="arithmetic" checked onchange=checkReq();saveAritmetic() />
                 <label for="addition">Addition</label><br>
-                <input type="checkbox" id="subtraction" name="arithmetic" onchange=checkReq() />
+                <input type="checkbox" id="subtraction" name="arithmetic" onchange=checkReq();saveAritmetic() />
                 <label for="subtraction">Subtraction</label><br>
-                <input type="checkbox" id="multiplication" name="arithmetic" onchange=checkReq() />
+                <input type="checkbox" id="multiplication" name="arithmetic" onchange=checkReq();saveAritmetic() />
                 <label for="multiplication">Multiplication</label><br>
-                <input type="checkbox" id="division" name="arithmetic" onchange=checkReq() />
+                <input type="checkbox" id="division" name="arithmetic" onchange=checkReq();saveAritmetic() />
                 <label for="division">Division</label>
             </div>
-            <a class="btn btn-primary" id="btn_close" href="../calculator" onclick=closeSettings() role="button">Close</a>
+            <a class="btn btn-primary" id="btn_close" href="../calculator" role="button">Close</a>
 
     </main>
     <!-- Modal -->
