@@ -72,7 +72,7 @@ function determineInvalidCars() {
   let isCarDisabled = false;
 
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
-    definedCars[carNum].set(carProperties[3], [true]);
+    // definedCars[carNum].set(carProperties[3], [true]);
     for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
       if (definedCars[carNum].get(carProperties[propNum]).length == 0) {
         definedCars[carNum].set(carProperties[3], [false]);
@@ -86,8 +86,11 @@ function determineInvalidCars() {
     $("#txtDisabledCars").text(
       latestInValidCars.filter((car) => !invalidCars.includes(car))
     );
+    console.log(latestInValidCars.filter((car) => !invalidCars.includes(car)))
+    if(latestInValidCars.filter((car) => !invalidCars.includes(car)).length>0){
     $("#modalDisabledCars").modal("show");
     invalidCars.push(...latestInValidCars);
+    }
   }
 }
 

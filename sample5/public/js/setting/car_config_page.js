@@ -14,7 +14,6 @@ let selectedCarProp = [selectedTires, selectedInteriors, selectedEngines];
 
 const properties = ["Tire", "Interior", "Engine"];
 
-
 function calcProp() {
   //Save tires in storage
   selectionTire = document.querySelectorAll('input[name="tire"]:checked');
@@ -67,7 +66,7 @@ function closeSettings() {
 function maintainState() {
   savedTires = JSON.parse(sessionStorage.getItem("tires"))
     ? JSON.parse(sessionStorage.getItem("tires"))
-    : ["eighteen","nineteen","twenty","twentyTwo"];
+    : ["eighteen", "nineteen", "twenty", "twentyTwo"];
 
   savedInteriors = JSON.parse(sessionStorage.getItem("interiors"))
     ? JSON.parse(sessionStorage.getItem("interiors"))
@@ -75,18 +74,19 @@ function maintainState() {
 
   savedEngines = JSON.parse(sessionStorage.getItem("engines"))
     ? JSON.parse(sessionStorage.getItem("engines"))
-    :["combustionA","combustionB","combustionC","electricA","electricB"];
-   
-    selectedProps=[savedTires,savedInteriors,savedEngines]
+    : ["combustionA", "combustionB", "combustionC", "electricA", "electricB"];
 
-    for (let propNum = 0; propNum < selectedProps.length; propNum++) {
-        for (let propCount = 0; propCount < selectedProps[propNum].length; propCount++) {
-            document.getElementById(selectedProps[propNum][propCount]).checked = true;
-            console.log("click")
-        }
-        
+  selectedProps = [savedTires, savedInteriors, savedEngines];
+
+  for (let propNum = 0; propNum < selectedProps.length; propNum++) {
+    for (
+      let propCount = 0;
+      propCount < selectedProps[propNum].length;
+      propCount++
+    ) {
+      document.getElementById(selectedProps[propNum][propCount]).checked = true;
     }
+  }
+}
 
-    }
-    maintainState()
-
+maintainState();
