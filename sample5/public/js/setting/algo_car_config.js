@@ -68,45 +68,61 @@ function addConfigProp() {
 }
 
 function determineInvalidCars() {
-  let latestInValidCars = [];
-  let isCarDisabled = false;
-
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
-    // definedCars[carNum].set(carProperties[3], [true]);
     for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
       if (definedCars[carNum].get(carProperties[propNum]).length == 0) {
         definedCars[carNum].set(carProperties[3], [false]);
-        latestInValidCars.push(definedCars[carNum].get(carProperties[4])[0]);
-        isCarDisabled = true;
       }
     }
   }
+}
 
-  if (isCarDisabled) {
-    $("#txtDisabledCars").text(
-      latestInValidCars.filter((car) => !invalidCars.includes(car))
-    );
-    console.log(latestInValidCars.filter((car) => !invalidCars.includes(car)))
-    if(latestInValidCars.filter((car) => !invalidCars.includes(car)).length>0){
-    $("#modalDisabledCars").modal("show");
-    invalidCars.push(...latestInValidCars);
+function determineValidCars() {
+  validCount = 0;
+  for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
+    validCount = 0;
+
+    for (let propNum = 0; propNum < carProperties.length - 2; propNum++) {
+      if (definedCars[carNum].get(carProperties[propNum]).length != 0) {
+        validCount += 1;
+      }
+    }
+    if (validCount == 3) {
+      definedCars[carNum].set(carProperties[3], [true]);
     }
   }
 }
 
 function saveValidCars() {
-  deleteSavedCars();
+  disabledCars = [];
+  isCarDisabled = false;
   for (let carNum = 0; carNum < definedCars.length; carNum++) {
+    stateCar = sessionStorage.getItem(definedCars[carNum].get(carProperties[4]))
+      ? sessionStorage.getItem(definedCars[carNum].get(carProperties[4]))
+      : false;
+    if (eval(stateCar)) {
+      if (!eval(definedCars[carNum].get(carProperties[3])[0])) {
+        disabledCars.push(definedCars[carNum].get(carProperties[4])[0]);
+        isCarDisabled = true;
+      }
+    }
     sessionStorage.setItem(
       definedCars[carNum].get(carProperties[4])[0],
       definedCars[carNum].get(carProperties[3])[0]
     );
   }
-}
-
-function deleteSavedCars() {
-  for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
-    let carName = userDefinedCar[carNum].get(carProperties[4])[0];
-    sessionStorage.removeItem(carName);
+  if (isCarDisabled) {
+    $("#txtDisabledCars").text(disabledCars);
+    $("#modalDisabledCars").modal("show");
   }
+  var voteCardsArray = [
+    { placeInfo: { id: 42, desc: 'stuff 42' } },
+    { placeInfo: { id: 65, desc: 'stuff 65' } },
+    { placeInfo: { id: 89, desc: 'stuff 89' } },
+];
+
+//Abspeichern userDefined und in car config main page auslesen und in select richtig anzeigen
+sessionStorage.myMap = JSON.stringify(Array.from(userDefinedCar[0].entries()));
+map = new Map(JSON.parse(sessionStorage.myMap));
+console.log(map)
 }

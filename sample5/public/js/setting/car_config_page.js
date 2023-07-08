@@ -57,11 +57,12 @@ function calcProp() {
   addConfigProp();
 
   determineInvalidCars();
-}
+  determineValidCars();
 
-function closeSettings() {
   saveValidCars();
 }
+
+
 
 function maintainState() {
   savedTires = JSON.parse(sessionStorage.getItem("tires"))

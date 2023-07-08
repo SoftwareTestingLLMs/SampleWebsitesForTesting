@@ -78,16 +78,17 @@ function getValidCars() {
     let carName = userDefinedCar[carNum].get(carProperties[4])[0];
     carArrays = sessionStorage.getItem(carName)
       ? sessionStorage.getItem(carName)
-      : true;
-    userDefinedCar[carNum].set(carProperties[3], eval(carArrays));
+      : [true];
+    userDefinedCar[carNum].set(carProperties[3], [eval(carArrays)]);
   }
+  console.log(userDefinedCar)
 }
 
 function addValidCars() {
   selectorModel = document.getElementById("Model");
   selectorModel.length = 0;
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
-    if (userDefinedCar[carNum].get(carProperties[3])) {
+    if (userDefinedCar[carNum].get(carProperties[3])[0]) {
       option = document.createElement("option");
       option.text = userDefinedCar[carNum].get(carProperties[4]);
       selectorModel.add(option);
