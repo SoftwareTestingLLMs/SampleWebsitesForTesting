@@ -113,7 +113,7 @@
 
 #current_profile {
     height: 30px;
-    width: 150px;
+    width: 250px;
     position: absolute;
     top: 130px;
     left: 200px;
@@ -122,7 +122,7 @@
 
 #current_deck {
     height: 30px;
-    width: 150px;
+    width: 250px;
     position: absolute;
     top: 130px;
     left: 700px;
@@ -131,7 +131,7 @@
 
 #current_account {
     height: 30px;
-    width: 150px;
+    width: 250px;
     position: absolute;
     top: 130px;
     left: 1200px;
@@ -327,3 +327,26 @@ h1 {
   font-weight: bolder;
 }
 
+#create_new_deck_add_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 110px;
+  left: 355px;
+}
+
+#delete_deck_yes_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 125px;
+}
+
+#delete_deck_no_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 350px;
+}
