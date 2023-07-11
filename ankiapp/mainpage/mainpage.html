@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="mainpage.css">
 </head>
 
-<body>
+<body onload="loadDecks()">
     <main class="container">
         <button id="add_card">Add Card</button>
         <button id="get_shared" >Get Shared</button>
@@ -18,15 +18,16 @@
         <button id="delete_deck">Delete Deck</button>
         <button id="import_file">Import File</button>
         <button id="study_now">Study Now</button>
-        
-        <div id="deck_row_1">This div is vertically centered.</div>
-        <div id="deck_row_2">This div is vertically centered.</div>
-        <div id="deck_row_3">This div is vertically centered.</div>
-        <div id="deck_row_4">This div is vertically centered.</div>
-        <div id="deck_row_5">This div is vertically centered.</div>
+        <div id="deck_row_1"></div>
+        <div id="deck_row_2"></div>
+        <div id="deck_row_3"></div>
+        <div id="deck_row_4"></div>
+        <div id="deck_row_5"></div>
         <div id="current_profile">Current profile: </div>
         <div id="current_deck">Current deck: </div>
         <div id="current_account">Current account: </div>
+        <p id="total_reward"></p>
+        <div id="current_sum">Total reward sum: </div>
         <label for="dd1_items"></label>
         <select name="dd1" id="dd1">
           <option value="switch_profile">Switch Profile</option>
@@ -78,9 +79,9 @@
             <button id="add_card_button_3">
                 Tag Text
             </button>
-            <div id="add_card_row_1">This div is vertically centered.</div>
-            <div id="add_card_row_2">This div is vertically centered.</div>
-            <div id="add_card_row_3">This div is vertically centered.</div>
+            <div id="add_card_row_1"></div>
+            <div id="add_card_row_2"></div>
+            <div id="add_card_row_3"></div>
         </div>
     </div>
 
@@ -113,29 +114,91 @@
     </div>
 
     <script>
+        
+        var Profiles = {
+	        Alice: "Alice",
+	        Bob: "Bob",
+	        Carol: "Carol",
+	        Dennis: "Dennis",
+            Eva: "Eva",
+        };
+
+        var DeckNames = {
+            DeckName1: "Deck Name 1",
+            DeckName2: "Deck Name 2",
+            DeckName3: "Deck Name 3",
+            DeckName4: "Deck Name 4",
+            DeckName5: "Deck Name 5",
+        };
+
+        let total_reward = 0
+        let add_card_front_counter = 0
+        let add_card_back_counter = 0
+        let add_card_tag_counter = 0
+
+        let current_decks = [DeckNames.DeckName1 , DeckNames.DeckName2]
+
+        
+    
         get_shared.addEventListener("click", function () {
             leadsToExternalWebsitePopup.classList.add("show");
         });
+
         closeLeadsToExternalWebsitePopup.addEventListener("click", function () {
             leadsToExternalWebsitePopup.classList.remove("show");
         });
+
         add_card.addEventListener("click", function () {
             addCardPopup.classList.add("show");
         });
+        
         close_add_card_popup.addEventListener("click", function () {
             addCardPopup.classList.remove("show");
         });
+        
         create_deck.addEventListener("click", function () {
             createNewDeckPopup.classList.add("show");
         });
+        
         create_new_deck_close_button.addEventListener("click", function () {
             createNewDeckPopup.classList.remove("show");
         });
+        
         delete_deck.addEventListener("click", function () {
             deleteDeckPopup.classList.add("show");
         });
+        
         delete_deck_no_button.addEventListener("click", function () {
             deleteDeckPopup.classList.remove("show");
         });
+        
+        document.getElementById('total_reward').innerHTML = total_reward;
+        document.getElementById('add_card_row_1').innerHTML = "Front Side " + add_card_front_counter;
+        document.getElementById('add_card_row_2').innerHTML = "Back Side " + add_card_back_counter;
+        document.getElementById('add_card_row_3').innerHTML = "Tag Text " + add_card_tag_counter;        
+
+        function loadDecks() {
+            for (let i = 0; i < current_decks.length; i++) {
+                document.getElementById('deck_row_' + (i+1).toString()).innerHTML = current_decks[i]
+            }
+        }
+
+        add_card_button_1.addEventListener("click", function () {
+            add_card_front_counter += 1;
+            document.getElementById('add_card_row_1').innerHTML = "Front Side " + add_card_front_counter;
+        });
+        
+        add_card_button_2.addEventListener("click", function () {
+            add_card_back_counter += 1;
+            document.getElementById('add_card_row_2').innerHTML = "Back Side " + add_card_back_counter;
+        });
+        
+        add_card_button_3.addEventListener("click", function () {
+            add_card_tag_counter += 1;
+            document.getElementById('add_card_row_3').innerHTML = "Tag Text " + add_card_tag_counter;
+        });
+
+        
+        
     </script>
 </body>

@@ -138,6 +138,15 @@
     margin: auto;
   }
 
+#current_sum {
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: 330px;
+  left: 50px;
+  margin: auto;
+}
+
 #file_dropdown {
     height: 30px;
     width: 100px;
@@ -317,3 +326,4 @@ h1 {
   border: 1px solid #888888;
   font-weight: bolder;
 }
+
