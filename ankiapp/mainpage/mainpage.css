@@ -26,6 +26,7 @@
   }
 
 #create_deck {
+    display: block;
     height: 30px;
     width: 150px;
     position: absolute;
@@ -264,6 +265,24 @@ h1 {
   left: 20px;
 }
 
+#anki_login_row_1 {
+  height: 30px;
+  width: 275px;
+  position: absolute;
+  border-style: solid;
+  top: 100px;
+  left: 20px;
+}
+
+#anki_login_row_2 {
+  height: 30px;
+  width: 275px;
+  position: absolute;
+  border-style: solid;
+  top: 175px;
+  left: 20px;
+}
+
 #close_add_card_popup {
   height: 30px;
   width: 100px;
@@ -349,4 +368,132 @@ h1 {
   position: absolute;
   top: 100px;
   left: 350px;
+}
+
+.anki-login-popup-content {
+  height: 350px;
+  width: 450px;
+  position: absolute;
+  top: 175px;
+  left: 550px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+#anki_login_username_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 105px;
+  left: 325px;
+}
+
+#anki_login_password_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 180px;
+  left: 325px;
+}
+
+#anki_login_ok_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 275px;
+  left: 75px;
+}
+
+#anki_login_close_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 275px;
+  left: 275px;
+}
+
+.about-page-popup-content {
+  height: 675px;
+  width: 750px;
+  position: absolute;
+  top: 25px;
+  left: 400px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+#about_page_close_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 630px;
+  left: 630px;
+}
+
+#book_logo {
+  position: absolute;
+  top: 225px;
+  left: 1250px;
+}
+
+#edit {
+  display: none;
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: 650px;
+  left: 200px;
+  background-color: #f0f0f0;
+}
+
+#show_answer {
+  display: none;
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: 650px;
+  left: 700px;
+  background-color: #f0f0f0;
+}
+
+#remove {
+  display: none;
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: 650px;
+  left: 1200px;
+  background-color: #f0f0f0;
+}
+
+#decks {
+  display: none;
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: 50px;
+  left: 1000px;
+  background-color: #f0f0f0;
+}
+
+.at-least-one-deck-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+#closeAtLeastOneDeckPopupButton {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 85px;
+  left: 250px;
+  background-color: #f0f0f0;
 }
