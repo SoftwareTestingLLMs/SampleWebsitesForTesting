@@ -23,18 +23,27 @@
         <button id="study_now">Study Now</button>
     
         <button id="edit">Edit</button>
-        <button id="show_answer">Show Answer</button>
-        <button id="remove">Remove</button>
+        <button id="show_answer" onclick="showAnswer()">Show Answer</button>
+        <button id="next_question" onclick="showAnswer()">Next Question</button>
+        <button id="remove_card">Remove</button>
         
         <div id="deck_row_1"></div>
         <div id="deck_row_2"></div>
         <div id="deck_row_3"></div>
         <div id="deck_row_4"></div>
         <div id="deck_row_5"></div>
-        
+                        
+
         <div id="current_profile"></div>
         <div id="current_deck"></div>
         <div id="current_account"></div>
+        
+        <div id="current_deck_study"></div>
+        <div id="current_card_number_study"></div>
+        <div id="number_of_cards_study"></div>
+
+        <div id="question"></div>
+        <div id="answer"></div>
         
         <p id="total_reward"></p>
         <div id="current_sum">Total reward sum: </div>
@@ -49,8 +58,8 @@
             <option value="book_logo" onclick="dropdown2Call()">Book Logo</option>
         </select>
         <select name="dd3" id="dd3">
-            <option value="study_deck">Study Deck</option>
-            <option value="check_media">Check Media</option>
+            <option value="study_deck" onclick="dropdown3Call()">Study Deck</option>
+            <option value="check_media" onclick="dropdown3Call()">Check Media</option>
             <option value="preferences">Preferences</option>
         </select>
         <select name="dd4" id="dd4" >
@@ -74,7 +83,7 @@
         <div class="at-least-one-deck-popup-content">
             <h1 style="color:black;">There must be at least one deck
               </h1>
-            <button id="closeAtLeastOneDeckPopupButton">
+            <button id="close_at_least_one_deck_popup_button">
                 Close
             </button>
         </div>
@@ -188,6 +197,61 @@
             </div>
         </div>
     </div>
+
+    <div id="alreadyFiveDecksPopup" class="popup">
+        <div class="already-five-decks-present-content">
+            <h1 style="color:black;">There are already five decks
+              </h1>
+              <button id="close_already_five_decks_popup_button">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <div id="deckExistsPopup" class="popup">
+        <div class="deck-exists-content">
+            <h1 style="color:black;">This deck already exists
+              </h1>
+              <button id="close_deck_exists_popup_button">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <div id="studyDeckPopup" class="popup">
+        <div class="study-deck-popup-content">
+            <h1 style="color:black;">Choose a deck to study
+              </h1>
+            <div id="study_deck_popup_row_1"></div>
+            <div id="study_deck_popup_row_2"></div>
+            <div id="study_deck_popup_row_3"></div>
+            <div id="study_deck_popup_row_4"></div>
+            <div id="study_deck_popup_row_5"></div>
+            <button id="study_deck_popup_study_button">
+                Study
+            </button>
+            <button id="study_deck_popup_add_button">
+                Add
+            </button>
+            <button id="study_deck_popup_cancel_button">
+                Cancel
+            </button>
+            <button id="study_deck_popup_help_button">
+                Help
+            </button>
+        </div>
+    </div>
+
+    <div id="failedLoginPopup" class="popup">
+        <div class="failed-login-popup-content">
+            <h1 style="color:black;">Username and password do not match
+              </h1>
+              <button id="close_failed_login_popup">
+                Close
+            </button>
+        </div>
+    </div>
+
     <img src="../book.jpg" id="book_logo">
 
     <map name="workmap">
@@ -198,6 +262,33 @@
         <area shape="rect" coords="378,370,30,800">
     </map>
 
+
+    <div id="checkMediaPopup" class="popup">
+        <div class="check-media-popup-content">
+            <h1 style="color:black;">About Page
+            </h1>
+            <br><br>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Missing files: 0<br><br><br><br></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Unused files: 0</div>
+            <button id="check_media_close_button">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <div id="SwitchProfilePopup" class="popup">
+        <div class="switch-profile-popup-content">
+            <h1 style="color:black;">About Page
+            </h1>
+            <br><br>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Missing files: 0<br><br><br><br></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Unused files: 0</div>
+            <button id="check_media_close_button">
+                Close
+            </button>
+        </div>
+    </div>
+    
     <script type="text/javascript" src="mainpage.js">
     </script>
 </body>
