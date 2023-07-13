@@ -1,4 +1,4 @@
-var ProfileNames = {
+const ProfileNames = {
     Alice: "Alice",
     Bob: "Bob",
     Carol: "Carol",
@@ -6,7 +6,7 @@ var ProfileNames = {
     Eva: "Eva",
 };
 
-var DeckNames = {
+const DeckNames = {
     DeckName1: "Deck Name 1",
     DeckName2: "Deck Name 2",
     DeckName3: "Deck Name 3",
@@ -17,7 +17,7 @@ var DeckNames = {
     GermanDeck: "German Numbers 0-10",
 };
 
-var AccountNames = {
+const AccountNames = {
     AccountName1: "Account Name 1",
     AccountName2: "Account Name 2",
     AccountName3: "Account Name 3",
@@ -25,13 +25,60 @@ var AccountNames = {
     AccountName5: "Account Name 5",
 };
 
-var AccountPasswords = {
+const AccountPasswords = {
     Password1: "Password 1",
     Password2: "Password 2",
     Password3: "Password 3",
     Password4: "Password 4",
     Password5: "Password 5",
 };
+
+const PreferencesPageRewards = {
+    Tab: [false, false, false, false],
+    Button1: [false,false],
+    Button2: [false,false],
+    Button3: [false,false],
+    Button4: [false,false],
+    Button5: [false,false],
+    Button6: [false,false],
+    Button7: [false,false],
+    Button8: [false,false],
+    Button9: [false,false],
+    Button10: [false,false],
+    Button11: [false,false],
+    Button12: [false,false],
+    Button13: [false,false],
+    Button14: [false,false],
+    Dropdown1ItemSelect: [false,false,false],
+    Dropdown2ItemSelect: [false,false,false],
+    Dropdown3ItemSelect: [false,false],
+    Dropdown4ItemSelect: [false,false],
+    TextButtonClick: false,
+    IncrementDecrementElement1: [false,false],
+    IncrementDecrementElement2: [false,false],
+    IncrementDecrementElement3: [false,false],
+    IncrementDecrementElement4: [false,false],
+    IncrementDecrementElement5: [false,false],
+}
+const openClosePopupsRewards = {
+    AddCard: [false, false],
+    LeadsToExternalWebsite: [false, false],
+    AnkiLogin: [false, false],
+    UnsucessfulLogin: [false, false],
+    ImportDeck: [false, false],
+    ExportDeck: [false, false],
+    DeckAlreadyExists: [false, false],
+    DeleteDeck: [false, false],
+    CreateDeck: [false, false],
+    AtLeastOneDeck: [false, false],
+    AlreadyFiveDecks: [false, false],
+    AboutPage: [false, false],
+    PreferencesPage: [false, false],
+    CheckMedia: [false, false],
+    StudyDeck: [false, false],
+    BookLogo: [false, false],
+    SwitchProfile: [false, false],
+}
 
 let total_reward = 0
 let add_card_front_counter = 0
@@ -96,7 +143,8 @@ const english_deck = {name: DeckNames.EnglishDeck, cards:[
 
 const importable_decks = [dutch_deck, german_deck, english_deck]
 let exported_decks = []
-
+let preferencesPageRewardArray = Object.values(PreferencesPageRewards)
+let openClosePopupsRewardArray =
 function importDeckPopupLoad() {
     deck_import_index = 0
     document.getElementById('deck_to_import').innerHTML = "Deck to import: " + importable_decks[deck_import_index].name
@@ -258,6 +306,50 @@ function loadExportableDecks() {
 function cleanDeckNames() {
     for(let i = 0; i < current_profiles[current_profile_index].decks.length + 1; i++) {
         document.getElementById('deck_row_' + (i+1).toString()).innerHTML = ""
+    }
+}
+
+function switchToSchedulingTab() {
+    const items_to_hide = ['preferences_dd_1', 'preferences_dd_2', 'preferences_dd_3', 'preferences_dd_4', 'checkbox_1', 'checkbox_2', 'checkbox_3', 'checkbox_4', 'checkbox_5', 'increment_decrement_1', 'user_interface_size_text', 'preferences_page_box_5', 'preferences_page_text_button', 'checkbox_11', 'checkbox_12', 'checkbox_13', 'checkbox_14', 'increment_decrement_5', 'number_of_backups_text']
+    for(let i = 0;i < items_to_hide.length; i++){
+        document.getElementById(items_to_hide[i]).style.display = "none"
+    }
+    const items_to_show = ['checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text']
+    for(let i = 0;i < items_to_show.length; i++){
+        document.getElementById(items_to_show[i]).style.display = "block"
+    }
+}
+
+function switchToBasicTab() {
+    const items_to_hide = ['checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text', 'increment_decrement_5', 'number_of_backups_text']
+    for(let i = 0;i < items_to_hide.length; i++){
+        document.getElementById(items_to_hide[i]).style.display = "none"
+    }
+    const items_to_show = ['preferences_dd_1', 'preferences_dd_2', 'preferences_dd_3', 'preferences_dd_4', 'checkbox_1', 'checkbox_2', 'checkbox_3', 'checkbox_4', 'checkbox_5', 'increment_decrement_1', 'user_interface_size_text', 'preferences_page_box_5', 'preferences_page_text_button']
+    for(let i = 0;i < items_to_show.length; i++){
+        document.getElementById(items_to_show[i]).style.display = "block"
+    }
+}
+
+function switchToNetworkTab() {
+    const items_to_hide = ['preferences_dd_1', 'preferences_dd_2', 'preferences_dd_3', 'preferences_dd_4', 'checkbox_1', 'checkbox_2', 'checkbox_3', 'checkbox_4', 'checkbox_5', 'increment_decrement_1', 'user_interface_size_text', 'preferences_page_box_5', 'preferences_page_text_button', 'checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text', 'increment_decrement_5', 'number_of_backups_text']
+    for(let i = 0;i < items_to_hide.length; i++){
+        document.getElementById(items_to_hide[i]).style.display = "none"
+    }
+    const items_to_show = ['checkbox_11', 'checkbox_12', 'checkbox_13', 'checkbox_14']
+    for(let i = 0;i < items_to_show.length; i++){
+        document.getElementById(items_to_show[i]).style.display = "block"
+    }
+}
+
+function switchToBackupsTab() {
+    const items_to_hide = ['preferences_dd_1', 'preferences_dd_2', 'preferences_dd_3', 'preferences_dd_4', 'checkbox_1', 'checkbox_2', 'checkbox_3', 'checkbox_4', 'checkbox_5', 'increment_decrement_1', 'user_interface_size_text', 'preferences_page_box_5', 'preferences_page_text_button', 'checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text', 'checkbox_11', 'checkbox_12', 'checkbox_13', 'checkbox_14']
+    for(let i = 0;i < items_to_hide.length; i++){
+        document.getElementById(items_to_hide[i]).style.display = "none"
+    }
+    const items_to_show = ['increment_decrement_5', 'number_of_backups_text']
+    for(let i = 0;i < items_to_show.length; i++){
+        document.getElementById(items_to_show[i]).style.display = "block"
     }
 }
 

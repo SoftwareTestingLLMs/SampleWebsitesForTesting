@@ -319,10 +319,145 @@
             <h1 style="color:black;">Preferences Page
             </h1>
             <div id="preferences_page_main_box"></div>
-            <div id="preferences_page_box_1">Basic</div>
-            <div id="preferences_page_box_2">Scheduling</div>
-            <div id="preferences_page_box_3">Network</div>
-            <div id="preferences_page_box_4">Backups</div>
+            <div id="preferences_page_box_1" onclick="switchToBasicTab()">Basic</div>
+            <div id="preferences_page_box_2" onclick="switchToSchedulingTab()">Scheduling</div>
+            <div id="preferences_page_box_3" onclick="switchToNetworkTab()">Network</div>
+            <div id="preferences_page_box_4" onclick="switchToBackupsTab()">Backups</div>
+            
+            <select name="preferences_dd_1" id="preferences_dd_1">
+                <option value="english_dd_item">English</option>
+                <option value="german_dd_item">German</option>
+                <option value="spanish_dd_item">Spanish</option>
+            </select>
+            
+            <select name="preferences_dd_2" id="preferences_dd_2">
+                <option value="open_gl_dd_item">Open GL</option>
+                <option value="angle_dd_item">Angle</option>
+                <option value="software_dd_item">Software</option>
+            </select>
+            
+            <label class="container" id="checkbox_1">Show play buttons on cards with audio
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_2">Interrupt current audio when answering
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_3">Paste clipboard images as PNG
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_4">Paste without shift key strips
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container" id="checkbox_5">Night mode
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            
+            <label class="container" id="checkbox_6">Show next review time above answer buttons
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_7">Show remaining card count during review
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_8">Show remaining cards with larger steps before reviews
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_9">Legacy timezone handling
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container" id="checkbox_10">V3 scheduler
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container" id="checkbox_11">Synchronize audio and images too
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_12">Automatically synchronize on profile open/close
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+              
+            <label class="container" id="checkbox_13">Periodically synchronize data
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container" id="checkbox_14">On next synchronization force changes in one direction
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <select name="preferences_dd_3" id="preferences_dd_3">
+                <option value="default_to_current_deck_dd_item">When adding, default to current deck</option>
+                <option value="change_according_to_deck_type_dd_item">Change deck depending on deck type</option>
+            </select>
+
+            <select name="preferences_dd_4" id="preferences_dd_4">
+                <option value="py_audio_dd_item">Voice recording driver: PyAudio</option>
+                <option value="qt_dd_item">Voice recording driver: Qt</option>
+            </select>
+
+            <div id="preferences_page_box_5"></div>
+            <div id="number_of_backups_text">Number of backups: </div>
+
+            <button id="preferences_page_text_button">
+                Text
+            </button>
+            
+            <div id="user_interface_size_text">User interface size: </div>
+            <div class="container" id="increment_decrement_1">       
+                <button onclick="">+</button>
+                <div>&nbsp;3</div>
+                <button onclick="">-&nbsp;</button>       
+            </div>
+
+            <div class="container" id="increment_decrement_2">       
+                <button onclick="">+</button>
+                <div>&nbsp;3</div>
+                <button onclick="">-&nbsp;</button>       
+            </div>
+
+            <div class="container" id="increment_decrement_3">       
+                <button onclick="">+</button>
+                <div>&nbsp;3</div>
+                <button onclick="">-&nbsp;</button>       
+            </div>
+            
+            <div class="container" id="increment_decrement_4">       
+                <button onclick="">+</button>
+                <div>&nbsp;3</div>
+                <button onclick="">-&nbsp;</button>       
+            </div>
+
+            <div class="container" id="increment_decrement_5">       
+                <button onclick="">+</button>
+                <div>&nbsp;3</div>
+                <button onclick="">-&nbsp;</button>       
+            </div>
+
+            <div id="timebox_time_text">Timebox time limit: </div>
+            <div id="learn_ahead_text">Learn ahead limit: </div>
+            <div id="next_day_text">Next day starts at: </div>
+
             <button id="preferences_page_help_button">
                 Help
             </button>
