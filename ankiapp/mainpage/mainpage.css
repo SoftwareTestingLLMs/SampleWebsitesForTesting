@@ -112,6 +112,56 @@
   margin: auto;
 }
 
+#switch_profile_popup_row_1 {
+  height: 35px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 80px;
+  left: 50px;
+  margin: auto;
+}
+
+#switch_profile_popup_row_2 {
+  height: 35px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 115px;
+  left: 50px;
+  margin: auto;
+}
+
+#switch_profile_popup_row_3 {
+  height: 35px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 150px;
+  left: 50px;
+  margin: auto;
+}
+
+#switch_profile_popup_row_4 {
+  height: 35px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 185px;
+  left: 50px;
+  margin: auto;
+}
+
+#switch_profile_popup_row_5 {
+  height: 35px;
+  width: 350px;
+  position: absolute;
+  border-style: solid;
+  top: 220px;
+  left: 50px;
+  margin: auto;
+}
+
 #deck_row_1 {
     height: 30px;
     width: 800px;
@@ -609,6 +659,14 @@ h1 {
   left: 250px;
 }
 
+#close_at_least_one_profile_popup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 85px;
+  left: 250px;
+}
+
 #close_at_least_one_card_popup_button {
   height: 30px;
   width: 100px;
@@ -634,6 +692,13 @@ h1 {
   left: 250px;
 }
 
+#close_profile_exists_popup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 85px;
+  left: 250px;
+}
 
 #close_failed_login_popup {
   height: 30px;
@@ -839,104 +904,6 @@ h1 {
   margin: auto;
 }
 
-.check-media-popup-content {
-  height: 675px;
-  width: 750px;
-  position: absolute;
-  top: 25px;
-  left: 400px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.popup {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
-}
-
-.leads-to-external-website-popup-content {
-  height: 150px;
-  width: 600px;
-  position: absolute;
-  top: 200px;
-  left: 450px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.add-card-popup-content {
-  height: 450px;
-  width: 550px;
-  position: absolute;
-  top: 100px;
-  left: 475px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.edit-card-popup-content {
-  height: 450px;
-  width: 550px;
-  position: absolute;
-  top: 100px;
-  left: 475px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.popup-content button {
-    display: block;
-    margin: 0 auto;
-}
-
-.show {
-    display: block;
-}
-
-.create-new-deck-popup-content {
-  height: 150px;
-  width: 600px;
-  position: absolute;
-  top: 250px;
-  left: 450px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.delete-deck-popup-content {
-  height: 150px;
-  width: 600px;
-  position: absolute;
-  top: 250px;
-  left: 450px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
-.anki-login-popup-content {
-  height: 350px;
-  width: 450px;
-  position: absolute;
-  top: 175px;
-  left: 550px;  
-  background-color: #f0f0f0;
-  border: 1px solid #888888;
-  font-weight: bolder;
-}
-
 #deck_to_study {
   height: 30px;
   width: 400px;
@@ -1032,7 +999,6 @@ h1 {
   left: 60px;
   background-color: #f0f0f0;
 }
-
 
 #preferences_dd_2 {
   display: block;
@@ -1232,6 +1198,243 @@ h1 {
   left: 475px;
 }
 
+#switch_profile_popup_open_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 80px;
+  left: 450px;
+}
+
+#switch_profile_popup_add_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 130px;
+  left: 450px;
+}
+
+#switch_profile_popup_rename_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 180px;
+  left: 450px;
+}
+
+#switch_profile_popup_delete_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 230px;
+  left: 450px;
+}
+
+#switch_profile_popup_open_backup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 330px;
+  left: 450px;
+}
+#profile_popup_row {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 50px;
+  left: 480px;
+}
+
+#add_profile_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 50px;
+  left: 480px;
+}
+
+#close_add_profile_popup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 480px;
+}
+
+#add_profile_popup_ok_button{
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 360px;
+}
+
+#add_profile_popup_row {
+  height: 25px;
+  width: 400px;
+  position: absolute;
+  border-style: solid;
+  top: 50px;
+  left: 30px;
+  margin: auto;
+}
+
+#switch_profile_popup_downgrade_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 380px;
+  left: 450px;
+}
+
+#profile_to_open {
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+#close_downgrade_popup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 85px;
+  left: 250px;
+}
+
+#rename_profile_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 50px;
+  left: 480px;
+}
+
+#close_rename_profile_popup_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 480px;
+}
+
+#rename_profile_popup_ok_button {
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 360px;
+}
+
+#rename_profile_popup_row {
+  height: 25px;
+  width: 400px;
+  position: absolute;
+  border-style: solid;
+  top: 50px;
+  left: 30px;
+  margin: auto;
+}
+
+.check-media-popup-content {
+  height: 675px;
+  width: 750px;
+  position: absolute;
+  top: 25px;
+  left: 400px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.popup {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+
+.leads-to-external-website-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 200px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.add-card-popup-content {
+  height: 450px;
+  width: 550px;
+  position: absolute;
+  top: 100px;
+  left: 475px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.edit-card-popup-content {
+  height: 450px;
+  width: 550px;
+  position: absolute;
+  top: 100px;
+  left: 475px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+.show {
+    display: block;
+}
+
+.create-new-deck-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.delete-deck-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.anki-login-popup-content {
+  height: 350px;
+  width: 450px;
+  position: absolute;
+  top: 175px;
+  left: 550px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
 .failed-login-popup-content {
   height: 150px;
   width: 600px;
@@ -1276,6 +1479,17 @@ h1 {
   font-weight: bolder;
 }
 
+.at-least-one-profile-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
 .at-least-one-card-popup-content {
   height: 150px;
   width: 600px;
@@ -1299,6 +1513,17 @@ h1 {
 }
 
 .deck-exists-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.profile-exists-content {
   height: 150px;
   width: 600px;
   position: absolute;
@@ -1352,3 +1577,48 @@ h1 {
   border: 1px solid #888888;
   font-weight: bolder;
 }
+
+.switch-profile-popup-content {
+  height: 450px;
+  width: 600px;
+  position: absolute;
+  top: 125px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.downgrade-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.rename-profile-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
+.add-profile-popup-content {
+  height: 150px;
+  width: 600px;
+  position: absolute;
+  top: 250px;
+  left: 450px;  
+  background-color: #f0f0f0;
+  border: 1px solid #888888;
+  font-weight: bolder;
+}
+
