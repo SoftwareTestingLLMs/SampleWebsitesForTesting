@@ -343,12 +343,12 @@
             <div id="preferences_page_box_2" onclick="switchToSchedulingTab()">Scheduling</div>
             <div id="preferences_page_box_3" onclick="switchToNetworkTab()">Network</div>
             <div id="preferences_page_box_4" onclick="switchToBackupsTab()">Backups</div>
-            <select name="preferences_dd_1" id="preferences_dd_1">
+            <select name="preferences_dd_1" id="preferences_dd_1" onchange="preferencesdd1()">
                 <option value="english_dd_item">English</option>
                 <option value="german_dd_item">German</option>
                 <option value="spanish_dd_item">Spanish</option>
             </select>
-            <select name="preferences_dd_2" id="preferences_dd_2">
+            <select name="preferences_dd_2" id="preferences_dd_2" onchange="preferencesdd2()">
                 <option value="open_gl_dd_item">Open GL</option>
                 <option value="angle_dd_item">Angle</option>
                 <option value="software_dd_item">Software</option>
@@ -409,11 +409,11 @@
                 <input type="checkbox">
                 <span class="checkmark"></span>
             </label>
-            <select name="preferences_dd_3" id="preferences_dd_3">
+            <select name="preferences_dd_3" id="preferences_dd_3" onchange="preferencesdd3()">
                 <option value="default_to_current_deck_dd_item">When adding, default to current deck</option>
                 <option value="change_according_to_deck_type_dd_item">Change deck depending on deck type</option>
             </select>
-            <select name="preferences_dd_4" id="preferences_dd_4">
+            <select name="preferences_dd_4" id="preferences_dd_4" onchange="preferencesdd4()">
                 <option value="py_audio_dd_item">Voice recording driver: PyAudio</option>
                 <option value="qt_dd_item">Voice recording driver: Qt</option>
             </select>
@@ -424,29 +424,29 @@
             </button>
             <div id="user_interface_size_text">User interface size: </div>
             <div class="container" id="increment_decrement_1">       
-                <button onclick="">+</button>
-                <div>&nbsp;3</div>
-                <button onclick="">-&nbsp;</button>       
+                <button id="increment_1">+</button>
+                <div id="counter_1">&nbsp;</div>
+                <button id="decrement_1">-&nbsp;</button>       
             </div>
             <div class="container" id="increment_decrement_2">       
-                <button onclick="">+</button>
-                <div>&nbsp;3</div>
-                <button onclick="">-&nbsp;</button>       
+                <button id="increment_2">+</button>
+                <div id="counter_2">&nbsp;</div>
+                <button id="decrement_2">-&nbsp;</button>       
             </div>
             <div class="container" id="increment_decrement_3">       
-                <button onclick="">+</button>
-                <div>&nbsp;3</div>
-                <button onclick="">-&nbsp;</button>       
+                <button id="increment_3">+</button>
+                <div id="counter_3">&nbsp;</div>
+                <button id="decrement_3">-&nbsp;</button>       
             </div>
             <div class="container" id="increment_decrement_4">       
-                <button onclick="">+</button>
-                <div>&nbsp;3</div>
-                <button onclick="">-&nbsp;</button>       
+                <button id="increment_4">+</button>
+                <div id="counter_4">&nbsp;</div>
+                <button id="decrement_4">-&nbsp;</button>       
             </div>
             <div class="container" id="increment_decrement_5">       
-                <button onclick="">+</button>
-                <div>&nbsp;3</div>
-                <button onclick="">-&nbsp;</button>       
+                <button id="increment_5">+</button>
+                <div id="counter_5">&nbsp;</div>
+                <button id="decrement_5">-&nbsp;</button>       
             </div>
             <div id="timebox_time_text">Timebox time limit: </div>
             <div id="learn_ahead_text">Learn ahead limit: </div>

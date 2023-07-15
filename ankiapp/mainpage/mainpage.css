@@ -266,8 +266,6 @@
 
 #preferences_page_box_5 {
   display: block;
-  text-align: center;
-  line-height: 50px; 
   height: 30px;
   width: 500px;
   position: absolute;
@@ -1337,6 +1335,15 @@ h1 {
   margin: auto;
 }
 
+#total_reward {
+  height: 30px;
+  width: 250px;
+  position: absolute;
+  top: 330px;
+  left: 100px;
+  margin: auto;
+}
+
 .check-media-popup-content {
   height: 675px;
   width: 750px;
@@ -1621,4 +1628,3 @@ h1 {
   border: 1px solid #888888;
   font-weight: bolder;
 }
-
