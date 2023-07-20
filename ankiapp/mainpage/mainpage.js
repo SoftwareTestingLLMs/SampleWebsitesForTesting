@@ -63,6 +63,7 @@ const PreferencesPageRewards = {
     IncrementDecrementElement5: [false,false],
 };
 
+//reward structure for opening/closing popups etc.
 const OpenClosePopupsRewards = {
     AddCard: [false, false],
     LeadsToExternalWebsite: [false, false],
@@ -85,12 +86,12 @@ const OpenClosePopupsRewards = {
     RenameProfile: [false, false],
     Downgrade: [false, false],
     AtLeastOneCard: [false, false],
-    AlreadyFiveProfiles: [false, false],
     ProfileExists: [false, false],
     AtLeastOneProfile: [false, false],
     EditCard: [false, false]
 };
 
+//reward structure for the dropdowns of the main page
 const DropdownRewards = {
     FirstDropdown: [false, false, false, false],
     SecondDropdown: false,
@@ -98,6 +99,7 @@ const DropdownRewards = {
     FourthDropdown: [false, false, false],
 };
 
+//reward structure of the actions from the main page
 const MainPageRewards = {
     StudyNow: [false,false],
     ShowAnswerButton: [false, false],
@@ -105,55 +107,58 @@ const MainPageRewards = {
     ChangeDeck: [false, false, false, false, false],
 };
 
+//reward structure of add card popup
 const AddCardRewards = {
     Increment: [false, false, false],
     AddCard: false,
 };
 
+//reward structure of anki login popup
 const AnkiLoginRewards = {
     Increment: [false, false],
     Login: false,
 };
 
+//reward structure of import deck popup
 const ImportDeckRewards = {
     ChangeDeck: [false, false, false],
-    Help: false,
     ImportDeck: false,
 };
 
+//reward structure of export deck popup
 const ExportDeckRewards = {
     ExportDeck: [false, false, false, false, false],
     Reset: false,
-    Help: false,
     Export: false,
 };
 
+//reward structure of delete deck popup
 const DeleteDeckRewards = {
     DeleteDeck: false
 };
 
+//reward structure of create deck popup
 const CreateDeckRewards = {
     ChangeDeck: false,
     CreateDeck: false,
 };
 
+//reward structure of study deck popup
 const StudyDeckRewards = {
     StudyDeck: [false, false, false, false, false],
-    AddDeck: false,
-    Help: false,
     Study: false,
 };
 
+//reward structure of profile popup
 const ProfileRewards = {
     ChangeProfile: [false, false, false, false, false],
     RenameProfile: [false,false],
     AddProfile: [false,false],
     DeleteProfile: false,
-    OpenBackup: false,
-    Downgrade: false,
     OpenProfile: false
 };
 
+//reward structure of edit card popup
 const EditCardRewards = {
     EditFront: false,
     EditBack: false,
@@ -553,11 +558,6 @@ function dropdown3Call() {
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
-        if(!openClosePopupsRewardArray[14][0]){
-            openClosePopupsRewardArray[14][0] = true
-            total_sum_of_reward += 1
-            document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
-        }
         studyDeckPopup.classList.add("show")
         loadStudyPopupDecks()
         break;
@@ -688,6 +688,7 @@ function openStudyPage() {
     document.getElementById("answer").innerHTML = "Answer: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].back
 }
 
+//function including the switch case of the first dropdown item
 function preferencesdd1() {
     var x = document.getElementById("preferences_dd_1").value;
     switch(x) {
@@ -715,6 +716,7 @@ function preferencesdd1() {
     }
 }
 
+//function including the switch case of the second dropdown item
 function preferencesdd2() {
     var x = document.getElementById("preferences_dd_2").value;
     switch(x) {
@@ -742,6 +744,7 @@ function preferencesdd2() {
     }
 }
 
+//function including the switch case of the third dropdown item
 function preferencesdd3() {
     var x = document.getElementById("preferences_dd_3").value;
     switch(x) {
@@ -762,6 +765,7 @@ function preferencesdd3() {
     }
 }
 
+//function including the switch case of the fourth dropdown item
 function preferencesdd4() {
     var x = document.getElementById("preferences_dd_4").value;
     switch(x) {
@@ -820,8 +824,8 @@ switch_profile_popup_open_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
-    if(!profileRewardArray[6]) {
-        profileRewardArray[6] = true
+    if(!profileRewardArray[4]) {
+        profileRewardArray[4] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -874,8 +878,8 @@ export_deck_popup_add_button.addEventListener("click", function () {
         alreadyFiveDecksPopup.classList.add("show")
         return;
     }
-    if (!exportDeckRewardArray[3]) {
-        exportDeckRewardArray[3] = true
+    if (!exportDeckRewardArray[2]) {
+        exportDeckRewardArray[2] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -904,8 +908,8 @@ study_deck_popup_study_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
-    if(!studyDeckRewardArray[3]) {
-        studyDeckRewardArray[3] = true
+    if(!studyDeckRewardArray[1]) {
+        studyDeckRewardArray[1] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -915,11 +919,6 @@ study_deck_popup_study_button.addEventListener("click", function () {
 
 //button to create a new deck
 study_deck_popup_add_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[14][1]){
-        openClosePopupsRewardArray[14][1] = true
-        total_sum_of_reward += 1
-        document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
-    }
     if(!openClosePopupsRewardArray[8][0]) {
         openClosePopupsRewardArray[8][0] = true
         total_sum_of_reward += 1
@@ -1187,8 +1186,8 @@ edit_tag_button.addEventListener("click", function (){
 
 //button to close the edit card popup
 close_edit_card_popup_button.addEventListener("click", function (){
-    if(!openClosePopupsRewardArray[24][1]) {
-        openClosePopupsRewardArray[24][1] = true
+    if(!openClosePopupsRewardArray[23][1]) {
+        openClosePopupsRewardArray[23][1] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -1197,8 +1196,8 @@ close_edit_card_popup_button.addEventListener("click", function (){
 
 //button to open the edit card popup
 edit.addEventListener("click", function (){
-    if(!openClosePopupsRewardArray[24][0]) {
-        openClosePopupsRewardArray[24][0] = true
+    if(!openClosePopupsRewardArray[23][0]) {
+        openClosePopupsRewardArray[23][0] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -1381,8 +1380,8 @@ add_profile_popup_ok_button.addEventListener("click", function () {
 
 //button to close the at least one profile popup and open the switch profile popup
 close_at_least_one_profile_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[23][1]) {
-        openClosePopupsRewardArray[23][1] = true
+    if(!openClosePopupsRewardArray[22][1]) {
+        openClosePopupsRewardArray[22][1] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -1393,8 +1392,8 @@ close_at_least_one_profile_popup_button.addEventListener("click", function () {
 //button to delete a profile in the switch profile popup
 switch_profile_popup_delete_button.addEventListener("click", function () {
     if(current_profiles.length == 1){
-        if(!openClosePopupsRewardArray[23][0]) {
-            openClosePopupsRewardArray[23][0] = true
+        if(!openClosePopupsRewardArray[22][0]) {
+            openClosePopupsRewardArray[22][0] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1402,8 +1401,8 @@ switch_profile_popup_delete_button.addEventListener("click", function () {
         switchProfilePopup.classList.remove("show")
         return
     }    
-    if(!deleteDeckRewardArray[0]) {
-        deleteDeckRewardArray[0] = true
+    if(!profileRewardArray[3]) {
+        profileRewardArray[3] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -1424,8 +1423,8 @@ remove_card.addEventListener("click", function() {
         atLeastOneCardPopup.classList.add("show");
         return;
     }
-    if(!deleteDeckRewardArray[0]){
-        deleteDeckRewardArray[0] = true
+    if(!mainPageRewardArray[2]){
+        mainPageRewardArray[2] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
@@ -1595,8 +1594,8 @@ close_failed_login_popup.addEventListener("click", function (){
 //the area to switch the currently selected deck of the current profile to the first deck
 deck_row_1.addEventListener("click", function () {
     if(0 < current_profiles[current_profile_index].decks.length) {
-        if(!mainPageRewardArray[10][0] && current_profiles[current_profile_index].deck_index != 0) { 
-            mainPageRewardArray[10][0] = true
+        if(!mainPageRewardArray[3][0] && current_profiles[current_profile_index].deck_index != 0) { 
+            mainPageRewardArray[3][0] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1608,8 +1607,8 @@ deck_row_1.addEventListener("click", function () {
 //the area to switch the currently selected deck of the current profile to the second deck
 deck_row_2.addEventListener("click", function () {
     if(1 < current_profiles[current_profile_index].decks.length) {
-        if(!mainPageRewardArray[10][1] && current_profiles[current_profile_index].deck_index != 1) { 
-            mainPageRewardArray[10][1] = true
+        if(!mainPageRewardArray[3][1] && current_profiles[current_profile_index].deck_index != 1) { 
+            mainPageRewardArray[3][1] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1621,8 +1620,8 @@ deck_row_2.addEventListener("click", function () {
 //the area to switch the currently selected deck of the current profile to the third deck
 deck_row_3.addEventListener("click", function () {
     if(2 < current_profiles[current_profile_index].decks.length) {
-        if(!mainPageRewardArray[10][2] && current_profiles[current_profile_index].deck_index != 2) { 
-            mainPageRewardArray[10][2] = true
+        if(!mainPageRewardArray[3][2] && current_profiles[current_profile_index].deck_index != 2) { 
+            mainPageRewardArray[3][2] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1634,8 +1633,8 @@ deck_row_3.addEventListener("click", function () {
 //the area to switch the currently selected deck of the current profile to the fourth deck
 deck_row_4.addEventListener("click", function () {
     if(3 < current_profiles[current_profile_index].decks.length) {
-        if(!mainPageRewardArray[10][3] && current_profiles[current_profile_index].deck_index != 3) { 
-            mainPageRewardArray[10][3] = true
+        if(!mainPageRewardArray[3][3] && current_profiles[current_profile_index].deck_index != 3) { 
+            mainPageRewardArray[3][3] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1647,8 +1646,8 @@ deck_row_4.addEventListener("click", function () {
 //the area to switch the currently selected deck of the current profile to the fifth deck
 deck_row_5.addEventListener("click", function () {
     if(4 < current_profiles[current_profile_index].decks.length) {
-        if(!mainPageRewardArray[10][4] && current_profiles[current_profile_index].deck_index != 4) { 
-            mainPageRewardArray[10][4] = true
+        if(!mainPageRewardArray[3][4] && current_profiles[current_profile_index].deck_index != 4) { 
+            mainPageRewardArray[3][4] = true
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
@@ -1983,11 +1982,6 @@ preferences_page_help_button.addEventListener("click", function () {
     }
     preferencesPage.classList.remove("show")
     leadsToExternalWebsitePopup.classList.add("show")
-    if(!openClosePopupsRewardArray[1][0]) {
-        openClosePopupsRewardArray[1][0] = true
-        total_sum_of_reward += 1
-        document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
-    }
 })
 
 //button to close the preferences page
@@ -2001,60 +1995,67 @@ preferences_page_close_button.addEventListener("click", function () {
 
 })
 
-preferences_page_text_button.addEventListener("click", function () {
-    document.getElementById('preferences_page_box_5').innerHTML = "Text"
-})
-
+//increments the first counter by one
 increment_1.addEventListener("click", function () {
     preferences_page_counter_1 += 1
     document.getElementById('counter_1').innerHTML = preferences_page_counter_1
 })
 
+//decrements the first counter by one
 decrement_1.addEventListener("click", function () {
     preferences_page_counter_1 -= 1
     document.getElementById('counter_1').innerHTML = preferences_page_counter_1
 })
 
+//increments the second counter by one
 increment_2.addEventListener("click", function () {
     preferences_page_counter_2 += 1
     document.getElementById('counter_2').innerHTML = preferences_page_counter_2
 })
 
+//decrements the second counter by one
 decrement_2.addEventListener("click", function () {
     preferences_page_counter_2 -= 1
     document.getElementById('counter_2').innerHTML = preferences_page_counter_2
 })
 
+//increments the third counter by one
 increment_3.addEventListener("click", function () {
     preferences_page_counter_3 += 1
     document.getElementById('counter_3').innerHTML = preferences_page_counter_3
 })
 
+//decrements the third counter by one
 decrement_3.addEventListener("click", function () {
     preferences_page_counter_3 -= 1
     document.getElementById('counter_3').innerHTML = preferences_page_counter_3
 })
 
+//increments the fourth counter by one
 increment_4.addEventListener("click", function () {
     preferences_page_counter_4 += 1
     document.getElementById('counter_4').innerHTML = preferences_page_counter_4
 })
 
+//decrements the fourth counter by one
 decrement_4.addEventListener("click", function () {
     preferences_page_counter_4 -= 1
     document.getElementById('counter_4').innerHTML = preferences_page_counter_4
 })
 
+//increments the fifth counter by one
 increment_5.addEventListener("click", function () {
     preferences_page_counter_5 += 1
     document.getElementById('counter_5').innerHTML = preferences_page_counter_5
 })
 
+//decrements the fifth counter by one
 decrement_5.addEventListener("click", function () {
     preferences_page_counter_5 -= 1
     document.getElementById('counter_5').innerHTML = preferences_page_counter_5
 })
 
+//assign (de)selecting functionalities to the checkboxes
 for (let i = 1; i <= 14; i++) {
         const checkboxes = [checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6, checkbox_7,
             checkbox_8, checkbox_9, checkbox_10, checkbox_11, checkbox_12, checkbox_13, checkbox_14]
@@ -2076,14 +2077,17 @@ for (let i = 1; i <= 14; i++) {
     )
 }
 
+//make the text of the preferences box visible
 preferences_page_text_button.addEventListener("click", function () {
     if(!preferencesPageRewardArray[19]) {
         preferencesPageRewardArray[19] = true
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
+    document.getElementById('preferences_page_box_5').innerHTML = "Text"
 })
 
+//assign in-/decrementing functionalities to the counters
 for (let i = 0; i < 5; i++) {
     const buttons = [[increment_1,decrement_1], [increment_2,decrement_2], [increment_3,decrement_3], [increment_4,decrement_4], [increment_5,decrement_5]]
     buttons[i][0].addEventListener("click", function () {
