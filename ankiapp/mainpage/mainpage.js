@@ -290,6 +290,7 @@ function exportDeckPopupLoad() {
     }
     exportDeckPopup.classList.add("show")
     document.getElementById('exported_decks_number').innerHTML = "Number of exported decks: " + exported_decks.length
+    cleanExportableDeckNames()
     loadExportableDecks()
 }
 
@@ -334,8 +335,21 @@ function loadExportableDecks() {
     }
 }
 
+function cleanExportableDeckNames() {
+    for(let i = 0; i < 5; i++) {
+        document.getElementById('export_deck_popup_row_' + (i+1).toString()).innerHTML = ""
+    }
+}
+
 //function to set the displayed deck names to the empty string to overwrite them
-function cleanDeckNames() {
+function cleanStudyDeckNames() {
+    for(let i = 0; i < 5; i++) {
+        document.getElementById('study_deck_popup_row_' + (i+1).toString()).innerHTML = ""
+    }
+}
+
+//function to set the displayed deck names to the empty string to overwrite them
+function cleanMainPageDeckNames() {
     for(let i = 0; i < 5; i++) {
         document.getElementById('deck_row_' + (i+1).toString()).innerHTML = ""
     }
@@ -558,7 +572,10 @@ function dropdown3Call() {
             total_sum_of_reward += 1
             document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
         }
+        study_deck_temporary_index = 0
+        document.getElementById('deck_to_study').innerHTML = "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name    
         studyDeckPopup.classList.add("show")
+        cleanStudyDeckNames()
         loadStudyPopupDecks()
         break;
         case "preferences":
@@ -832,7 +849,7 @@ switch_profile_popup_open_button.addEventListener("click", function () {
     switchProfilePopup.classList.remove("show")
     openMainPage()
     current_profile_index = switch_profile_index
-    cleanDeckNames()
+    cleanMainPageDeckNames()
     loadMainPageDecks()
     document.getElementById('current_profile').innerHTML = "Current profile: " + current_profiles[current_profile_index].name;
     document.getElementById('current_deck').innerHTML = "Current deck: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].name;
@@ -858,7 +875,7 @@ add_card_button.addEventListener("click", function () {
 
 //add the chosen deck to the decks of the current profile
 export_deck_popup_add_button.addEventListener("click", function () {
-    if (exported_decks.includes(current_profiles[current_profile_index].decks[deck_export_index])){
+    if (exported_decks.includes(current_profiles[current_profile_index].decks[deck_export_index].name)){
         exportDeckPopup.classList.remove("show")
         if(!openClosePopupsRewardArray[6][0]) {
             openClosePopupsRewardArray[6][0] = true
@@ -883,13 +900,14 @@ export_deck_popup_add_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
-    exported_decks.push(current_profiles[current_profile_index].decks[deck_export_index])
+    exported_decks.push(current_profiles[current_profile_index].decks[deck_export_index].name)
     exportDeckPopup.classList.remove("show")
 })
 
 //help button which opens the leads to external website popup
 study_deck_popup_help_button.addEventListener("click", function () {
     study_deck_temporary_index = 0
+    document.getElementById('deck_to_study').innerHTML = "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name    
     studyDeckPopup.classList.remove("show")
     leadsToExternalWebsitePopup.classList.add("show");
     if(!openClosePopupsRewardArray[1][0]) {
@@ -913,6 +931,8 @@ study_deck_popup_study_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
+    study_deck_temporary_index = 0
+    document.getElementById('deck_to_study').innerHTML = "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name
     studyDeckPopup.classList.remove("show")
     openStudyPage()
 })
@@ -924,6 +944,8 @@ study_deck_popup_add_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
+    study_deck_temporary_index = 0
+    document.getElementById('deck_to_study').innerHTML = "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name
     studyDeckPopup.classList.remove("show")
     createNewDeckPopup.classList.add("show");
 })
@@ -1107,7 +1129,7 @@ delete_deck_yes_button.addEventListener("click", function () {
     current_profiles[current_profile_index].decks.splice(current_profiles[current_profile_index].deck_index, 1);
     current_profiles[current_profile_index].deck_index = 0
     document.getElementById('current_deck').innerHTML = "Current deck: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].name
-    cleanDeckNames();
+    cleanMainPageDeckNames();
     loadMainPageDecks();
     if(!openClosePopupsRewardArray[7][1]) {
         openClosePopupsRewardArray[7][1] = true
@@ -1502,6 +1524,8 @@ study_deck_popup_cancel_button.addEventListener("click", function () {
         total_sum_of_reward += 1
         document.getElementById('total_reward').innerHTML = "Total sum of rewards:" + total_sum_of_reward
     }
+    study_deck_temporary_index = 0
+    document.getElementById('deck_to_study').innerHTML = "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name
     studyDeckPopup.classList.remove("show")
 })
 

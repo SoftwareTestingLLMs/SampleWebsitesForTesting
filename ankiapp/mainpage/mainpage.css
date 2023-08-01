@@ -4,7 +4,7 @@
     position: absolute;
     top: 50px;
     left: 700px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
   }
 
 #get_shared {
@@ -13,7 +13,7 @@
     position: absolute;
     top: 50px;
     left: 1000px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
   }
 
 #anki_login {
@@ -22,7 +22,7 @@
     position: absolute;
     top: 50px;
     left: 1300px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
   }
 
 #create_deck {
@@ -32,7 +32,7 @@
     position: absolute;
     top: 650px;
     left: 200px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
   }
 
 #delete_deck {
@@ -41,7 +41,7 @@
     position: absolute;
     top: 650px;
     left: 700px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
 }
 
 #import_file {
@@ -50,7 +50,7 @@
     position: absolute;
     top: 650px;
     left: 1200px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
 }
 
 #study_now {
@@ -59,7 +59,7 @@
     position: absolute;
     top: 450px;
     left: 700px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
 }
 
 #study_deck_popup_row_1 {
@@ -70,6 +70,7 @@
   top: 100px;
   left: 50px;
   margin: auto;
+  background: #f0f0f0;
 }
 
 #study_deck_popup_row_2 {
@@ -80,6 +81,7 @@
   top: 135px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_row_3 {
@@ -90,6 +92,7 @@
   top: 170px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_row_4 {
@@ -100,6 +103,7 @@
   top: 205px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_row_5 {
@@ -110,6 +114,7 @@
   top: 240px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_row_1 {
@@ -120,6 +125,7 @@
   top: 80px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_row_2 {
@@ -130,6 +136,7 @@
   top: 115px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_row_3 {
@@ -140,6 +147,7 @@
   top: 150px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_row_4 {
@@ -150,6 +158,7 @@
   top: 185px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_row_5 {
@@ -160,6 +169,7 @@
   top: 220px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #deck_row_1 {
@@ -170,6 +180,7 @@
     top: 250px;
     left: 370px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #deck_row_2 {
@@ -180,6 +191,7 @@
     top: 282px;
     left: 370px;
     margin: auto;
+    background-color: #f0f0f0;
   }
   
 #deck_row_3 {
@@ -190,6 +202,7 @@
     top: 314px;
     left: 370px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #deck_row_4 {
@@ -200,6 +213,7 @@
     top: 346px;
     left: 370px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #deck_row_5 {
@@ -210,6 +224,7 @@
     top: 378px;
     left: 370px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #preferences_page_box_1 {
@@ -222,6 +237,7 @@
   border-style: solid;
   top: 80px;
   left: 50px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -235,6 +251,7 @@
   border-style: solid;
   top: 80px;
   left: 190px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -248,6 +265,7 @@
   border-style: solid;
   top: 80px;
   left: 330px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -261,6 +279,7 @@
   border-style: solid;
   top: 80px;
   left: 470px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -272,6 +291,7 @@
   border-style: solid;
   top: 500px;
   left: 75px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -282,6 +302,7 @@
   border-style: solid;
   top: 135px;
   left: 50px;
+  background-color: #f0f0f0;
   margin: auto;
 }
 
@@ -292,6 +313,7 @@
   position: absolute;
   top: 503px;
   left: 595px;
+  background-color: #f0f0f0;
 }
 
 #current_profile {
@@ -301,6 +323,7 @@
     top: 130px;
     left: 200px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #current_deck {
@@ -310,6 +333,7 @@
     top: 130px;
     left: 700px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #current_account {
@@ -319,6 +343,7 @@
     top: 130px;
     left: 1200px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #file_dropdown {
@@ -328,6 +353,7 @@
     top: 0px;
     left: 0px;
     margin: auto;
+    background-color: #f0f0f0;
   }
 
 #closeLeadsToExternalWebsitePopup {
@@ -342,6 +368,7 @@
 h1 {
   font-size: 24px;
   text-align: center;
+  background-color: #f0f0f0;
 }
 
 #edit_front_side_button {
@@ -350,6 +377,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #edit_back_side_button {
@@ -358,6 +386,7 @@ h1 {
   position: absolute;
   top: 225px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #edit_tag_button {
@@ -366,6 +395,7 @@ h1 {
   position: absolute;
   top: 325px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #add_card_button_1 {
@@ -374,6 +404,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #add_card_button_2 {
@@ -382,6 +413,7 @@ h1 {
   position: absolute;
   top: 225px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #add_card_button_3 {
@@ -390,6 +422,7 @@ h1 {
   position: absolute;
   top: 325px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #add_card_row_1 {
@@ -399,6 +432,7 @@ h1 {
   border-style: solid;
   top: 115px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #add_card_row_2 {
@@ -408,6 +442,7 @@ h1 {
   border-style: solid;
   top: 215px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #add_card_row_3 {
@@ -417,6 +452,7 @@ h1 {
   border-style: solid;
   top: 315px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #edit_card_row_1 {
@@ -426,6 +462,7 @@ h1 {
   border-style: solid;
   top: 115px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #edit_card_row_2 {
@@ -435,6 +472,7 @@ h1 {
   border-style: solid;
   top: 215px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #edit_card_row_3 {
@@ -444,6 +482,7 @@ h1 {
   border-style: solid;
   top: 315px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_row_1 {
@@ -453,6 +492,7 @@ h1 {
   border-style: solid;
   top: 100px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_row_2 {
@@ -462,6 +502,7 @@ h1 {
   border-style: solid;
   top: 175px;
   left: 20px;
+  background-color: #f0f0f0;
 }
 
 #close_add_card_popup {
@@ -470,6 +511,7 @@ h1 {
   position: absolute;
   top: 400px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #close_edit_card_popup_button {
@@ -478,6 +520,7 @@ h1 {
   position: absolute;
   top: 400px;
   left: 425px;
+  background-color: #f0f0f0;
 }
 
 #add_card_button {
@@ -486,6 +529,7 @@ h1 {
   position: absolute;
   top: 400px;
   left: 300px;
+  background-color: #f0f0f0;
 }
 
 #create_new_deck {
@@ -495,6 +539,7 @@ h1 {
   border-style: solid;
   top: 60px;
   left: 10px;
+  background-color: #f0f0f0;
 }
 
 #create_new_deck_close_button {
@@ -503,6 +548,7 @@ h1 {
   position: absolute;
   top: 110px;
   left: 475px;
+  background-color: #f0f0f0;
 }
 
 #create_new_deck_name_button {
@@ -511,6 +557,7 @@ h1 {
   position: absolute;
   top: 63px;
   left: 475px;
+  background-color: #f0f0f0;
 }
 
 #create_new_deck_add_button {
@@ -519,6 +566,7 @@ h1 {
   position: absolute;
   top: 110px;
   left: 355px;
+  background-color: #f0f0f0;
 }
 
 #delete_deck_yes_button {
@@ -527,6 +575,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 125px;
+  background-color: #f0f0f0;
 }
 
 #delete_deck_no_button {
@@ -535,6 +584,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 350px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_username_button {
@@ -543,6 +593,7 @@ h1 {
   position: absolute;
   top: 105px;
   left: 325px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_password_button {
@@ -551,6 +602,7 @@ h1 {
   position: absolute;
   top: 180px;
   left: 325px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_ok_button {
@@ -559,6 +611,7 @@ h1 {
   position: absolute;
   top: 275px;
   left: 75px;
+  background-color: #f0f0f0;
 }
 
 #anki_login_close_button {
@@ -567,6 +620,7 @@ h1 {
   position: absolute;
   top: 275px;
   left: 275px;
+  background-color: #f0f0f0;
 }
 
 #about_page_close_button {
@@ -575,6 +629,7 @@ h1 {
   position: absolute;
   top: 630px;
   left: 630px;
+  background-color: #f0f0f0;
 }
 
 #preferences_page_close_button {
@@ -583,6 +638,7 @@ h1 {
   position: absolute;
   top: 630px;
   left: 630px;
+  background-color: #f0f0f0;
 }
 
 #preferences_page_help_button {
@@ -591,6 +647,7 @@ h1 {
   position: absolute;
   top: 630px;
   left: 500px;
+  background-color: #f0f0f0;
 }
 
 #book_logo {
@@ -655,6 +712,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #close_at_least_one_profile_popup_button {
@@ -663,6 +721,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #close_at_least_one_card_popup_button {
@@ -671,6 +730,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 
@@ -680,6 +740,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #close_deck_exists_popup_button {
@@ -688,6 +749,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #close_profile_exists_popup_button {
@@ -696,6 +758,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #close_failed_login_popup {
@@ -704,6 +767,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #check_media_close_button {
@@ -712,6 +776,7 @@ h1 {
   position: absolute;
   top: 630px;
   left: 630px;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_study_button {
@@ -720,6 +785,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 30px;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_add_button {
@@ -728,6 +794,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 180px;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_cancel_button {
@@ -736,6 +803,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 330px;
+  background-color: #f0f0f0;
 }
 
 #study_deck_popup_help_button {
@@ -744,6 +812,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_add_button {
@@ -752,6 +821,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 70px;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_add_button {
@@ -760,6 +830,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 40px;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_cancel_button {
@@ -768,6 +839,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_cancel_button {
@@ -776,6 +848,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 180px;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_help_button {
@@ -784,6 +857,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 430px;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_help_button {
@@ -792,6 +866,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 460px;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_reset_button {
@@ -800,6 +875,7 @@ h1 {
   position: absolute;
   top: 375px;
   left: 320px;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_row_1 {
@@ -810,6 +886,7 @@ h1 {
   top: 100px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_row_2 {
@@ -820,6 +897,7 @@ h1 {
   top: 130px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_row_3 {
@@ -830,6 +908,7 @@ h1 {
   top: 160px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_row_4 {
@@ -840,6 +919,7 @@ h1 {
   top: 190px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #import_deck_popup_row_5 {
@@ -850,6 +930,7 @@ h1 {
   top: 220px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_row_1 {
@@ -860,6 +941,7 @@ h1 {
   top: 100px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_row_2 {
@@ -870,6 +952,7 @@ h1 {
   top: 130px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_row_3 {
@@ -880,6 +963,7 @@ h1 {
   top: 160px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_row_4 {
@@ -890,6 +974,7 @@ h1 {
   top: 190px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #export_deck_popup_row_5 {
@@ -900,6 +985,7 @@ h1 {
   top: 220px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #deck_to_study {
@@ -909,6 +995,7 @@ h1 {
   top: 60px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #deck_to_import {
@@ -918,6 +1005,7 @@ h1 {
   top: 60px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #deck_to_export {
@@ -927,45 +1015,50 @@ h1 {
   top: 60px;
   left: 50px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #exported_decks_number {
   height: 30px;
-  width: 400px;
+  width: 200px;
   position: absolute;
   top: 60px;
   left: 350px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #current_deck_study {
   display: none;
-  height: 30px;
+  height: 20px;
   width: 250px;
   position: absolute;
   top: 130px;
   left: 1000px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #current_card_number_study {
   display: none;
-  height: 30px;
+  height: 20px;
   width: 250px;
   position: absolute;
   top: 170px;
   left: 1000px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #number_of_cards_study {
   display: none;
-  height: 30px;
+  height: 20px;
   width: 250px;
   position: absolute;
   top: 150px;
   left: 1000px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #question {
@@ -976,6 +1069,7 @@ h1 {
   top: 150px;
   left: 400px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #answer {
@@ -986,6 +1080,7 @@ h1 {
   top: 250px;
   left: 400px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #preferences_dd_1 {
@@ -995,7 +1090,7 @@ h1 {
   position: absolute;
   top: 150px;
   left: 60px;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
 }
 
 #preferences_dd_2 {
@@ -1005,7 +1100,7 @@ h1 {
   position: absolute;
   top: 200px;
   left: 60px;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
 }
 
 #preferences_dd_3 {
@@ -1015,7 +1110,7 @@ h1 {
   position: absolute;
   top: 400px;
   left: 60px;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
 }
 
 #preferences_dd_4 {
@@ -1025,7 +1120,7 @@ h1 {
   position: absolute;
   top: 450px;
   left: 60px;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
 }
 
 #checkbox_1 {
@@ -1033,6 +1128,7 @@ h1 {
   position: absolute;
   top: 240px;
   left: 60px;
+  background: #f0f0f0;
 }
 
 #checkbox_2 {
@@ -1040,6 +1136,7 @@ h1 {
   position: absolute;
   top: 270px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_3 {
@@ -1047,6 +1144,7 @@ h1 {
   position: absolute;
   top: 300px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_4 {
@@ -1054,6 +1152,7 @@ h1 {
   position: absolute;
   top: 330px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_5 {
@@ -1061,6 +1160,7 @@ h1 {
   position: absolute;
   top: 360px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_6 {
@@ -1068,6 +1168,7 @@ h1 {
   position: absolute;
   top: 170px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_7 {
@@ -1075,6 +1176,7 @@ h1 {
   position: absolute;
   top: 200px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_8 {
@@ -1082,6 +1184,7 @@ h1 {
   position: absolute;
   top: 230px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_9 {
@@ -1089,6 +1192,7 @@ h1 {
   position: absolute;
   top: 260px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_10 {
@@ -1096,6 +1200,7 @@ h1 {
   position: absolute;
   top: 290px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_11 {
@@ -1103,6 +1208,7 @@ h1 {
   position: absolute;
   top: 150px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_12 {
@@ -1110,6 +1216,7 @@ h1 {
   position: absolute;
   top: 190px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_13 {
@@ -1117,6 +1224,7 @@ h1 {
   position: absolute;
   top: 230px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #checkbox_14 {
@@ -1124,6 +1232,7 @@ h1 {
   position: absolute;
   top: 270px;
   left: 60px;
+  background-color: #f0f0f0;
 }
 
 #increment_decrement_1 {
@@ -1131,6 +1240,7 @@ h1 {
   position: absolute;
   top: 545px;
   left: 640px;
+  background-color: #f0f0f0;
 }
 
 #increment_decrement_2 {
@@ -1138,6 +1248,7 @@ h1 {
   position: absolute;
   top: 340px;
   left: 240px;
+  background-color: #f0f0f0;
 }
 
 #increment_decrement_3 {
@@ -1145,6 +1256,7 @@ h1 {
   position: absolute;
   top: 440px;
   left: 240px;
+  background-color: #f0f0f0;
 }
 
 #increment_decrement_4 {
@@ -1152,6 +1264,7 @@ h1 {
   position: absolute;
   top: 540px;
   left: 240px;
+  background-color: #f0f0f0;
 }
 
 #increment_decrement_5 {
@@ -1159,6 +1272,7 @@ h1 {
   position: absolute;
   top: 150px;
   left: 240px;
+  background-color: #f0f0f0;
 }
 
 #number_of_backups_text {
@@ -1166,6 +1280,7 @@ h1 {
   position: absolute;
   top: 170px;
   left: 70px;
+  background-color: #f0f0f0;
 }
 
 #next_day_text {
@@ -1173,6 +1288,7 @@ h1 {
   position: absolute;
   top: 360px;
   left: 70px;
+  background-color: #f0f0f0;
 }
 
 #timebox_time_text {
@@ -1180,6 +1296,7 @@ h1 {
   position: absolute;
   top: 560px;
   left: 70px;
+  background-color: #f0f0f0;
 }
 
 #learn_ahead_text {
@@ -1187,6 +1304,7 @@ h1 {
   position: absolute;
   top: 460px;
   left: 70px;
+  background-color: #f0f0f0;
 }
 
 #user_interface_size_text {
@@ -1194,6 +1312,7 @@ h1 {
   position: absolute;
   top: 565px;
   left: 475px;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_open_button {
@@ -1202,6 +1321,7 @@ h1 {
   position: absolute;
   top: 80px;
   left: 450px;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_add_button {
@@ -1210,6 +1330,7 @@ h1 {
   position: absolute;
   top: 130px;
   left: 450px;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_rename_button {
@@ -1218,6 +1339,7 @@ h1 {
   position: absolute;
   top: 180px;
   left: 450px;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_delete_button {
@@ -1226,6 +1348,7 @@ h1 {
   position: absolute;
   top: 230px;
   left: 450px;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_open_backup_button {
@@ -1234,13 +1357,16 @@ h1 {
   position: absolute;
   top: 330px;
   left: 450px;
+  background-color: #f0f0f0;
 }
+
 #profile_popup_row {
   height: 30px;
   width: 100px;
   position: absolute;
   top: 50px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #add_profile_button {
@@ -1249,6 +1375,7 @@ h1 {
   position: absolute;
   top: 50px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #close_add_profile_popup_button {
@@ -1257,6 +1384,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #add_profile_popup_ok_button{
@@ -1265,6 +1393,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 360px;
+  background-color: #f0f0f0;
 }
 
 #add_profile_popup_row {
@@ -1275,6 +1404,7 @@ h1 {
   top: 50px;
   left: 30px;
   margin: auto;
+  background-color: #f0f0f0;
 }
 
 #switch_profile_popup_downgrade_button {
@@ -1283,6 +1413,7 @@ h1 {
   position: absolute;
   top: 380px;
   left: 450px;
+  background-color: #f0f0f0;
 }
 
 #profile_to_open {
@@ -1291,6 +1422,7 @@ h1 {
   position: absolute;
   top: 50px;
   left: 50px;
+  background-color: #f0f0f0;
 }
 
 #close_downgrade_popup_button {
@@ -1299,6 +1431,7 @@ h1 {
   position: absolute;
   top: 85px;
   left: 250px;
+  background-color: #f0f0f0;
 }
 
 #rename_profile_button {
@@ -1307,6 +1440,7 @@ h1 {
   position: absolute;
   top: 50px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #close_rename_profile_popup_button {
@@ -1315,6 +1449,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 480px;
+  background-color: #f0f0f0;
 }
 
 #rename_profile_popup_ok_button {
@@ -1323,6 +1458,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 360px;
+  background-color: #f0f0f0;
 }
 
 #rename_profile_popup_row {
@@ -1333,6 +1469,7 @@ h1 {
   top: 50px;
   left: 30px;
   margin: auto;
+  background: #f0f0f0;
 }
 
 #total_reward {
@@ -1342,6 +1479,7 @@ h1 {
   top: 330px;
   left: 100px;
   margin: auto;
+  background: #f0f0f0;
 }
 
 .check-media-popup-content {
@@ -1350,7 +1488,7 @@ h1 {
   position: absolute;
   top: 25px;
   left: 400px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1363,7 +1501,7 @@ h1 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
 }
 
@@ -1373,7 +1511,7 @@ h1 {
   position: absolute;
   top: 200px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1384,7 +1522,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 475px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1395,7 +1533,7 @@ h1 {
   position: absolute;
   top: 100px;
   left: 475px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1403,6 +1541,7 @@ h1 {
 .popup-content button {
     display: block;
     margin: 0 auto;
+    background: #f0f0f0;
 }
 
 .show {
@@ -1415,7 +1554,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1426,7 +1565,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1437,7 +1576,7 @@ h1 {
   position: absolute;
   top: 175px;
   left: 550px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1448,7 +1587,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 475px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1459,7 +1598,7 @@ h1 {
   position: absolute;
   top: 25px;
   left: 400px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1470,7 +1609,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1481,7 +1620,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1492,7 +1631,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1503,7 +1642,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1514,7 +1653,7 @@ h1 {
   position: absolute;
   top: 25px;
   left: 400px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1525,7 +1664,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1536,7 +1675,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1547,7 +1686,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1558,7 +1697,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1569,7 +1708,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1580,7 +1719,7 @@ h1 {
   position: absolute;
   top: 25px;
   left: 400px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1591,7 +1730,7 @@ h1 {
   position: absolute;
   top: 125px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1602,7 +1741,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1613,7 +1752,7 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
 }
@@ -1624,7 +1763,11 @@ h1 {
   position: absolute;
   top: 250px;
   left: 450px;  
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   border: 1px solid #888888;
   font-weight: bolder;
+}
+
+body {
+  background: #f0f0f0;
 }
