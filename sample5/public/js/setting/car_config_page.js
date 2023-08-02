@@ -62,8 +62,6 @@ function calcProp() {
   saveValidCars();
 }
 
-
-
 function maintainState() {
   savedTires = JSON.parse(sessionStorage.getItem("tires"))
     ? JSON.parse(sessionStorage.getItem("tires"))

@@ -96,10 +96,12 @@ function determineValidCars() {
 function saveValidCars() {
   disabledCars = [];
   isCarDisabled = false;
+
   for (let carNum = 0; carNum < definedCars.length; carNum++) {
     stateCar = sessionStorage.getItem(definedCars[carNum].get(carProperties[4]))
       ? sessionStorage.getItem(definedCars[carNum].get(carProperties[4]))
       : false;
+
     if (eval(stateCar)) {
       if (!eval(definedCars[carNum].get(carProperties[3])[0])) {
         disabledCars.push(definedCars[carNum].get(carProperties[4])[0]);
@@ -115,14 +117,21 @@ function saveValidCars() {
     $("#txtDisabledCars").text(disabledCars);
     $("#modalDisabledCars").modal("show");
   }
-  var voteCardsArray = [
-    { placeInfo: { id: 42, desc: 'stuff 42' } },
-    { placeInfo: { id: 65, desc: 'stuff 65' } },
-    { placeInfo: { id: 89, desc: 'stuff 89' } },
-];
 
-//Abspeichern userDefined und in car config main page auslesen und in select richtig anzeigen
-sessionStorage.myMap = JSON.stringify(Array.from(userDefinedCar[0].entries()));
-map = new Map(JSON.parse(sessionStorage.myMap));
-console.log(map)
+  //Abspeichern definedCars und in car config main page auslesen und in select richtig anzeigen
+  if (definedCars[0].get(carProperties[3])[0]) {
+    sessionStorage.carA = JSON.stringify(Array.from(definedCars[0].entries()));
+  } else {
+    sessionStorage.carA = null;
+  }
+  if (definedCars[1].get(carProperties[3])[0]) {
+    sessionStorage.carB = JSON.stringify(Array.from(definedCars[1].entries()));
+  } else {
+    sessionStorage.carB = null;
+  }
+  if (definedCars[2].get(carProperties[3])[0]) {
+    sessionStorage.carC = JSON.stringify(Array.from(definedCars[2].entries()));
+  } else {
+    sessionStorage.carC = null;
+  }
 }

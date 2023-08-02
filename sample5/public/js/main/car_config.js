@@ -31,9 +31,10 @@ const cEngine = [
 ];
 const cValid = [true];
 const cName = ["Car C"];
+const mappingName = { "Car A": "carA", "Car B": "carB", "Car C": "carC" };
 
 const carFirstLetter = "abcdefghijklmnopqrstuvwxyz".split("");
-const userDefinedCar = createCar();
+let userDefinedCar = [];
 const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
   ? sessionStorage.getItem("stateFigPrinter")
   : "hidden";
@@ -44,8 +45,13 @@ function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
 }
 
+
+getCars();
 getValidCars();
 addValidCars();
+console.log(userDefinedCar);
+
+
 
 function createCar() {
   let standardCars = [];
@@ -81,7 +87,6 @@ function getValidCars() {
       : [true];
     userDefinedCar[carNum].set(carProperties[3], [eval(carArrays)]);
   }
-  console.log(userDefinedCar)
 }
 
 function addValidCars() {
@@ -96,6 +101,27 @@ function addValidCars() {
   }
 }
 
+function getCars() {
+  carA = sessionStorage.getItem("Car A")
+   
+  carB = sessionStorage.getItem("Car B")
+    
+  carC = sessionStorage.getItem("Car C")
+    
+  
+  if (eval(carA)) {
+    userDefinedCar.push(new Map(JSON.parse(sessionStorage.carA)));
+  }else if(carA ==null){
+    userDefinedCar = createCar();
+  }
+  if (eval(carB)) {
+    userDefinedCar.push(new Map(JSON.parse(sessionStorage.carB)));
+  }
+  if (eval(carC)) {
+    userDefinedCar.push(new Map(JSON.parse(sessionStorage.carC)));
+  }
+}
+
 function selectedCar() {
   selectorModel = document.getElementById("Model");
   carName = selectorModel.options[selectorModel.selectedIndex].text;
@@ -105,7 +131,9 @@ function selectedCar() {
 
   for (let carNum = 0; carNum < userDefinedCar.length; carNum++) {
     if (userDefinedCar[carNum].get(carProperties[4]) == carName) {
+      
       basedCar = userDefinedCar[carNum];
+
       break;
     }
   }
@@ -245,7 +273,7 @@ function maintainState() {
 
   for (let propNum = 0; propNum < props.length; propNum++) {
     if (props[propNum].includes("btn")) {
-      displayConfigBtn()
+      displayConfigBtn();
     } else {
       configProp = document.getElementById(props[propNum] + DIV);
       addOption(props[propNum]);
