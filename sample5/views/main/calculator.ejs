@@ -17,38 +17,51 @@
             <a class="btn btn-primary" id="btn_settings" href="/setting/txt_printer_page" role="button">Settings</a>
         </div>
         <div class="box">
-            <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
-            <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
-            <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
-            <a class="btn btn-primary" id="btn_fig_printer" href="/fig_printer" role="button">Figure Printer</a>
-
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+                style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+                <a role="button" id="btn_txt_printer" class="btn btn-outline-primary mt-2" href="/txt_printer">Text
+                    Printer</a>
+                <a role="button" id="btn_calculator" class="btn btn-outline-primary mt-2"
+                    href="/calculator">Calculator</a>
+                <a role="button" id="btn_car_config" class="btn btn-outline-primary mt-2" href="/car_config">Car
+                    Configuraton</a>
+                <a role="button" id="btn_fig_printer" class="btn btn-outline-primary mt-2" href="/fig_printer">Figure
+                    Printer</a>
+            </div>
         </div>
         <div class="box">
-            <div id="calc_result">
-                CALCULATOR
+            <div class="container my-3" id="calc_result">
+                TEXT PRINTER
             </div>
             <div class="btn_calc_group">
-                <select class="calc_selector" name="first_digit" id="first_digit">
-                    <option value="null">0</option>
-                    <option value="eins">1</option>
-                    <option value="zwei">2</option>
-                    <option value="drei">3</option>
-                    <option value="vier">4</option>
-                </select>
-                <select class="calc_selector" name="calc_rule" id="calc_rule">
-                    <!-- <option value="plus">+</option> -->
-                </select>
-                <select class="calc_selector" name="second_digit" id="second_digit">
-                    <option value="null">0</option>
-                    <option value="eins">1</option>
-                    <option value="zwei">2</option>
-                    <option value="drei">3</option>
-                    <option value="vier">4</option>
-                </select>
+                <div class="form-check form-check-inline">
+                    <select class="form-select d-inline" name="first_digit" id="first_digit">
+                        <option value="null">0</option>
+                        <option value="eins">1</option>
+                        <option value="zwei">2</option>
+                        <option value="drei">3</option>
+                        <option value="vier">4</option>
+                    </select>
+                </div>
+                <div class="form-check form-check-inline">
+                    <select class="form-select d-inline" name="calc_rule" id="calc_rule">
+                    </select>
+                </div>
+                <div class="form-check form-check-inline">
+                    <select class="form-select d-inline" name="second_digit" id="second_digit">
+                        <option value="null">0</option>
+                        <option value="eins">1</option>
+                        <option value="zwei">2</option>
+                        <option value="drei">3</option>
+                        <option value="vier">4</option>
+                    </select>
+                </div>
             </div>
-            <button id="btn_calc_solution" onclick=updateCalc()>Calculate</button>
+            <div class="text-center" id="container_solution">
+                <button type="button" class="btn btn-primary"  id="btn_calc_solution"
+                    onclick=updateCalc()>Calculate</button>
+            </div>
         </div>
-
     </main>
     <!-- Modal -->
     <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" data-bs-backdrop="static"
@@ -71,7 +84,7 @@
 
 </body>
 <script type="application/javascript" src="js/main/calculator.js"></script>
-<script type="application/javascript" src="js/bootstrap.bundle.min.js" ></script>
+<script type="application/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
 </html>

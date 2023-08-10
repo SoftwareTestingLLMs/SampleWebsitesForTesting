@@ -1,5 +1,4 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
 /*Basic style of website*/
 .container {
@@ -63,17 +62,11 @@
 
 #txt_content {
   background-color: white;
-  width: 90%;
-  height: 75%;
-  margin: 10px;
   border: 3px solid black;
+  width: 90%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.btn_printer {
-  height: 25px;
-  width: 150px;
-  margin: 10px;
-}

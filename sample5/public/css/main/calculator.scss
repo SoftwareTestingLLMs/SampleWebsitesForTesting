@@ -1,98 +1,104 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
 /*Basic style of website*/
-
 .container {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1em;
-    grid-template-rows: 50px 245px 245px;
-  }
-  
-  .btn_menu {
-    height: 25px;
-    width: 150px;
-    margin: 10px;
-  }
-  #btn_settings {
-    border: none;
-    background-color: inherit;
-    padding: 10px 10px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .box:nth-child(1) {
-    background-color: blueviolet;
-    grid-column-start: 1;
-    grid-column-end: 6;
-    font-size: 30px;
-    color: black;
-    display: flex;
-    align-items: end;
-    justify-content: start;
-  }
-  
-  .box:nth-child(2) {
-    background-color: brown;
-    grid-row-start: 2;
-    grid-row-end: end;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
-  
-  .box:nth-child(3) {
-    background-color: coral;
-    grid-row-start: 2;
-    grid-row-end: end;
-    grid-column-start: 2;
-    grid-column-end: 6;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  /*Style for calculator functionality*/
-  
-  #calc_result {
-    background-color: white;
-    width: 90%;
-    height: 60%;
-    margin: 10px;
-    border: 3px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .btn_calc_group {
-    margin: 10px;
-    padding: 5px;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 70%;
-  }
-  
-  #btn_calc_solution {
-    margin: 10px;
-    height: 25px;
-    width: 150px;
-    position: absolute;
-    top: 85%;
-  }
-  
-  .calc_selector {
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 30px;
-  }
-  
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1em;
+  grid-template-rows: 50px 245px 245px;
+}
+
+.btn_menu {
+  height: 25px;
+  width: 150px;
+  margin: 10px;
+}
+#btn_settings {
+  border: none;
+  background-color: inherit;
+  padding: 10px 10px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;
+}
+.box:nth-child(1) {
+  background-color: blueviolet;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  font-size: 30px;
+  color: black;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+}
+
+.box:nth-child(2) {
+  background-color: brown;
+  grid-row-start: 2;
+  grid-row-end: end;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.box:nth-child(3) {
+  background-color: coral;
+  grid-row-start: 2;
+  grid-row-end: end;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*Style for calculator functionality*/
+
+#calc_result {
+  background-color: white;
+  border: 3px solid black;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_calc_group {
+  margin: 10px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 70%;
+}
+
+#container_solution {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 8%;
+  left: 60.2%;
+}
+
+#first_digit {
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#second_digit {
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+#calc_rule {
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+}
