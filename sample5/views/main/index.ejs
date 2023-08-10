@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,24 +12,27 @@
 <body>
   <main class="container">
     <div class="box" id="settings">
-      <a class="btn btn-primary" id="btn_settings" href="/setting/txt_printer_page" role="button">Settings</a>
+      <a class="btn btn-primary" type="button" id="btn_settings" href="/setting/txt_printer_page" role="button">Settings</a>
     </div>
     <div class="box">
-      <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
-      <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
-      <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
+      <div class="btn-group-vertical btn-group" role="group" aria-label="menu" style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 95%;">
+        <button type="button" id="btn_txt_printer"  class="btn btn-outline-primary mt-2" href="/txt_printer">Text Printer</button>
+        <button type="button" id="btn_calculator" class="btn btn-outline-primary mt-2" href="/calculator">Calculator</button>
+        <button type="button" id="btn_car_config" class="btn btn-outline-primary mt-2" href="/car_config">Car Configuraton</button>
+      </div>
     </div>
     <div class="box">
       <div id="content">
         HALLLOO
       </div>
     </div>
-   
+
 
   </main>
-  
+
 </body>
 <script type="application/javascript" src="js/main/index.js"></script>
-<script type="application/javascript" src="js/bootstrap.bundle.min.js" ></script>
+<script type="application/javascript" src="js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
 </html>
