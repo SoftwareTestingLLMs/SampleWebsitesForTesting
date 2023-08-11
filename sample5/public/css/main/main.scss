@@ -1,7 +1,12 @@
+$primary: #0747A6;
+
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 
 /*Basic style of website*/
+body{
+  background-color: $blue-700;
+}
 .container {
   display: grid;
   grid-auto-flow: column;
@@ -16,8 +21,8 @@
 }
 
 #btn_settings {
-  border: none;
-  background-color: inherit;
+  border: none; 
+  background-color: inherit; 
   padding: 10px 10px;
   font-size: 25px;
   cursor: pointer;
@@ -25,7 +30,7 @@
 }
 
 .box:nth-child(1) {
-  background-color: blueviolet;
+  background-color: #A4CDF2;
   grid-column-start: 1;
   grid-column-end: 6;
   font-size: 30px;
@@ -36,7 +41,7 @@
 }
 
 .box:nth-child(2) {
-  background-color: brown;
+  background-color: #A4CDF2;
   grid-row-start: 2;
   grid-row-end: end;
   grid-column-start: 1;
@@ -48,7 +53,7 @@
 }
 
 .box:nth-child(3) {
-  background-color: coral;
+  background-color: #A4CDF2;
   grid-row-start: 2;
   grid-row-end: end;
   grid-column-start: 2;
@@ -58,3 +63,11 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+#content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+

@@ -4,7 +4,6 @@ const path = require("path");
 router.set("view engine", "ejs");
 router.set("views", path.join(__dirname, "../views/setting"));
 
-console.log(__dirname)
 router.get("/txt_printer_page", (req, res) => {
   res.render("txt_printer_page");
 });
@@ -21,5 +20,6 @@ router.get("/fig_printer_page", (req, res) => {
   res.render("fig_printer_page");
 });
 
+console.log(__dirname)
 
 module.exports = router;

@@ -16,47 +16,56 @@
             <a class="btn btn-primary" id="btn_settings" href="/setting/txt_printer_page" role="button">Settings</a>
         </div>
         <div class="box">
-            <a class="btn btn-primary" id="btn_txt_printer" href="/txt_printer" role="button">Text Printer</a>
-            <a class="btn btn-primary" id="btn_calculator" href="/calculator" role="button">Calculator</a>
-            <a class="btn btn-primary" id="btn_car_config" href="/car_config" role="button">Car Configuraton</a>
-            <a class="btn btn-primary" id="btn_fig_printer" href="/fig_printer" role="button">Figure Printer</a>
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+                style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+                <a role="button" id="btn_txt_printer" class="btn btn-outline-primary mt-2" href="/txt_printer">Text
+                    Printer</a>
+                <a role="button" id="btn_calculator" class="btn btn-outline-primary mt-2"
+                    href="/calculator">Calculator</a>
+                <a role="button" id="btn_car_config" class="btn btn-outline-primary mt-2" href="/car_config">Car
+                    Configuraton</a>
+                <a role="button" id="btn_fig_printer" class="btn btn-outline-primary mt-2" href="/fig_printer">Figure
+                    Printer</a>
+            </div>
         </div>
         <div class="box">
-            <p id="title_car_config">Choose a car Configuration:</p>
             <div id="selec_car_config_grp">
-                <div class="car_config" id="Model_div">
-                    <p>First select the car model:</p>
-                    <select class="car_config_selec" name="Model" id="Model"
+                <p class="h4" id="title_car_config">Choose a car configuration:</p>
+                <div class="form-check car_config" id="Model_div">
+                    <p class="h6">First select the car model:</p>
+                    <select class="form-select car_config_selec" name="Model" id="Model"
                         onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this));saveDisplayed(this.id);  saveDisplayed(getNextConfig(this)); saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
-                <div class="car_config" id="Tire_div" style="display: none;">
-                    <p>Now choose the tires:</p>
-                    <select class="car_config_selec" name="Tire" id="Tire"
+
+                <div class="form-check car_config" id="Tire_div" style="display: none;">
+                    <p class="h6">Now choose the tires:</p>
+                    <select class="form-select car_config_selec" name="Tire" id="Tire"
                         onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 
-                <div class="car_config" id="Interior_div" style="display: none;">
-                    <p>Next the interior design:</p>
-                    <select class="car_config_selec" name="Interior" id="Interior"
+                <div class="form-check car_config" id="Interior_div" style="display: none;">
+                    <p class="h6">Next the interior design:</p>
+                    <select class="form-select car_config_selec" name="Interior" id="Interior"
                         onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
                         onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
 
-                <div class="car_config" id="Engine_div" style="display: none;">
-                    <p>Finally the propulsion system:</p>
-                    <select class="car_config_selec" name="Engine" id="Engine"
-                        onchange="displayConfigBtn(); saveDisplayed('btn_display_config'); saveValue(this.id)" onfocus="this.selectedIndex = -1;">
+                <div class="form-check car_config" id="Engine_div" style="display: none;">
+                    <p class="h6">Finally the propulsion system:</p>
+                    <select class="form-select car_config_selec" name="Engine" id="Engine"
+                        onchange="displayConfigBtn(); saveDisplayed('btn_display_config'); saveValue(this.id)"
+                        onfocus="this.selectedIndex = -1;">
                     </select>
                 </div>
-
+                <button type="button" class="btn btn-primary" id="btn_display_config" style="display: none;"
+                    onclick=displayResultConfig()>Show
+                    Configuration</button>
             </div>
-            <button id="btn_display_config" style="display: none;" onclick=displayResultConfig()>Show
-                Configuration</button>
         </div>
     </main>
     <!-- Modal -->
