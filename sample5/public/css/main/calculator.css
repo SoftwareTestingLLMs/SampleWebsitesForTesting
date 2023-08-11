@@ -1,6 +1,8 @@
 /*Style for calculator functionality*/
 #calc_result {
-  background-color: white;
+  background-color: #14417c;
+  color: white;
+  font-size: 25px;
   border: 3px solid black;
   width: 90%;
   height: 60%;
