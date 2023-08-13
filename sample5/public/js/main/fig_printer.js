@@ -4,6 +4,7 @@ const SLASH = "/";
 const BRACE_LEFT = "[";
 const BRACE_RIGHT = "]";
 const LINE_BREAK = "<br>";
+const colorPosition ={"heart":"&nbsp Color.","pyramid": "&nbsp&nbsp&nbsp&nbsp Color.","triangle":"Color.","diamond":"Color."}
 const selecFigure = document.getElementById("figure_ops");
 const settingFigures = JSON.parse(sessionStorage.getItem("figure"))
   ? JSON.parse(sessionStorage.getItem("figure"))
@@ -62,7 +63,7 @@ function printText() {
   document.getElementById("txt_content").innerHTML =
     eval(selectedFig.toLowerCase() + "()") +
     LINE_BREAK +
-    "Color." +
+    colorPosition[selectedFig.toLowerCase()].toString() +
     color.toUpperCase();
 }
 

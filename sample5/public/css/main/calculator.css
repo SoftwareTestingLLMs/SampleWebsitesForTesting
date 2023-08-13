@@ -13,7 +13,7 @@
 
 .btn_calc_group {
   margin: 10px;
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -21,11 +21,12 @@
 }
 
 #container_solution {
+  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 8%;
-  left: 60.2%;
+  left: 60%;
 }
 
 #first_digit {

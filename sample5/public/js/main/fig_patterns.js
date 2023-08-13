@@ -30,7 +30,7 @@ function triangle() {
         " ".repeat(h - i - 1) +
         s
           .repeat(i + 1)
-          .split("")
+          .split("") 
           .join(" ") +
         " ".repeat(h - i - 1)
     )
@@ -76,7 +76,7 @@ function diamond() {
   for (let i = 1; i <= n; i++) {
     // printing spacres
     for (let j = n; j > i; j--) {
-      string += "&nbsp &nbsp";
+      string += "&nbsp&nbsp";
     }
     // printing star
     for (let k = 0; k < i * 2 - 1; k++) {
@@ -88,7 +88,7 @@ function diamond() {
   for (let i = 1; i <= n - 1; i++) {
     // printing spaces
     for (let j = 0; j < i; j++) {
-      string += "&nbsp &nbsp";
+      string += "&nbsp&nbsp";
     }
     // printing star
     for (let k = (n - i) * 2 - 1; k > 0; k--) {
