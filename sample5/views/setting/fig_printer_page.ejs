@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NaturalNets</title>
-    <link rel="stylesheet" type="text/css" href="../css/setting/setting.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/basicStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/setting/setting.css">
 
 </head>
 
@@ -14,43 +15,67 @@
     <main class="container">
         <div class="box" id="txt_settings">Configure the settings of your model</div>
         <div class="box">
-            <a class="btn btn-primary" id="btn_txt_printer" href="/setting/txt_printer_page" role="button">Text
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+            style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+            <a role="button" id="btn_txt_printer" class="btn btn-primary mt-2" href="/setting/txt_printer_page">Text
                 Printer</a>
-            <a class="btn btn-primary" id="btn_calculator" href="/setting/calculator_page" role="button">Calculator</a>
-            <a class="btn btn-primary" id="btn_car_config" href="/setting/car_config_page" role="button">Car
+            <a role="button" id="btn_calculator" class="btn btn-primary mt-2"
+                href="/setting/calculator_page">Calculator</a>
+            <a role="button" id="btn_car_config" class="btn btn-primary mt-2" href="/setting/car_config_page">Car
                 Configuraton</a>
-            <a class="btn btn-primary" id="btn_fig_printer" href="/setting/fig_printer_page" role="button">Figure
+            <a role="button" id="btn_car_config" class="btn btn-primary mt-2"
+                href="/setting/fig_printer_page">Figure
                 Printer</a>
+        </div>
 
         </div>
-        <div class="box">
-            <div class="fig_config">
-                <div class="fig_config" id="activateFigPrinter">
+        <div class="box" style="align-items: center;">
+            <div class="fig_config" style="display: flex;flex-direction: column;">
+
+                <div class="fig_config" id="activateFigPrinter" style="display: flex;justify-content: space-evenly;">
                     <input type="checkbox" id="activate" onchange="toggleSelection();saveState()" />
-                    <label for="activate">Activate Figure Printer</label><br>
+                    <label for="activate" style="color: white;">Activate Figure Printer</label><br>
                 </div>
-                <div class="txt_config" id="cb_group">
-                    <input type="checkbox" id="pyramid" onchange="saveFig()" name="figure" checked value="pyramid" />
-                    <label for="pyramid">Pyramid</label><br>
-                    <input type="checkbox" id="heart" onchange="saveFig()" name="figure" value="heart" />
-                    <label for="heart">Heart</label><br>
-                    <input type="checkbox" id="triangle" onchange="saveFig()" name="figure" value="triangle" />
-                    <label for="triangle">Triangle</label><br>
-                    <input type="checkbox" id="diamond" onchange="saveFig()" name="figure" value="diamond" />
-                    <label for="diamond">Diamond</label><br>
+                <div class="txt_config d-flex flex-column justify-content-end align-items-start">
+                    <div>
+                        <input type="checkbox" id="pyramid" onchange="saveFig()" name="figure" checked
+                            value="pyramid" />
+                        <label for="pyramid">Pyramid</label>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="checkbox" id="heart" onchange="saveFig()" name="figure" value="heart" />
+                        <label for="heart">Heart</label>
+                    </div><br>
+                    <div>
+                        <input type="checkbox" id="triangle" onchange="saveFig()" name="figure" value="triangle" />
+                        <label for="triangle">Triangle</label>
+                    </div><br>
+                    <div>
+                        <input type="checkbox" id="diamond" onchange="saveFig()" name="figure" value="diamond" />
+                        <label for="diamond">Diamond</label>
+                    </div>
                 </div>
-                <div class="txt_config">
-                    <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
-                    <label for="red">Red</label><br>
-                    <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
-                    <label for="blue">Blue</label><br>
-                    <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
-                    <label for="green">Green</label><br>
-                    <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
-                    <label for="black">Black</label>
+                <div class="txt_config" style="display: flex;flex-direction: column;align-items: start;">
+                    <div>
+                        <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
+                        <label for="red">Red</label>
+                    </div>
+                    <br>
+                    <div> <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
+                        <label for="blue">Blue</label>
+                    </div>
+                    <br>
+                    <div> <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
+                        <label for="green">Green</label>
+                    </div>
+                    <br>
+                    <div> <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
+                        <label for="black">Black</label>
+                    </div>
                 </div>
-                <a class="btn btn-primary" id="btn_close" href="../txt_printer"
-                    role="button">Close</a>
+                <a class="btn btn-primary" id="btn_close" href="../txt_printer" role="button">Close</a>
+            </div>
     </main>
 </body>
 <script src="../js/setting/fig_printer_page.js"></script>

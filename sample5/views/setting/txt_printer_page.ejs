@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NaturalNets</title>
-    <link rel="stylesheet" type="text/css" href="../css/setting/setting.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/basicStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/setting/setting.css">
 
 </head>
 
@@ -14,17 +15,20 @@
     <main class="container">
         <div class="box" id="txt_settings">Configure the settings of your model</div>
         <div class="box">
-            <a class="btn btn-primary" id="btn_txt_printer" href="/setting/txt_printer_page" role="button">Text
-                Printer</a>
-            <a class="btn btn-primary" id="btn_calculator" href="/setting/calculator_page" role="button">Calculator</a>
-
-            <a class="btn btn-primary" id="btn_car_config" href="/setting/car_config_page" role="button">Car
-                Configuraton</a>
-            <a class="btn btn-primary" id="btn_fig_printer" href="/setting/fig_printer_page" role="button">Figure
-                Printer</a>
-
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+                style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+                <a role="button" id="btn_txt_printer" class="btn btn-primary mt-2" href="/setting/txt_printer_page">Text
+                    Printer</a>
+                <a role="button" id="btn_calculator" class="btn btn-primary mt-2"
+                    href="/setting/calculator_page">Calculator</a>
+                <a role="button" id="btn_car_config" class="btn btn-primary mt-2" href="/setting/car_config_page">Car
+                    Configuraton</a>
+                <a role="button" id="btn_car_config" class="btn btn-primary mt-2"
+                    href="/setting/fig_printer_page">Figure
+                    Printer</a>
+            </div>
         </div>
-        <div class="box">
+        <div class="box" style="align-items: center;flex-direction: column;">
             <div class="txt_config">
                 <p>Number of words:</p>
                 <select class="selec_number" onchange="saveNumber()" name="number" id="number">
@@ -34,24 +38,26 @@
                     <option value="400">400</option>
                 </select>
             </div>
-            <div class="txt_config">
-                <p>Front size:</p>
-                <select class="selec_font_size" onchange="saveFontSize()" name="font_size" id="font_size">
-                    <option value="12">12</option>
-                    <option value="14">14</option>
-                    <option value="16">16</option>
-                    <option value="18">18</option>
-                    <option value="20">20</option>
-                </select>
-            </div>
-            <div class="txt_config">
-                <p>Front:</p>
-                <select class="selec_font" onchange="saveFont()" name="font" id="font">
-                    <option value="DejaVu Sans">DejaVu Sans</option>
-                    <option value="Liberation Mono">Liberation Mono</option>
-                    <option value="Nimbus Roman">Nimbus Roman</option>
-                    <option value="Ubuntu">Ubuntu</option>
-                </select>
+            <div class="d-flex flex-row">
+                <div class="txt_config">
+                    <p>Front size:</p>
+                    <select class="selec_font_size" onchange="saveFontSize()" name="font_size" id="font_size">
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="18">18</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+                <div class="txt_config">
+                    <p>Front:</p>
+                    <select class="selec_font" onchange="saveFont()" name="font" id="font">
+                        <option value="DejaVu Sans">DejaVu Sans</option>
+                        <option value="Liberation Mono">Liberation Mono</option>
+                        <option value="Nimbus Roman">Nimbus Roman</option>
+                        <option value="Ubuntu">Ubuntu</option>
+                    </select>
+                </div>
             </div>
             <div class="txt_config">
                 <p>Color of text:</p>
@@ -73,6 +79,7 @@
                 <label for="underline">Underline</label><br>
             </div>
             <a class="btn btn-primary" id="btn_close" href="../txt_printer" role="button">Close</a>
+        </div>
     </main>
 </body>
 <script src="../js/setting/txt_printer_page.js"></script>
