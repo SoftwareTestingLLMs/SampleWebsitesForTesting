@@ -28,57 +28,76 @@
                     Printer</a>
             </div>
         </div>
-        <div class="box" style="align-items: center;flex-direction: column;">
-            <div class="txt_config">
-                <p>Number of words:</p>
-                <select class="selec_number" onchange="saveNumber()" name="number" id="number">
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="400">400</option>
-                </select>
-            </div>
-            <div class="d-flex flex-row">
+        <div class="box">
+            <div class="d-flex align-items-center flex-column">
                 <div class="txt_config">
-                    <p>Front size:</p>
-                    <select class="selec_font_size" onchange="saveFontSize()" name="font_size" id="font_size">
-                        <option value="12">12</option>
-                        <option value="14">14</option>
-                        <option value="16">16</option>
-                        <option value="18">18</option>
-                        <option value="20">20</option>
+                    <p class="h6">Number of words:</p>
+                    <select class="form-select" onchange="saveNumber()" name="number" id="number">
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="400">400</option>
                     </select>
                 </div>
-                <div class="txt_config">
-                    <p>Front:</p>
-                    <select class="selec_font" onchange="saveFont()" name="font" id="font">
-                        <option value="DejaVu Sans">DejaVu Sans</option>
-                        <option value="Liberation Mono">Liberation Mono</option>
-                        <option value="Nimbus Roman">Nimbus Roman</option>
-                        <option value="Ubuntu">Ubuntu</option>
-                    </select>
+                <div class="d-flex flex-row">
+                    <div class="txt_config">
+                        <p class="h6">Front size:</p>
+                        <select class="form-select" onchange="saveFontSize()" name="font_size" id="font_size">
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="18">18</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="txt_config">
+                        <p class="h6">Front:</p>
+                        <select class="form-select" onchange="saveFont()" name="font" id="font">
+                            <option value="DejaVu Sans">DejaVu Sans</option>
+                            <option value="Liberation Mono">Liberation Mono</option>
+                            <option value="Nimbus Roman">Nimbus Roman</option>
+                            <option value="Ubuntu">Ubuntu</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="txt_config" style="color:white;">
+                    <p class="h6" style="color: black;">Text color:</p>
+                    <div>
+                        <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
+                        <label for="red">Red</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
+                        <label for="blue">Blue</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
+                        <label for="green">Green</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
+                        <label for="black">Black</label>
+                    </div>
+                </div>
+                <div class="txt_config" style="color:white">
+                    <p class="h6" style="color: black;">Text style: </p>
+                    <div>
+                        <input type="checkbox" id="bold" onchange="saveStyle()" name="style" />
+                        <label for="bold">Bold</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="italic" onchange="saveStyle()" name="style" />
+                        <label for="italic">Italic</label>
+
+                    </div>
+                    <div>
+                        <input type="checkbox" id="underline" onchange="saveStyle()" name="style" />
+                        <label for="underline">Underline</label>
+                    </div>
+                </div>
+                <a class="btn btn-primary" style="width: 50%;" id="btn_close" href="../txt_printer"
+                    role="button">Close</a>
             </div>
-            <div class="txt_config">
-                <p>Color of text:</p>
-                <input type="radio" id="red" onchange="saveColor()" name="color" value="red">
-                <label for="red">Red</label><br>
-                <input type="radio" id="blue" onchange="saveColor()" name="color" value="blue">
-                <label for="blue">Blue</label><br>
-                <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
-                <label for="green">Green</label><br>
-                <input type="radio" id="black" onchange="saveColor()" name="color" value="black" checked>
-                <label for="black">Black</label>
-            </div>
-            <div class="txt_config" id="cb_group">
-                <input type="checkbox" id="bold" onchange="saveStyle()" name="style" />
-                <label for="bold">Bold</label><br>
-                <input type="checkbox" id="italic" onchange="saveStyle()" name="style" />
-                <label for="italic">Italic</label><br>
-                <input type="checkbox" id="underline" onchange="saveStyle()" name="style" />
-                <label for="underline">Underline</label><br>
-            </div>
-            <a class="btn btn-primary" id="btn_close" href="../txt_printer" role="button">Close</a>
         </div>
     </main>
 </body>
