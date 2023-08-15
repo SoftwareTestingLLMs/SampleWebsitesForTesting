@@ -29,31 +29,44 @@
             </div>
 
         </div>
-        <div class="box" style="align-items: center;flex-direction: column;">
-            <div style="flex-direction: column;">
-                <div class="calc_config">
+        <div class="box" style="align-content: center;" >
+            <div style="display:flex;flex-direction: column;align-items: flex-start;justify-content: center;">
+                <div class="calc_config" style="margin-bottom: 20px;">
                     <p class="h6">Numeral System:</p>
-                    <select class="selec_system" onchange="saveNumSys()" name="num_sys" id="num_sys">
-                        <option value="decimal">Base 10</option>
-                        <option value="binary">Base 2</option>
-                        <option value="hex">Base 16</option>
-                    </select>
+                    <div class="form-check" style="padding-left: 0%;">
+                        <select class="form-select" onchange="saveNumSys()" name="num_sys" id="num_sys">
+                            <option value="decimal">Base 10</option>
+                            <option value="binary">Base 2</option>
+                            <option value="hex">Base 16</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="calc_config" id="cb_group">
-                    <p class="h6">Activated arithmetics :</p>
-                    <input type="checkbox" id="addition" name="arithmetic" checked
-                        onchange=checkReq();saveAritmetic() />
-                    <label for="addition">Addition</label><br>
-                    <input type="checkbox" id="subtraction" name="arithmetic" onchange=checkReq();saveAritmetic() />
-                    <label for="subtraction">Subtraction</label><br>
-                    <input type="checkbox" id="multiplication" name="arithmetic" onchange=checkReq();saveAritmetic() />
-                    <label for="multiplication">Multiplication</label><br>
-                    <input type="checkbox" id="division" name="arithmetic" onchange=checkReq();saveAritmetic() />
-                    <label for="division">Division</label>
+                <div class="calc_config" id="cb_group" style="margin-bottom: 20px;color: white;">
+                    <p class="h6" style="color: black;">Activated arithmetics :</p>
+                    <div>
+                        <input type="checkbox" id="addition" name="arithmetic" checked
+                            onchange=checkReq();saveAritmetic() />
+                        <label for="addition">Addition</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="subtraction" name="arithmetic" onchange=checkReq();saveAritmetic() />
+                        <label for="subtraction">Subtraction</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="multiplication" name="arithmetic"
+                            onchange=checkReq();saveAritmetic() />
+                        <label for="multiplication">Multiplication</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="division" name="arithmetic" onchange=checkReq();saveAritmetic() />
+                        <label for="division">Division</label>
+                    </div>
                 </div>
+                <a class="btn btn-primary" id="btn_close" href="../calculator" role="button"
+                    style="width: 100%;">Close</a>
+
             </div>
 
-            <a class="btn btn-primary" id="btn_close" href="../calculator" role="button">Close</a>
         </div>
 
     </main>
