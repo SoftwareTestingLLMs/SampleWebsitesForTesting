@@ -1,9 +1,25 @@
 const DEFAULT_COLOR = "black";
 const DEFAULT_FIGURE = "tree";
 const stateActivate = document.getElementById("activate");
+const defaultFig = document.getElementById("pyramid");
 
 toggleSelection();
 maintainState();
+maintainDefaultFig();
+
+function saveDefaultFigState() {
+  sessionStorage.setItem("defaultFigState", defaultFig.checked);
+}
+function maintainDefaultFig() {
+  isDefaultFigAvailable = sessionStorage.getItem("defaultFigState")
+    ? sessionStorage.getItem("defaultFigState")
+    : true;
+  if (isDefaultFigAvailable) {
+    defaultFig.checked = true;
+  } else {
+    defaultFig.checked = false;
+  }
+}
 
 function toggleSelection() {
   allColorRadios = document.querySelectorAll('input[name="color"]');
@@ -52,16 +68,14 @@ function maintainState() {
   color = document.getElementById(color);
   color.checked = true;
   isFigPrinterActivated = document.getElementById("activate");
-  if(activate=="visible"){
+  if (activate == "visible") {
     isFigPrinterActivated.checked = true;
-    toggleSelection()
-  }else{
-    console.log("hid")
+    toggleSelection();
+  } else {
+    console.log("hid");
     isFigPrinterActivated.checked = false;
-    toggleSelection()
-
+    toggleSelection();
   }
-
 
   for (let figNum = 0; figNum < figure.length; figNum++) {
     document.getElementById(figure[figNum]).checked = true;
