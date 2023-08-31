@@ -81,3 +81,13 @@ function maintainState() {
     document.getElementById(figure[figNum]).checked = true;
   }
 }
+
+function decideRoute(){
+  btnClose = document.getElementById("btn_close");
+  if(stateActivate.checked){
+    btnClose.href="../fig_printer"
+  }else{
+    btnClose.href="../txt_printer"
+
+  }
+}
