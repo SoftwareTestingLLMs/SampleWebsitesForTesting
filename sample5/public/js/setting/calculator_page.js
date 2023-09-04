@@ -45,14 +45,17 @@ function maintainState() {
   aritmethic = JSON.parse(sessionStorage.getItem("arithmetic"))
     ? JSON.parse(sessionStorage.getItem("arithmetic"))
     : ["addition"];
-  numSys = sessionStorage.getItem("num_sys")
-    ? sessionStorage.getItem("num_sys")
+  numSys = sessionStorage.getItem("numSys")
+    ? sessionStorage.getItem("numSys")
     : "decimal";
-
+  console.log(numSys);
   selectNumSys.value = numSys;
 
-
-  for (let arithmeticNum = 0; arithmeticNum < aritmethic.length; arithmeticNum++) {
+  for (
+    let arithmeticNum = 0;
+    arithmeticNum < aritmethic.length;
+    arithmeticNum++
+  ) {
     document.getElementById(aritmethic[arithmeticNum]).checked = true;
   }
 }

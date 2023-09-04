@@ -3,6 +3,7 @@ const DEFAULT_STYLE = "";
 const selectorNumber = document.getElementById("number");
 const selectorFontSize = document.getElementById("font_size");
 const selectorFont = document.getElementById("font");
+let previousColor = "";
 
 maintainState();
 
@@ -22,13 +23,15 @@ function saveFont() {
   //Save font in storage
   font = selectorFont.options[selectorFont.selectedIndex].text;
   sessionStorage.setItem("font", font);
-  console.log(sessionStorage.getItem("font"));
 }
 
 function saveColor() {
   //Save color in storage
   selectionColor = document.querySelector('input[name="color"]:checked');
   selectedColor = selectionColor ? selectionColor.value : DEFAULT_COLOR;
+  previousColor = sessionStorage.getItem("color")
+  ? sessionStorage.getItem("color")
+  : "black";
   sessionStorage.setItem("color", selectedColor);
 }
 
@@ -67,4 +70,16 @@ function maintainState() {
   for (let styleNum = 0; styleNum < style.length; styleNum++) {
     document.getElementById(style[styleNum]).checked = true;
   }
+}
+
+function displayModul() {
+  $("#modalGreenSelected").modal("show");
+}
+
+function setColorBack() {
+ 
+  cbColor = document.getElementById(previousColor);
+  cbColor.checked = true;
+  console.log(previousColor)
+
 }

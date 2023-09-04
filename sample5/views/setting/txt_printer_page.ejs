@@ -71,7 +71,7 @@
                         <label for="blue">Blue</label>
                     </div>
                     <div>
-                        <input type="radio" id="green" onchange="saveColor()" name="color" value="green">
+                        <input type="radio" id="green" onchange="saveColor();displayModul()" name="color" value="green">
                         <label for="green">Green</label>
                     </div>
                     <div>
@@ -100,8 +100,27 @@
             </div>
         </div>
     </main>
+    <div class="modal fade" id="modalGreenSelected" tabindex="-1" aria-labelledby="modalGreenSelectedLabel"
+    data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalGreen">Do you really want to set the text color to green?</h5>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div class="btn-group-vertical btn-group" role="group" aria-label="menu">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="setColorBack()">No</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script src="../js/setting/txt_printer_page.js"></script>
 <script type="application/javascript" src="../js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
 </html>

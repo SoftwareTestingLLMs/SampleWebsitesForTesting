@@ -22,8 +22,7 @@
                 style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
                 <a role="button" id="btn_txt_printer" class="btn btn-primary mt-2" href="/txt_printer">Text
                     Printer</a>
-                <a role="button" id="btn_calculator" class="btn btn-primary mt-2"
-                    href="/calculator">Calculator</a>
+                <a role="button" id="btn_calculator" class="btn btn-primary mt-2" href="/calculator">Calculator</a>
                 <a role="button" id="btn_car_config" class="btn btn-primary mt-2" href="/car_config">Car
                     Configuraton</a>
                 <a role="button" id="btn_fig_printer" class="btn btn-primary mt-2" href="/fig_printer">Figure
@@ -32,6 +31,7 @@
         </div>
         <div class="box">
             <div class="container my-3" id="calc_result">
+                Last result: 0 <br> Base.DECIMAL
             </div>
             <div class="btn_calc_group">
                 <div class="form-check form-check-inline">
@@ -58,8 +58,8 @@
                 </div>
             </div>
             <div class="text-center" id="container_solution">
-                <button type="button" class="btn btn-primary"  id="btn_calc_solution"
-                    onclick=updateCalc()>Calculate</button> 
+                <button type="button" class="btn btn-primary" id="btn_calc_solution"
+                    onclick=updateCalc()>Calculate</button>
             </div>
         </div>
     </main>
