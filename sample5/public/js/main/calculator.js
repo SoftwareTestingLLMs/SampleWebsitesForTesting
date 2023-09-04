@@ -32,6 +32,14 @@ const stateFigPrinter = sessionStorage.getItem("stateFigPrinter")
 isFigPrinterActivated();
 readSettings();
 maintainPrinting();
+updateNumSys();
+
+function updateNumSys() {
+  if (!sessionStorage.getItem("isCalcPrinted")) {
+    document.getElementById("calc_result").innerHTML =
+      "Last result: 0" + LINE_BREAK + "Base." + numSys.toUpperCase();
+  }
+}
 
 function isFigPrinterActivated() {
   document.getElementById("btn_fig_printer").style.visibility = stateFigPrinter;
@@ -41,7 +49,6 @@ function updateCalc() {
   sessionStorage.setItem("isCalcPrinted", "true");
   printResult();
 }
-
 
 function maintainPrinting() {
   if (sessionStorage.getItem("isCalcPrinted")) {

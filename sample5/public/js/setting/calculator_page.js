@@ -22,6 +22,7 @@ function checkReq() {
     });
   }
 }
+
 function saveNumSys() {
   //Save numeral system in storage
   selectorSys = document.getElementById("num_sys");
