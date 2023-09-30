@@ -716,8 +716,8 @@ study_deck_popup_study_button.addEventListener("click", function () {
 
 //button to create a new deck
 study_deck_popup_add_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[8][0]) {
-        openClosePopupsRewardArray[8][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CREATE_DECK, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CREATE_DECK, 0)
         increment_reward()
     }
     study_deck_temporary_index = 0
@@ -728,8 +728,8 @@ study_deck_popup_add_button.addEventListener("click", function () {
 
 //button to close the at least one card popup
 close_at_least_one_card_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[20][1]) {
-        openClosePopupsRewardArray[20][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_CARD, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_CARD, 1)
         increment_reward()
     }
     make_invisible(atLeastOneCardPopup)
@@ -738,16 +738,16 @@ close_at_least_one_card_popup_button.addEventListener("click", function () {
 //button to show the leads to external website button
 get_shared.addEventListener("click", function () {
     make_visible(leadsToExternalWebsitePopup)
-    if(!openClosePopupsRewardArray[1][0]) {
-        openClosePopupsRewardArray[1][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 1)
         increment_reward()
     }
 });
 
 //button to close the already five decks popup
 close_already_five_decks_popup_button.addEventListener("click", function() {
-    if(!openClosePopupsRewardArray[10][1]) {
-        openClosePopupsRewardArray[10][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 1)
         increment_reward()
     }
     make_invisible(alreadyFiveDecksPopup)
@@ -755,8 +755,8 @@ close_already_five_decks_popup_button.addEventListener("click", function() {
 
 //button to close the deck exists popup
 close_deck_exists_popup_button.addEventListener("click", function() {
-    if(!openClosePopupsRewardArray[6][1]) {
-        openClosePopupsRewardArray[6][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 1)
         increment_reward()
     }
     make_invisible(deckExistsPopup)
@@ -764,8 +764,8 @@ close_deck_exists_popup_button.addEventListener("click", function() {
 
 //button to close the check media popup
 check_media_close_button.addEventListener("click", function() {
-    if(!openClosePopupsRewardArray[13][1]){
-        openClosePopupsRewardArray[13][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CHECK_MEDIA, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CHECK_MEDIA, 1)
         increment_reward()
     }
     make_invisible(checkMediaPopup)
@@ -773,8 +773,8 @@ check_media_close_button.addEventListener("click", function() {
 
 //button to close the leads to external website popup
 closeLeadsToExternalWebsitePopup.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[1][1]) {
-        openClosePopupsRewardArray[1][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 1)
         increment_reward()
     }
     make_invisible(leadsToExternalWebsitePopup)
@@ -782,8 +782,8 @@ closeLeadsToExternalWebsitePopup.addEventListener("click", function () {
 
 //button to open the add card popup
 add_card.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[0][0]){
-        openClosePopupsRewardArray[0][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ADD_CARD, 0)){
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ADD_CARD, 0)
         increment_reward()
     }
     make_visible(addCardPopup)
@@ -791,8 +791,8 @@ add_card.addEventListener("click", function () {
 
 //button to refresh the page
 switch_profile_popup_open_backup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[16][1]){
-        openClosePopupsRewardArray[16][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)){
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)
         increment_reward()
     }
     make_invisible(switchProfilePopup)
@@ -801,8 +801,8 @@ switch_profile_popup_open_backup_button.addEventListener("click", function () {
 
 //button to close the downgrade popup
 close_downgrade_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[19][1]) {
-        openClosePopupsRewardArray[19][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DOWNGRADE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DOWNGRADE, 1)
         increment_reward()
     }
     make_invisible(downgradePopup)
@@ -811,8 +811,8 @@ close_downgrade_popup_button.addEventListener("click", function () {
 
 //button to open the rename popup
 switch_profile_popup_rename_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[18][0]) {
-        openClosePopupsRewardArray[18][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 0)
         increment_reward()
     }
     make_visible(renameProfilePopup)
@@ -821,8 +821,8 @@ switch_profile_popup_rename_button.addEventListener("click", function () {
 //button to open the downgrade popup
 switch_profile_popup_downgrade_button.addEventListener("click", function () {
     make_invisible(switchProfilePopup)
-    if(!openClosePopupsRewardArray[19][0]) {
-        openClosePopupsRewardArray[19][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DOWNGRADE, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DOWNGRADE, 0)
         increment_reward()
     }
     make_visible(downgradePopup)
@@ -830,8 +830,8 @@ switch_profile_popup_downgrade_button.addEventListener("click", function () {
 
 //button to close the add card popup
 close_add_card_popup.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[0][1]){
-        openClosePopupsRewardArray[0][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ADD_CARD, 1)){
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ADD_CARD, 1)
         increment_reward()
     }
     make_invisible(addCardPopup)
@@ -839,8 +839,8 @@ close_add_card_popup.addEventListener("click", function () {
 
 //button to open the create new deck popup
 create_deck.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[8][0]) {
-        openClosePopupsRewardArray[8][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CREATE_DECK, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CREATE_DECK, 0)
         increment_reward()
     }
     make_visible(createNewDeckPopup)
@@ -848,8 +848,8 @@ create_deck.addEventListener("click", function () {
 
 //button to close the create new deck popup
 create_new_deck_close_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[8][1]) {
-        openClosePopupsRewardArray[8][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CREATE_DECK, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CREATE_DECK, 1)
         increment_reward()
     }
     make_invisible(createNewDeckPopup)
@@ -857,8 +857,8 @@ create_new_deck_close_button.addEventListener("click", function () {
 
 //button to open the delete deck popup
 delete_deck.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[7][0]) {
-        openClosePopupsRewardArray[7][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DELETE_DECK, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DELETE_DECK, 0)
         increment_reward()
     }
     make_visible(deleteDeckPopup)
@@ -866,8 +866,8 @@ delete_deck.addEventListener("click", function () {
 
 //button to open the anki login popup
 anki_login.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[2][0]){
-        openClosePopupsRewardArray[2][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ANKI_LOGIN, 0)){
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ANKI_LOGIN, 0)
         increment_reward()
     }
     make_visible(ankiLoginPopup)
@@ -877,8 +877,8 @@ anki_login.addEventListener("click", function () {
 delete_deck_yes_button.addEventListener("click", function () {
     if(current_profiles[current_profile_index].decks.length == 1){
         make_invisible(deleteDeckPopup)
-        if(!openClosePopupsRewardArray[9][0]) {
-            openClosePopupsRewardArray[9][0] = true
+        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)) {
+            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)
             increment_reward()
         }
         make_visible(atLeastOneDeckPopup)
@@ -889,12 +889,12 @@ delete_deck_yes_button.addEventListener("click", function () {
     set_innerHTML(get_innerHTML('current_deck'), "Current deck: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].name)
     cleanMainPageDeckNames();
     loadMainPageDecks();
-    if(!openClosePopupsRewardArray[7][1]) {
-        openClosePopupsRewardArray[7][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DELETE_DECK, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DELETE_DECK, 1)
         increment_reward()
     }
-    if(!deleteDeckRewardArray[0]){
-        deleteDeckRewardArray[0] = true
+    if(!deleteDeckRewardMap.getReward(DeleteDeckRewardNames.DELETE_DECK, 0)){
+        deleteDeckRewardMap.assignReward(DeleteDeckRewardNames.DELETE_DECK, 0)
         increment_reward()
     }
     make_invisible(deleteDeckPopup)
@@ -902,8 +902,8 @@ delete_deck_yes_button.addEventListener("click", function () {
 
 //button to close the delete deck popup
 delete_deck_no_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[7][1]) {
-        openClosePopupsRewardArray[7][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DELETE_DECK, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DELETE_DECK, 1)
         increment_reward()
     }
     make_invisible(deleteDeckPopup)
@@ -911,8 +911,8 @@ delete_deck_no_button.addEventListener("click", function () {
 
 //button to reset the exported decks
 export_deck_popup_reset_button.addEventListener("click", function(){
-    if(!exportDeckRewardArray[1]) {
-        exportDeckRewardArray[1] = true
+    if(!exportDeckRewardMap.getReward(ExportDeckRewardNames.EXPORT_DECK, 0)) {
+        exportDeckRewardMap.assignReward(ExportDeckRewardNames.EXPORT_DECK, 0)
         increment_reward()
     }
     exported_decks = []
@@ -923,8 +923,8 @@ export_deck_popup_reset_button.addEventListener("click", function(){
 edit_front_side_button.addEventListener("click", function (){
     current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].front += " edited"
     if(get_innerHTML('question').length <= 50) {
-        if(!editCardRewardsArray[0]) {
-            editCardRewardsArray[0] = true
+        if(!editCardRewardMap.getReward(EditCardRewardNames.EDIT_FRONT, 0)) {
+            editCardRewardMap.assignReward(EditCardRewardNames.EDIT_FRONT, 0)
             increment_reward()
         }
         set_innerHTML(get_innerHTML('question'), "Question: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].front)
@@ -936,8 +936,8 @@ edit_front_side_button.addEventListener("click", function (){
 edit_back_side_button.addEventListener("click", function (){
     current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].back += " edited"
     if(get_innerHTML('answer').length <= 50) {
-        if(!editCardRewardsArray[1]) {
-            editCardRewardsArray[1] = true
+        if(!editCardRewardMap.getReward(EditCardRewardNames.EDIT_BACK, 0)) {
+            editCardRewardMap.assignReward(EditCardRewardNames.EDIT_BACK, 0)
             increment_reward()
         }
         set_innerHTML(get_innerHTML('answer'), "Answer: " + current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].back)
@@ -948,9 +948,9 @@ edit_back_side_button.addEventListener("click", function (){
 //button to edit the tag of a card iff the length of the tag does not exceed 50
 edit_tag_button.addEventListener("click", function (){
     current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].tag += " edited"
-    if(get_element_by_id('edit_card_row_3').innerHTML.length <= 50) {
-        if(!editCardRewardsArray[2]) {
-            editCardRewardsArray[2] = true
+    if(get_innerHTML('edit_card_row_3').length <= 50) {
+        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.EDIT_CARD, 2)) {
+            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.EDIT_CARD, 2)
             increment_reward()
         }
         set_innerHTML(get_innerHTML('edit_card_row_3'), current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards[current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].current_study_index].tag)
@@ -959,8 +959,8 @@ edit_tag_button.addEventListener("click", function (){
 
 //button to close the edit card popup
 close_edit_card_popup_button.addEventListener("click", function (){
-    if(!openClosePopupsRewardArray[23][1]) {
-        openClosePopupsRewardArray[23][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.EDIT_CARD, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.EDIT_CARD, 1)
         increment_reward()
     }
     make_invisible(editCardPopup)
@@ -968,8 +968,8 @@ close_edit_card_popup_button.addEventListener("click", function (){
 
 //button to open the edit card popup
 edit.addEventListener("click", function (){
-    if(!openClosePopupsRewardArray[23][0]) {
-        openClosePopupsRewardArray[23][0] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.EDIT_CARD, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.EDIT_CARD, 0)
         increment_reward()
     }
     make_visible(editCardPopup)
@@ -980,8 +980,8 @@ edit.addEventListener("click", function (){
 
 //button to close the at least one deck popup
 close_at_least_one_deck_popup_button.addEventListener("click", function (){
-    if(!openClosePopupsRewardArray[9][1]) {
-        openClosePopupsRewardArray[9][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)
         increment_reward()
     }
     make_invisible(atLeastOneDeckPopup)
@@ -989,8 +989,8 @@ close_at_least_one_deck_popup_button.addEventListener("click", function (){
 
 //button to increment the counter of the front side of a card by 1
 add_card_button_1.addEventListener("click", function () {
-    if(!addCardRewardArray[0][0]) {
-        addCardRewardArray[0][0] = true
+    if(!addCardRewardMap.getReward(AddCardRewardNames.INCREMENT, 0)) {
+        addCardRewardMap.assignReward(AddCardRewardNames.INCREMENT, 0)
         increment_reward()
     }
     add_card_front_counter += 1;
@@ -999,8 +999,8 @@ add_card_button_1.addEventListener("click", function () {
 
 //button to increment the counter of the back side of a card by 1
 add_card_button_2.addEventListener("click", function () {
-    if(!addCardRewardArray[0][1]) {
-        addCardRewardArray[0][1] = true
+    if(!addCardRewardMap.getReward(AddCardRewardNames.INCREMENT, 1)) {
+        addCardRewardMap.assignReward(AddCardRewardNames.INCREMENT, 1)
         increment_reward()
     }
     add_card_back_counter += 1;
@@ -1009,18 +1009,18 @@ add_card_button_2.addEventListener("click", function () {
 
 //button to increment the counter of the tag of a card by 1
 add_card_button_3.addEventListener("click", function () {
-    if(!addCardRewardArray[0][2]) {
-        addCardRewardArray[0][2] = true
+    if(!addCardRewardMap.getReward(AddCardRewardNames.INCREMENT, 2)) {
+        addCardRewardMap.assignReward(AddCardRewardNames.INCREMENT, 2)
         increment_reward()
     }
-    add_card_tag_counter += 1;
+    add_card_tag_counter += 1
     set_innerHTML(get_innerHTML('add_card_row_3'), "Tag Text " + add_card_tag_counter)
 });
 
 //button to increment the counter for creating a deck by 1
 create_new_deck_name_button.addEventListener("click", function () {
-    if(!createDeckRewardArray[0]) {
-        createDeckRewardArray[0] = true
+    if(!createDeckRewardMap.getReward(CreateDeckRewardNames.CHANGE_DECK, 0)) {
+        createDeckRewardMap.assignReward(CreateDeckRewardNames.CHANGE_DECK, 0)
         increment_reward()
     }
     create_deck_index += 1;
@@ -1030,8 +1030,8 @@ create_new_deck_name_button.addEventListener("click", function () {
 
 //button to close the export deck popup
 export_deck_popup_cancel_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[5][1]) {
-        openClosePopupsRewardArray[5][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.EXPORT_DECK, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.EXPORT_DECK, 1)
         increment_reward()
     }
     make_invisible(exportDeckPopup)
@@ -1039,8 +1039,8 @@ export_deck_popup_cancel_button.addEventListener("click", function () {
 
 //button to close the add profile popup
 close_add_profile_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[17][1]) {
-        openClosePopupsRewardArray[17][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ADD_PROFILE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ADD_PROFILE, 1)
         increment_reward()
     }
     make_invisible(addProfilePopup)
@@ -1050,8 +1050,8 @@ close_add_profile_popup_button.addEventListener("click", function () {
 
 //button the close the rename profile popup
 close_rename_profile_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[18][1]) {
-        openClosePopupsRewardArray[18][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)
         increment_reward()
     }
     make_invisible(renameProfilePopup)
@@ -1061,8 +1061,8 @@ close_rename_profile_popup_button.addEventListener("click", function () {
 
 //button to close the profile exists popup and open the switch profile popup
 close_profile_exists_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[21][1]) {
-        openClosePopupsRewardArray[21][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 1)
         increment_reward()
     }
     make_invisible(profileExistsPopup)
@@ -1073,8 +1073,8 @@ close_profile_exists_popup_button.addEventListener("click", function () {
 rename_profile_popup_ok_button.addEventListener("click", function () {
     for(let i = 0; i < current_profiles.length; i++){
         if(current_profiles[i].name == possible_profile_names[rename_profile_index]){
-            if(!openClosePopupsRewardArray[21][0]) {
-                openClosePopupsRewardArray[21][0] = true
+            if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)) {
+                openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)
                 increment_reward()
             }
             make_invisible(renameProfilePopup)
@@ -1083,14 +1083,14 @@ rename_profile_popup_ok_button.addEventListener("click", function () {
             return
         }
     }  
-    if(!profileRewardArray[1][0]) {
-        profileRewardArray[1][0] = true
+    if(!profileRewardMap.getReward(ProfileRewardNames.RENAME_PROFILE, 0)) {
+        profileRewardMap.assignReward(ProfileRewardNames.RENAME_PROFILE, 0)
         increment_reward()
     }
     current_profiles[switch_profile_index].name = possible_profile_names[rename_profile_index]
     switchProfilePopupLoad()
-    if(!openClosePopupsRewardArray[18][1]) {
-        openClosePopupsRewardArray[18][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)
         increment_reward()
     }
     make_invisible(renameProfilePopup)
@@ -1099,18 +1099,17 @@ rename_profile_popup_ok_button.addEventListener("click", function () {
 //button to add a profile of an index iff the name of the profile is not present and the length of the current profiles does not exceed 5
 add_profile_popup_ok_button.addEventListener("click", function () {
     if(current_profiles.length == 5){
-        if(!openClosePopupsRewardArray[21][0]) {
-            openClosePopupsRewardArray[21][0] = true
+        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)) {
+            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)
             increment_reward()
         }
-
         make_visible(profileExistsPopup)
         return
     }
     for(let i = 0; i < current_profiles.length; i++){
         if(current_profiles[i].name == possible_profile_names[add_profile_index]){
-            if(!openClosePopupsRewardArray[21][0]) {
-                openClosePopupsRewardArray[21][0] = true
+            if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)) {
+                openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)
                 increment_reward()
             }
             make_invisible(addProfilePopup)
@@ -1119,23 +1118,23 @@ add_profile_popup_ok_button.addEventListener("click", function () {
             return
         }
     }
-    if(!profileRewardArray[2][0]) {
-        profileRewardArray[2][0] = true
+    if(!profileRewardMap.getReward(ProfileRewardNames.ADD_PROFILE, 0)) {
+        profileRewardMap.assignReward(ProfileRewardNames.ADD_PROFILE, 0)
         increment_reward()
     }  
     current_profiles.push({name: possible_profile_names[add_profile_index], decks:[{name: DeckNames.DeckName1, cards:[{front: "Front text", back: "Back text", tag:"Some tag"}], current_study_index: 0}], deck_index: 0})
     switchProfilePopupLoad()
     make_invisible(addProfilePopup)
-    if(!openClosePopupsRewardArray[17][1]) {
-        openClosePopupsRewardArray[17][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ADD_PROFILE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ADD_PROFILE, 1)
         increment_reward()
     }
 })
 
 //button to close the at least one profile popup and open the switch profile popup
 close_at_least_one_profile_popup_button.addEventListener("click", function () {
-    if(!openClosePopupsRewardArray[22][1]) {
-        openClosePopupsRewardArray[22][1] = true
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_PROFILE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_PROFILE, 1)
         increment_reward()
     }
     make_invisible(atLeastOneProfilePopup)
@@ -1145,16 +1144,16 @@ close_at_least_one_profile_popup_button.addEventListener("click", function () {
 //button to delete a profile in the switch profile popup
 switch_profile_popup_delete_button.addEventListener("click", function () {
     if(current_profiles.length == 1){
-        if(!openClosePopupsRewardArray[22][0]) {
-            openClosePopupsRewardArray[22][0] = true
+        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_PROFILE, 0)) {
+            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_PROFILE, 0)
             increment_reward()
         }
         make_visible(atLeastOneProfilePopup)
         make_invisible(switchProfilePopup)
         return
     }    
-    if(!profileRewardArray[3]) {
-        profileRewardArray[3] = true
+    if(!profileRewardMap.getReward(ProfileRewardNames.DELETE_PROFILE, 0)) {
+        profileRewardMap.assignReward(ProfileRewardNames.DELETE_PROFILE, 0)
         increment_reward()
     }
     current_profiles.splice(switch_profile_index, 1)
@@ -1166,8 +1165,8 @@ switch_profile_popup_delete_button.addEventListener("click", function () {
 //button to remove a card in the study page iff there is more than one card
 remove_card.addEventListener("click", function() {
     if(current_profiles[current_profile_index].decks[current_profiles[current_profile_index].deck_index].cards.length == 1) {
-        if(!openClosePopupsRewardArray[20][0]) {
-            openClosePopupsRewardArray[20][0] = true
+        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_CARD, 0)) {
+            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_CARD, 0)
             increment_reward()
         }
         make_visible(atLeastOneCardPopup)
