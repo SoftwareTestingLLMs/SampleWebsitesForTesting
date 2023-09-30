@@ -1487,8 +1487,8 @@ function preferences_page_help_button_event(){
 provide_event_to_item(preferences_page_help_button, preferences_page_help_button_event)
 
 function preferences_page_close_button_event() {
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1))
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1) {
+    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1) 
         increment_reward()
     }
     make_invisible(preferencesPage)
