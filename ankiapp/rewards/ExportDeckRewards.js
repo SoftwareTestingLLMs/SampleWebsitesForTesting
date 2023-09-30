@@ -3,10 +3,14 @@ class ExportDeckRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
     }
 
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
+    }
+    
     get rewardMap() {
         return this.rewardMap;
     }
@@ -29,9 +33,9 @@ const ExportDeckRewardNames = {
 };
 
 const ExportDeckRewardValues = {
-    EXPORT_DECK: [false, false, false],
-    RESET: false,
-    EXPORT: false,
+    EXPORT_DECK: [false, false, false, false, false],
+    RESET: [false],
+    EXPORT: [false],
 };
 
 /*

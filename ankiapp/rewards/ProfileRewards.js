@@ -3,8 +3,12 @@ class ProfileRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
+    }
+
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
     }
 
     get rewardMap() {
@@ -34,8 +38,8 @@ const ProfileRewardValues = {
     CHANGE_PROFILE: [false, false, false, false, false],
     RENAME_PROFILE: [false, false],
     ADD_PROFILE: [false, false],
-    DELETE_PROFILE: false,
-    OPEN_PROFILE: false,
+    DELETE_PROFILE: [false],
+    OPEN_PROFILE: [false],
 };
 
 /*

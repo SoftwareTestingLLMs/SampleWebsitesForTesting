@@ -3,10 +3,14 @@ class PreferencesPageRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
     }
 
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
+    }
+    
     get rewardMap() {
         return this.rewardMap;
     }
@@ -70,7 +74,7 @@ const PreferencesPageRewardValues = {
     DROPDOWN_2: [false,false,false],
     DROPDOWN_3: [false,false],
     DROPDOWN_4: [false,false],
-    TEXT_BUTTON: false,
+    TEXT_BUTTON: [false],
     INCREMENT_DECREMENT_ELEMENT_1: [false,false], 
     INCREMENT_DECREMENT_ELEMENT_2: [false,false],
     INCREMENT_DECREMENT_ELEMENT_3: [false,false],

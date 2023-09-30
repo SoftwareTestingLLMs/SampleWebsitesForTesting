@@ -3,8 +3,12 @@ class CreateDeckRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
+    }
+
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
     }
 
     get rewardMap() {
@@ -23,15 +27,13 @@ function initializeRewardMap() {
 }
 
 const CreateDeckRewardNames = {
-    EXPORT_DECK: "Export Deck",
-    RESET: "Reset",
-    EXPORT: "Export",
+    CHANGE_DECK: "Export Deck",
+    CREATE_DECK: "Reset",
 };
 
 const CreateDeckRewardValues = {
-    EXPORT_DECK: [false, false, false],
-    RESET: false,
-    EXPORT: false,
+    CHANGE_DECK: [false],
+    CREATE_DECK: [false],
 };
 
 /*

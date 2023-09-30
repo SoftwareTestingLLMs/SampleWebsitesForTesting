@@ -4,10 +4,14 @@ class AddCardRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
     }
 
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
+    }
+    
     get rewardMap() {
         return this.rewardMap;
     }
@@ -31,7 +35,7 @@ const AddCardRewardNames = {
 
 const AddCardRewardValues = {
     INCREMENT: [false, false, false],
-    ADD_CARD: false,
+    ADD_CARD: [false],
 };
 
 /*

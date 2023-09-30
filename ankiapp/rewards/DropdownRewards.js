@@ -3,10 +3,14 @@ class DropdownRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
     }
 
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
+    }
+    
     get rewardMap() {
         return this.rewardMap;
     }
@@ -31,7 +35,7 @@ const DropdownRewardNames = {
 
 const DropdownRewardValues = {
     DROPDOWN_1: [false, false, false, false],
-    DROPDOWN_2: false,
+    DROPDOWN_2: [false],
     DROPDOWN_3: [false, false, false],
     DROPDOWN_4: [false, false, false],
 };

@@ -3,8 +3,12 @@ class StudyDeckRewards {
         this.rewardMap = initializeRewardMap();
     }
 
-    assignReward(rewardName) {
-        this.rewardMap.set(rewardName, true);
+    assignReward(rewardName, index) {
+        this.rewardMap.set(rewardName[index], true);
+    }
+
+    getReward(rewardName, index){
+        return this.rewardMap.get(rewardName)[index]
     }
 
     get rewardMap() {
@@ -29,7 +33,7 @@ const StudyDeckRewardNames = {
 
 const StudyDeckRewardValues = {
     STUDY_DECK: [false, false, false, false, false],
-    STUDY: false,
+    STUDY: [false],
 };
 
 /*
