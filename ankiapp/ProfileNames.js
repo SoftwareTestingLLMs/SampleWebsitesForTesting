@@ -1,4 +1,4 @@
-class ProfileNames {
+export class ProfileNames {
     static ALICE = "Alice";
     static BOB = "Bob";
     static CAROL = "Carol";

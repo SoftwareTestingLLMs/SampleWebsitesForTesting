@@ -1,22 +1,20 @@
-class PreferencesPageRewards {
+export default class PreferencesPageRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-    
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(PreferencesPageRewardNames);
     const rewardValues = Object.values(PreferencesPageRewardValues);
@@ -26,7 +24,7 @@ function initializeRewardMap() {
     return map;
 }
 
-const PreferencesPageRewardNames = {
+export const PreferencesPageRewardNames = {
     TAB: "Tab",
     CHECKBOX_1: "Checkbox 1",
     CHECKBOX_2: "Checkbox 2",
@@ -54,7 +52,7 @@ const PreferencesPageRewardNames = {
     INCREMENT_DECREMENT_ELEMENT_5: "Increment Decrement Element 5",
 };
 
-const PreferencesPageRewardValues = {
+export const PreferencesPageRewardValues = {
     TAB: [false, false, false, false],
     CHECKBOX_1: [false,false],
     CHECKBOX_2: [false,false],

@@ -1,22 +1,20 @@
-class MainPageRewards {
+export default class MainPageRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-    
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(MainPageRewardNames);
     const rewardValues = Object.values(MainPageRewardValues);
@@ -26,7 +24,7 @@ function initializeRewardMap() {
     return map;
 }
 
-const MainPageRewardNames = {
+export const MainPageRewardNames = {
     STUDY_NOW: "Study Now",
     SHOW_ANSWER_BUTTON: "Show Answer Button",
     REMOVE_CARD: "Remove Card",
@@ -34,7 +32,7 @@ const MainPageRewardNames = {
 };
 
 
-const MainPageRewardValues = {
+export const MainPageRewardValues = {
     STUDY_NOW: [false,false],
     SHOW_ANSWER_BUTTON: [false, false],
     REMOVE_CARD: [false],

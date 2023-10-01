@@ -1,22 +1,20 @@
-class DropdownRewards {
+export default class DropdownRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-    
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(DropdownRewardNames);
     const rewardValues = Object.values(DropdownRewardValues);
@@ -26,14 +24,14 @@ function initializeRewardMap() {
     return map;
 }
 
-const DropdownRewardNames = {
+export const DropdownRewardNames = {
     DROPDOWN_1: "Dropdown 1",
     DROPDOWN_2: "Dropdown 2",
     DROPDOWN_3: "Dropdown 3",
     DROPDOWN_4: "Dropdown 4",
 };
 
-const DropdownRewardValues = {
+export const DropdownRewardValues = {
     DROPDOWN_1: [false, false, false, false],
     DROPDOWN_2: [false],
     DROPDOWN_3: [false, false, false],

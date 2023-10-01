@@ -1,22 +1,20 @@
-class OpenClosePopupsRewards {
+export default class OpenClosePopupsRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-    
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(OpenClosePopupsRewardNames);
     const rewardValues = Object.values(OpenClosePopupsRewardValues);
@@ -26,7 +24,7 @@ function initializeRewardMap() {
     return map;
 }
 
-const OpenClosePopupsRewardNames = {
+export const OpenClosePopupsRewardNames = {
     ADD_CARD: "Add Card",
     LEADS_TO_EXTERNAL_WEBSITE: "Leads to external website",
     ANKI_LOGIN: "Anki Login",
@@ -53,7 +51,7 @@ const OpenClosePopupsRewardNames = {
     EDIT_CARD: "Edit card",
 };
 
-const OpenClosePopupsRewardValues = {
+export const OpenClosePopupsRewardValues = {
     ADD_CARD: [false, false],
     LEADS_TO_EXTERNAL_WEBSITE: [false,false],
     ANKI_LOGIN: [false,false],

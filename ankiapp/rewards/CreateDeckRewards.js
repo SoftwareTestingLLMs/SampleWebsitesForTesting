@@ -1,22 +1,20 @@
-class CreateDeckRewards {
+export default class CreateDeckRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(CreateDeckRewardNames);
     const rewardValues = Object.values(CreateDeckRewardValues);
@@ -26,12 +24,12 @@ function initializeRewardMap() {
     return map;
 }
 
-const CreateDeckRewardNames = {
+export const CreateDeckRewardNames = {
     CHANGE_DECK: "Export Deck",
     CREATE_DECK: "Reset",
 };
 
-const CreateDeckRewardValues = {
+export const CreateDeckRewardValues = {
     CHANGE_DECK: [false],
     CREATE_DECK: [false],
 };

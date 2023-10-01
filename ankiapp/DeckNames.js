@@ -1,4 +1,4 @@
-class DeckNames {
+export class DeckNames {
     static DECK_NAME_1 = "Deck Name 1";
     static DECK_NAME_2 = "Deck Name 2";
     static DECK_NAME_3 = "Deck Name 3";

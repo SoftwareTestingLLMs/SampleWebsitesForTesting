@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href=" ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NaturalNets</title>
     <link rel="stylesheet" href="mainpage.css">
 </head>
 
-<body onload="loadMainPageDecks()">
+<body>
     <main class="container">
         <button id="add_card">Add Card</button>
         <button id="get_shared">Get Shared</button>
@@ -45,7 +46,6 @@
         <div id="answer"></div>
 
         <p id="total_reward"></p>
-        <label for="dd1_items"></label>
         <select name="dd1" id="dd1">
           <option value="switch_profile" onclick="dropdown1Call()">Switch Profile</option>
           <option value="import" onclick="dropdown1Call()">Import</option>
@@ -321,18 +321,6 @@
         <area shape="rect" coords="378,370,30,800">
     </map>
 
-    <div id="checkMediaPopup" class="popup">
-        <div class="check-media-popup-content">
-            <h1 style="color:black;">About Page
-            </h1>
-            <br><br>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;Missing files: 0<br><br><br><br></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;Unused files: 0</div>
-            <button id="check_media_close_button">
-                Close
-            </button>
-        </div>
-    </div>
 
     <div id="preferencesPage" class="popup">
         <div class="preferences-page-content">
@@ -600,6 +588,26 @@
         </div>
     </div>
     
-    <script type="text/javascript" src="mainpage.js">
-    </script>
+    <div id="checkMediaPopup" class="popup">
+        <div class="check-media-popup-content">
+            <h1 style="color:black;">About Page
+            </h1>
+            <br><br>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Missing files: 0<br><br><br><br></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;Unused files: 0</div>
+            <button id="check_media_close_button">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script type= 'module' src = './mainpage.js'></script>
+    <script nomodule src = '../AccountNames.js'></script>
+    <script nomodule src = '../AccountNames.js'></script>
+    <script nomodule src = '../rewards/AddCardRewards.js'></script>
+    <script nomodule src = '../Card.js'></script>
+    <script nomodule src = '../Deck.js'></script>
+    <script nomodule src = '../DeckNames.js'></script>
+    <script nomodule src = '../Profile.js'></script>
+    <script nomodule src = '../ProfileNames.js'></script>
 </body>

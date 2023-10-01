@@ -1,22 +1,20 @@
-class DeleteDeckRewards {
+export default class DeleteDeckRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-    
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(DeleteDeckRewardNames);
     const rewardValues = Object.values(DeleteDeckRewardValues);
@@ -26,11 +24,11 @@ function initializeRewardMap() {
     return map;
 }
 
-const DeleteDeckRewardNames = {
+export const DeleteDeckRewardNames = {
     DELETE_DECK: "Delete Deck",
 };
 
-const DeleteDeckRewardValues = {
+export const DeleteDeckRewardValues = {
     DELETE_DECK: [false],
 };
 

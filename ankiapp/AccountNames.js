@@ -1,4 +1,4 @@
-class AccountNames {
+export class AccountNames {
     static ACCOUNT_NAME_1 = "Account Name 1";
     static ACCOUNT_NAME_2 = "Account Name 2";
     static ACCOUNT_NAME_3 = "Account Name 3";

@@ -1,22 +1,20 @@
-class ImportDeckRewards {
+export default class ImportDeckRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(ImportDeckRewardNames);
     const rewardValues = Object.values(ImportDeckRewardValues);
@@ -26,12 +24,12 @@ function initializeRewardMap() {
     return map;
 }
 
-const ImportDeckRewardNames = {
+export const ImportDeckRewardNames = {
     CHANGE_DECK: "Change Deck",
     IMPORT_DECK: "Import Deck",
 };
 
-const ImportDeckRewardValues = {
+export const ImportDeckRewardValues = {
     CHANGE_DECK: [false, false, false],
     IMPORT_DECK: [false],
 };

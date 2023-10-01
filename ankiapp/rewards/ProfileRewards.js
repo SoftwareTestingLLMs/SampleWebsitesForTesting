@@ -1,22 +1,20 @@
-class ProfileRewards {
+export default class ProfileRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(ProfileRewardNames);
     const rewardValues = Object.values(ProfileRewardValues);
@@ -26,7 +24,7 @@ function initializeRewardMap() {
     return map;
 }
 
-const ProfileRewardNames = {
+export const ProfileRewardNames = {
     CHANGE_PROFILE: "Change Profile",
     RENAME_PROFILE: "Rename Profile",
     ADD_PROFILE: "Add Profile",
@@ -34,7 +32,7 @@ const ProfileRewardNames = {
     OPEN_PROFILE: "Open Profile",
 };
 
-const ProfileRewardValues = {
+export const ProfileRewardValues = {
     CHANGE_PROFILE: [false, false, false, false, false],
     RENAME_PROFILE: [false, false],
     ADD_PROFILE: [false, false],

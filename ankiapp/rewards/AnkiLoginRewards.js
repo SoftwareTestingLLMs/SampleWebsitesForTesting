@@ -1,22 +1,20 @@
-class AnkiLoginRewards {
+export default class AnkiLoginRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(AnkiLoginRewardNames);
     const rewardValues = Object.values(AnkiLoginRewardValues);
@@ -26,12 +24,12 @@ function initializeRewardMap() {
     return map;
 }
 
-const AnkiLoginRewardNames = {
+export const AnkiLoginRewardNames = {
     INCREMENT: "Increment",
     LOGIN: "Login",
 };
 
-const AnkiLoginRewardValues = {
+export const AnkiLoginRewardValues = {
     INCREMENT: [false, false],
     LOGIN: [false],
 };

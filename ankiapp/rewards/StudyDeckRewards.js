@@ -1,22 +1,20 @@
-class StudyDeckRewards {
+export default class StudyDeckRewards {
     constructor() {
         this.rewardMap = initializeRewardMap();
     }
 
     assignReward(rewardName, index) {
-        this.rewardMap.set(rewardName[index], true);
+        const reward_array = this.rewardMap.get(rewardName)
+        reward_array[index] = true
+        this.rewardMap.set(rewardName, reward_array);
     }
 
-    getReward(rewardName, index){
+    getReward(rewardName, index) {
         return this.rewardMap.get(rewardName)[index]
-    }
-
-    get rewardMap() {
-        return this.rewardMap;
     }
 }
 
-function initializeRewardMap() {
+export function initializeRewardMap() {
     const map = new Map();
     const rewardNames = Object.values(StudyDeckRewardNames);
     const rewardValues = Object.values(StudyDeckRewardValues);
@@ -26,12 +24,12 @@ function initializeRewardMap() {
     return map;
 }
 
-const StudyDeckRewardNames = {
+export const StudyDeckRewardNames = {
     STUDY_DECK: "Study Deck",
     STUDY: "Study",
 };
 
-const StudyDeckRewardValues = {
+export const StudyDeckRewardValues = {
     STUDY_DECK: [false, false, false, false, false],
     STUDY: [false],
 };
