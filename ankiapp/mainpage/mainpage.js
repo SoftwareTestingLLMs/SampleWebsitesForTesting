@@ -122,20 +122,20 @@ let studyDeckRewards = new StudyDeckRewards.default
 
 function increment_reward() {
     total_sum_of_reward += 1
-    set_innerHTML(get_innerHTML('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
+    set_innerHTML(get_element_by_id('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
 }
 
 function reset_reward() {
     total_sum_of_reward = 0
-    set_innerHTML(get_innerHTML('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
+    set_innerHTML(get_element_by_id('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
 }
 
 function get_innerHTML(identifier) {
     return get_element_by_id(identifier).innerHTML
 }
 
-function set_innerHTML(innerHTML, newString){
-    innerHTML = newString
+function set_innerHTML(identifier, newString){
+    identifier.innerHTML = newString
 }
 
 function make_visible(element) {
@@ -146,15 +146,11 @@ function make_invisible(element) {
     element.classList.remove("show")
 }
 
-function set_index(indexName, newInteger) {
-    indexName = newInteger
-}
-
 function modulo_index_increment(indexName, modulo) {
     return (indexName + 1) % modulo
 }
 
-function update_names(identifier, loop_length){
+function update_names(identifier, names){
     //cleanExportableDeckNames
     //cleanStudyDeckNames
     //cleanMainPageDeckNames
@@ -163,10 +159,12 @@ function update_names(identifier, loop_length){
     //loadExportableDecks
     //loadStudyPopupDecks
     //loadMainPageDecks
-    for(let i = 0; i < loop_length; i++){
-        set_innerHTML(get_innerHTML(identifier + (i+1).toString()),"");
+    for(let i = 0; i < names.length; i++){
+        set_innerHTML(get_element_by_id((identifier + (i+1)).toString()),names[i]);
     }
 }
+
+update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
 
 function provide_event_to_item(item, event) {
     item.addEventListener("click", event);
@@ -186,21 +184,21 @@ function importDeckPopupLoad() {
         openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.IMPORT_DECK, 0)
         increment_reward()
     }
-    set_index(deck_import_index, 0)
-    set_innerHTML(get_innerHTML('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
+    deck_import_index = 0
+    set_innerHTML(get_element_by_id('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
     make_visible(importDeckPopup)
     loadImportableDecks()
 }
 
 //function to set the export popup
 function exportDeckPopupLoad() {
-    set_index(deck_export_index, 0)
+    deck_export_index = 0
     if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.EXPORT_DECK), 0) {
         openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.EXPORT_DECK, 0)
         increment_reward()
     }
     make_visible(exportDeckPopup)
-    set_innerHTML(get_innerHTML('exported_decks_number'), "Number of exported decks: " + exported_decks.length)
+    set_innerHTML(get_element_by_id('exported_decks_number'), "Number of exported decks: " + exported_decks.length)
     cleanExportableDeckNames()
     loadExportableDecks()
 }
@@ -273,9 +271,9 @@ function switchToBackupsTab() {
 //function to load the present profile names to the rows of switch profile popup
 function loadProfileNames() {
     for(let i = 0; i < current_profiles.length; i++) {
-        set_innerHTML(get_innerHTML('switch_profile_popup_row_' + (i+1).toString()), current_profiles[i].name)
+        set_innerHTML(get_element_by_id('switch_profile_popup_row_' + (i+1).toString()), current_profiles[i].name)
     }
-    set_innerHTML(get_innerHTML('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
+    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
 }
 
 //function to switch between showing/not showing the answer of a question 
@@ -298,9 +296,9 @@ function showAnswer() {
         set_display('show_answer', "block");
         set_display('next_question', "none");
         modulo_index_increment(current_deck.current_study_index, current_cards.length)
-        set_innerHTML(get_innerHTML('current_card_number_study'), "Current card number: " + (current_deck.current_study_index + 1))
-        set_innerHTML(get_innerHTML('question'), "Question: " + current_cards[current_deck.current_study_index].front);
-        set_innerHTML(get_innerHTML('answer'), "Answer: " + current_cards[current_deck.current_study_index].back);
+        set_innerHTML(get_element_by_id('current_card_number_study'), "Current card number: " + (current_deck.current_study_index + 1))
+        set_innerHTML(get_element_by_id('question'), "Question: " + current_cards[current_deck.current_study_index].front);
+        set_innerHTML(get_element_by_id('answer'), "Answer: " + current_cards[current_deck.current_study_index].back);
         if(!mainPageRewardMap.getReward(MainPageRewardNames.SHOW_ANSWER_BUTTON, 1)) {
             mainPageRewardMap.assignReward(MainPageRewardNames.SHOW_ANSWER_BUTTON, 1)
             increment_reward()
@@ -400,8 +398,8 @@ function dropdown3Call() {
             dropdownRewardMap.assignReward(DropdownRewardNames.DROPDOWN_3, 1)
             increment_reward()
         }
-        set_index(study_deck_temporary_index, 0)
-        set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name)
+        study_deck_temporary_index = 0
+        set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name)
         make_visible(studyDeckPopup)
         cleanStudyDeckNames()
         loadStudyPopupDecks()
@@ -485,7 +483,7 @@ function openMainPage() {
     set_display("current_card_number_study", "none")
     set_display("number_of_cards_study", "none")
 
-    for(let i = 1; i <= 5; i++) {
+    for(let i = 0; i <= 4; i++) {
         set_display(get_innerHTML("deck_row_" + i), "block")
     }
 }
@@ -502,12 +500,12 @@ function openStudyPage() {
     const current_deck = current_decks[current_profile.index]
     const current_profile_deck_index = current_profile.index
     const current_cards = current_decks[current_profile_deck_index].cards
-    for(let i = 1;i <= 5;i++) {
+    for(let i = 0;i <= 4;i++) {
         set_display("deck_row_" + i, "none")
     }
-    set_innerHTML(get_innerHTML("current_deck_study"), "Current deck: " + current_deck.name)
-    set_innerHTML(get_innerHTML("number_of_cards_study"), "Current number of cards: " + current_cards.length)
-    set_innerHTML(get_innerHTML("current_card_number_study"), "Current card number: " + (current_deck.current_study_index + 1))
+    set_innerHTML(get_element_by_id("current_deck_study"), "Current deck: " + current_deck.name)
+    set_innerHTML(get_element_by_id("number_of_cards_study"), "Current number of cards: " + current_cards.length)
+    set_innerHTML(get_element_by_id("current_card_number_study"), "Current card number: " + (current_deck.current_study_index + 1))
     
     set_display("create_deck","none")
     set_display("delete_deck","none")
@@ -529,8 +527,8 @@ function openStudyPage() {
     set_display("number_of_cards_study","block")
     set_display("question","none")
     set_display("answer","none")
-    set_innerHTML(get_innerHTML("question"), "Question: " + current_cards[current_profile_deck_index].front)
-    set_innerHTML(get_innerHTML("answer"), "Answer: " + current_cards[current_profile_deck_index].back)
+    set_innerHTML(get_element_by_id("question"), "Question: " + current_cards[current_profile_deck_index].front)
+    set_innerHTML(get_element_by_id("answer"), "Answer: " + current_cards[current_profile_deck_index].back)
 
 }
 
@@ -636,31 +634,31 @@ const initial_cards = initial_deck.cards
 const initial_card = initial_cards[initial_deck_index]
 
 //assigning the core textual components as initialization
-set_innerHTML(get_innerHTML('rename_profile_popup_row'), profile_names[rename_profile_index])
-set_innerHTML(get_innerHTML('add_profile_popup_row'), profile_names[rename_profile_index])
-set_innerHTML(get_innerHTML('profile_to_open'), "Profile to open: " + initial_profile_switch_name)
-set_innerHTML(get_innerHTML('add_card_row_1'), "Front Side " + add_card_front_counter)
-set_innerHTML(get_innerHTML('add_card_row_2'),"Back Side " + add_card_back_counter)
-set_innerHTML(get_innerHTML('add_card_row_3'),"Tag Text " + add_card_tag_counter)
-set_innerHTML(get_innerHTML('create_new_deck'), deck_names[create_deck_index])
-set_innerHTML(get_innerHTML('current_profile'), "Current profile: " + initial_profile.name)
-set_innerHTML(get_innerHTML('current_deck'), "Current deck: " + initial_decks[initial_deck_index].name)
-set_innerHTML(get_innerHTML('current_account'), "Current account: " + account_names[current_account_index])
-set_innerHTML(get_innerHTML('anki_login_row_1'), account_names[anki_login_username_index])
-set_innerHTML(get_innerHTML('anki_login_row_2'), account_passwords[anki_login_password_index])
-set_innerHTML(get_innerHTML('current_deck_study'), "Current deck: " + initial_decks[initial_deck_index].name)
-set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + initial_decks[0].name)
-set_innerHTML(get_innerHTML('current_card_number_study'), "Current card number: " + (initial_deck.current_study_index + 1))
-set_innerHTML(get_innerHTML('number_of_cards_study'), "Current number of cards: " + initial_cards.length)
-set_innerHTML(get_innerHTML('question'), "Question: " + initial_cards[initial_deck.index].front)
-set_innerHTML(get_innerHTML('answer'), "Answer: " + initial_cards[initial_deck.index].back)
-set_innerHTML(get_innerHTML('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
-set_innerHTML(get_innerHTML('counter_1'), preferences_page_counter_1)
-set_innerHTML(get_innerHTML('counter_2'), preferences_page_counter_2)
-set_innerHTML(get_innerHTML('counter_3'), preferences_page_counter_3)
-set_innerHTML(get_innerHTML('counter_4'), preferences_page_counter_4)
-set_innerHTML(get_innerHTML('counter_5'), preferences_page_counter_5)
-set_innerHTML(get_innerHTML('total_reward'), "Total sum of rewards:" + total_sum_of_reward)
+set_innerHTML(get_element_by_id('rename_profile_popup_row'), profile_names[rename_profile_index])
+set_innerHTML(get_element_by_id('add_profile_popup_row'), profile_names[rename_profile_index])
+set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + initial_profile_switch_name)
+set_innerHTML(get_element_by_id('add_card_row_1'), "Front Side " + add_card_front_counter)
+set_innerHTML(get_element_by_id('add_card_row_2'),"Back Side " + add_card_back_counter)
+set_innerHTML(get_element_by_id('add_card_row_3'),"Tag Text " + add_card_tag_counter)
+set_innerHTML(get_element_by_id('create_new_deck'), deck_names[create_deck_index])
+set_innerHTML(get_element_by_id('current_profile'), "Current profile: " + initial_profile.name)
+set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + initial_decks[initial_deck_index].name)
+set_innerHTML(get_element_by_id('current_account'), "Current account: " + account_names[current_account_index])
+set_innerHTML(get_element_by_id('anki_login_row_1'), account_names[anki_login_username_index])
+set_innerHTML(get_element_by_id('anki_login_row_2'), account_passwords[anki_login_password_index])
+set_innerHTML(get_element_by_id('current_deck_study'), "Current deck: " + initial_decks[initial_deck_index].name)
+set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + initial_decks[0].name)
+set_innerHTML(get_element_by_id('current_card_number_study'), "Current card number: " + (initial_deck.current_study_index + 1))
+set_innerHTML(get_element_by_id('number_of_cards_study'), "Current number of cards: " + initial_cards.length)
+set_innerHTML(get_element_by_id('question'), "Question: " + initial_cards[initial_deck.index].front)
+set_innerHTML(get_element_by_id('answer'), "Answer: " + initial_cards[initial_deck.index].back)
+set_innerHTML(get_element_by_id('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
+set_innerHTML(get_element_by_id('counter_1'), preferences_page_counter_1)
+set_innerHTML(get_element_by_id('counter_2'), preferences_page_counter_2)
+set_innerHTML(get_element_by_id('counter_3'), preferences_page_counter_3)
+set_innerHTML(get_element_by_id('counter_4'), preferences_page_counter_4)
+set_innerHTML(get_element_by_id('counter_5'), preferences_page_counter_5)
+set_innerHTML(get_element_by_id('total_reward'), "Total sum of rewards:" + total_sum_of_reward)
 
 
 //button to close the switch profile page and open the main page
@@ -679,12 +677,12 @@ switch_profile_popup_open_button.addEventListener("click", function () {
     }
     make_invisible(switchProfilePopup)
     openMainPage()
-    set_index(current_profile_index, switch_profile_index)
+    current_profile_index = switch_profile_index
     cleanMainPageDeckNames()
     //loadMainPageDecks()
-    set_innerHTML(get_innerHTML('current_profile'), "Current profile: " + current_profile.name)
-    set_innerHTML(get_innerHTML('current_deck'), "Current deck: " + current_decks[current_profile.deck_index].name)
-    set_innerHTML(get_innerHTML('current_account'), "Current account: " + account_names[current_account_index])
+    set_innerHTML(get_element_by_id('current_profile'), "Current profile: " + current_profile.name)
+    set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + current_decks[current_profile.deck_index].name)
+    set_innerHTML(get_element_by_id('current_account'), "Current account: " + account_names[current_account_index])
 })
 
 //button to add a card to the currently specified deck
@@ -696,7 +694,7 @@ add_card_button.addEventListener("click", function () {
     const current_cards = current_deck.cards
     
     current_cards.push(new_card);
-    set_innerHTML(get_innerHTML('number_of_cards_study'), "Current number of cards: " + current_cards.length)
+    set_innerHTML(get_element_by_id('number_of_cards_study'), "Current number of cards: " + current_cards.length)
     
     if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ADD_CARD, 1)){
         openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ADD_CARD, 1)
@@ -745,8 +743,8 @@ study_deck_popup_help_button.addEventListener("click", function () {
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
 
-    set_index(study_deck_temporary_index, 0)
-    set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
+    study_deck_temporary_index = 0
+    set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
     make_invisible(studyDeckPopup)
     make_visible(leadsToExternalWebsitePopup)
     if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
@@ -762,7 +760,7 @@ study_deck_popup_study_button.addEventListener("click", function () {
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
     
-    set_index(study_deck_temporary_index, 0)
+    study_deck_temporary_index = 0
     if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.STUDY_DECK, 1)) {
         openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.STUDY_DECK, 1)
         increment_reward()
@@ -771,7 +769,7 @@ study_deck_popup_study_button.addEventListener("click", function () {
         studyDeckRewardMap.assignReward(StudyDeckRewardNames.STUDY, 1)
         increment_reward()
     }
-    set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
+    set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
     make_invisible(studyDeckPopup)
     openStudyPage()
 })
@@ -785,8 +783,9 @@ study_deck_popup_add_button.addEventListener("click", function () {
         openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CREATE_DECK, 0)
         increment_reward()
     }
-    set_index(study_deck_temporary_index, 0)
-    set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
+
+    study_deck_temporary_index = 0
+    set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
     make_invisible(studyDeckPopup)
     make_visible(createNewDeckPopup)
 })
@@ -955,8 +954,9 @@ delete_deck_yes_button.addEventListener("click", function () {
         return;
     }
     current_decks.splice(current_profile.deck_index, 1);
-    set_index(current_profile.deck_index, 0)
-    set_innerHTML(get_innerHTML('current_deck'), "Current deck: " + current_decks[current_profile.deck_index].name)
+    
+    current_profile.deck_index = 0
+    set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + current_decks[current_profile.deck_index].name)
     cleanMainPageDeckNames();
     //loadMainPageDecks();
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DELETE_DECK, 1)) {
@@ -986,7 +986,7 @@ export_deck_popup_reset_button.addEventListener("click", function(){
         increment_reward()
     }
     exported_decks = []
-    set_innerHTML(get_innerHTML('exported_decks_number'), "Number of exported decks: " + exported_decks.length)
+    set_innerHTML(get_element_by_id('exported_decks_number'), "Number of exported decks: " + exported_decks.length)
 })
 
 //button to edit the front side of a card iff the length of the front side does not exceed 50
@@ -1004,8 +1004,8 @@ edit_front_side_button.addEventListener("click", function (){
             editCardRewards.assignReward(EditCardRewards.EditCardRewardNames.EDIT_FRONT, 0)
             increment_reward()
         }
-        set_innerHTML(get_innerHTML('question'), "Question: " + current_card.front)
-        set_innerHTML(get_innerHTML('edit_card_row_1'), current_card.front)  
+        set_innerHTML(get_element_by_id('question'), "Question: " + current_card.front)
+        set_innerHTML(get_element_by_id('edit_card_row_1'), current_card.front)  
     }
 })
 
@@ -1024,8 +1024,8 @@ edit_back_side_button.addEventListener("click", function (){
             editCardRewards.assignReward(EditCardRewards.EditCardRewardNames.EDIT_BACK, 0)
             increment_reward()
         }
-        set_innerHTML(get_innerHTML('answer'), "Question: " + current_card.back)
-        set_innerHTML(get_innerHTML('edit_card_row_2'), current_card.back)  
+        set_innerHTML(get_element_by_id('answer'), "Question: " + current_card.back)
+        set_innerHTML(get_element_by_id('edit_card_row_2'), current_card.back)  
     }
 })
 
@@ -1044,7 +1044,7 @@ edit_tag_button.addEventListener("click", function (){
             openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.EDIT_CARD, 2)
             increment_reward()
         }
-        set_innerHTML(get_innerHTML('edit_card_row_3'), current_card.tag)  
+        set_innerHTML(get_element_by_id('edit_card_row_3'), current_card.tag)  
     }
 })
 
@@ -1070,9 +1070,9 @@ edit.addEventListener("click", function (){
         increment_reward()
     }
     make_visible(editCardPopup)
-    set_innerHTML(get_innerHTML('edit_card_row_1'), current_card.front)
-    set_innerHTML(get_innerHTML('edit_card_row_2'), current_card.back)
-    set_innerHTML(get_innerHTML('edit_card_row_3'), current_card.tag)
+    set_innerHTML(get_element_by_id('edit_card_row_1'), current_card.front)
+    set_innerHTML(get_element_by_id('edit_card_row_2'), current_card.back)
+    set_innerHTML(get_element_by_id('edit_card_row_3'), current_card.tag)
 })
 
 //button to close the at least one deck popup
@@ -1090,8 +1090,8 @@ add_card_button_1.addEventListener("click", function () {
         addCardRewards.assignReward(AddCardRewards.AddCardRewardNames.INCREMENT, 0)
         increment_reward()
     }
-    increment_counter(add_card_front_counter, 1)
-    set_innerHTML(get_innerHTML('add_card_row_1'), "Front Side " + add_card_front_counter)
+    add_card_front_counter += 1
+    set_innerHTML(get_element_by_id('add_card_row_1'), "Front Side " + add_card_front_counter)
 });
 
 //button to increment the counter of the back side of a card by 1
@@ -1100,8 +1100,8 @@ add_card_button_2.addEventListener("click", function () {
         addCardRewards.assignReward(AddCardRewards.AddCardRewardNames.INCREMENT, 1)
         increment_reward()
     }
-    increment_counter(add_card_back_counter, 1)
-    set_innerHTML(get_innerHTML('add_card_row_2'), "Back Side " + add_card_back_counter)
+    add_card_back_counter += 1
+    set_innerHTML(get_element_by_id('add_card_row_2'), "Back Side " + add_card_back_counter)
 });
 
 //button to increment the counter of the tag of a card by 1
@@ -1110,8 +1110,8 @@ add_card_button_3.addEventListener("click", function () {
         addCardRewards.assignReward(AddCardRewards.AddCardRewardNames.INCREMENT, 2)
         increment_reward()
     }
-    increment_counter(add_card_tag_counter, 1)
-    set_innerHTML(get_innerHTML('add_card_row_3'), "Tag Text " + add_card_tag_counter)
+    add_card_tag_counter += 1
+    set_innerHTML(get_element_by_id('add_card_row_3'), "Tag Text " + add_card_tag_counter)
 });
 
 //button to increment the counter for creating a deck by 1
@@ -1120,8 +1120,8 @@ create_new_deck_name_button.addEventListener("click", function () {
         createDeckRewards.assignReward(CreateDeckRewards.CreateDeckRewardNames.CHANGE_DECK, 0)
         increment_reward()
     }
-    modulo_index_increment(create_deck_index, 5)
-    set_innerHTML(get_innerHTML('create_new_deck'), deck_names[create_deck_index])
+    create_deck_index = modulo_index_increment(create_deck_index, 5)
+    set_innerHTML(get_element_by_id('create_new_deck'), deck_names[create_deck_index])
 })
 
 //button to close the export deck popup
@@ -1140,8 +1140,9 @@ close_add_profile_popup_button.addEventListener("click", function () {
         increment_reward()
     }
     make_invisible(addProfilePopup)
-    set_index(add_profile_index, 0)
-    set_innerHTML(get_innerHTML('add_profile_popup_row'), profile_names[rename_profile_index])
+    
+    add_profile_index = 0
+    set_innerHTML(get_element_by_id('add_profile_popup_row'), profile_names[rename_profile_index])
 })
 
 //button the close the rename profile popup
@@ -1151,8 +1152,8 @@ close_rename_profile_popup_button.addEventListener("click", function () {
         increment_reward()
     }
     make_invisible(renameProfilePopup)
-    set_index(rename_profile_index, 0)
-    set_innerHTML(get_innerHTML('rename_profile_popup_row'), profile_names[rename_profile_index])
+    rename_profile_index = 0
+    set_innerHTML(get_element_by_id('rename_profile_popup_row'), profile_names[rename_profile_index])
 })
 
 //button to close the profile exists popup and open the switch profile popup
@@ -1255,7 +1256,7 @@ switch_profile_popup_delete_button.addEventListener("click", function () {
         increment_reward()
     }
     current_profiles.splice(switch_profile_index, 1)
-    set_index(switch_profile_index, 0)
+    switch_profile_index = 0
     cleanProfileNames()
     loadProfileNames()
 })
@@ -1275,23 +1276,23 @@ remove_card.addEventListener("click", function() {
         make_visible(atLeastOneCardPopup)
         return;
     }
-    if(!mainPageRewardMap.getReward(MainPageRewardNames.REMOVE_CARD, 0)){
-        mainPageRewardMap.assignReward(MainPageRewardNames.REMOVE_CARD, 0)
+    if(!mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.REMOVE_CARD, 0)){
+        mainPageRewards.assignReward(MainPageRewards.MainPageRewardNames.REMOVE_CARD, 0)
         increment_reward()
     }
     current_cards.splice(current_decks[current_decks.deck_index].current_study_index, 1)
     current_decks[current_profile.deck_index].current_study_index > 0 ? current_decks[current_profile.deck_index].current_study_index -= 1 : 0 
-    set_innerHTML(get_innerHTML('current_card_number_study'), "Current card number: " + (current_deck.current_study_index + 1))
-    set_innerHTML(get_innerHTML('number_of_cards_study'), "Current number of cards: " + current_cards.length)
-    set_innerHTML(get_innerHTML('question'), "Question: " + current_cards[current_deck.current_study_index].front)
-    set_innerHTML(get_innerHTML('answer'), current_cards[current_deck.current_study_index].back)
+    set_innerHTML(get_element_by_id('current_card_number_study'), "Current card number: " + (current_deck.current_study_index + 1))
+    set_innerHTML(get_element_by_id('number_of_cards_study'), "Current number of cards: " + current_cards.length)
+    set_innerHTML(get_element_by_id('question'), "Question: " + current_cards[current_deck.current_study_index].front)
+    set_innerHTML(get_element_by_id('answer'), current_cards[current_deck.current_study_index].back)
 })
 
 //button to open the add profile popup
 switch_profile_popup_add_button.addEventListener("click", function () {
     make_visible(addProfilePopup)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 0)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 0)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 0)) {
+        openClosePopupsRewards.assignReward(openClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 0)
         increment_reward()
     }
 })
@@ -1299,8 +1300,8 @@ switch_profile_popup_add_button.addEventListener("click", function () {
 //button to close the add profile popup
 close_add_profile_popup_button.addEventListener("click", function () {
     make_invisible(addProfilePopup)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.RENAME_PROFILE, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 1)
         increment_reward()
     }
 })
@@ -1312,8 +1313,8 @@ create_new_deck_add_button.addEventListener("click", function () {
     
     if(current_decks.length >= 5) {
         make_invisible(createNewDeckPopup)
-        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 0)) {
-            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 0)
+        if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 0)) {
+            openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ALREADY_FIVE_DECKS, 0)
             increment_reward()
         }
         make_visible(alreadyFiveDecksPopup)
@@ -1321,8 +1322,8 @@ create_new_deck_add_button.addEventListener("click", function () {
     }
     for(let i = 0 ; i < current_decks.length; i++) {
         if(current_decks[i].name == Object.values(DeckNames)[create_deck_index]){
-            if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)) {
-                openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)
+            if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)) {
+                openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)
                 increment_reward()
             }
             make_invisible(createNewDeckPopup)
@@ -1332,8 +1333,8 @@ create_new_deck_add_button.addEventListener("click", function () {
     }
     const new_deck = new Profile(Object.values(DeckNames)[create_deck_index], default_deck, 0)
     current_profiles[current_profile_index].decks.push(new_deck)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CREATE_DECK, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CREATE_DECK, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CREATE_DECK, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CREATE_DECK, 1)
         increment_reward()
     }
     make_invisible(createNewDeckPopup)
@@ -1344,39 +1345,39 @@ create_new_deck_add_button.addEventListener("click", function () {
 study_deck_popup_cancel_button.addEventListener("click", function () {
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.STUDY_DECK, 1)){
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.STUDY_DECK, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.STUDY_DECK, 1)){
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.STUDY_DECK, 1)
         increment_reward()
     }
-    set_index(study_deck_temporary_index, 0)
-    set_innerHTML(get_innerHTML('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
+    study_deck_temporary_index = 0
+    set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
     make_invisible(studyDeckPopup)
 })
 
 //button to increment the index of login username by 1 and update the temporary account name
 anki_login_username_button.addEventListener("click", function () {
-    if(!ankiLoginRewardMap.getReward(AnkiLoginRewardNames.INCREMENT, 0)) {
-        ankiLoginRewardMap.assignReward(AnkiLoginRewardNames.INCREMENT, 0)
+    if(!ankiLoginRewards.getReward(AnkiLoginRewards.AnkiLoginRewardNames.INCREMENT, 0)) {
+        ankiLoginRewards.assignReward(AnkiLoginRewards.AnkiLoginRewardNames.INCREMENT, 0)
         increment_reward()
     }
     modulo_index_increment(anki_login_username_index, 5)
-    set_innerHTML(get_innerHTML('anki_login_row_1'), account_names[anki_login_username_index])
+    set_innerHTML(get_element_by_id('anki_login_row_1'), account_names[anki_login_username_index])
 })
 
 //button to increment the index of login password by 1 and update the temporary account name
 anki_login_password_button.addEventListener("click", function () {
-    if(!ankiLoginRewardMap.getReward(AnkiLoginRewardNames.INCREMENT, 1)) {
-        ankiLoginRewardMap.assignReward(AnkiLoginRewardNames.INCREMENT, 1)
+    if(!ankiLoginRewards.getReward(AnkiLoginRewards.AnkiLoginRewardNames.INCREMENT, 1)) {
+        ankiLoginRewards.assignReward(AnkiLoginRewards.AnkiLoginRewardNames.INCREMENT, 1)
         increment_reward()
     }
     modulo_index_increment(anki_login_password_index, 5)
-    set_innerHTML(get_innerHTML('anki_login_row_2'), account_passwords[anki_login_password_index])
+    set_innerHTML(get_element_by_id('anki_login_row_2'), account_passwords[anki_login_password_index])
 })
 
 //button to close the anki login popup
 anki_login_close_button.addEventListener("click", function () {
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ANKI_LOGIN, 0)){
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ANKI_LOGIN, 0)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ANKI_LOGIN, 0)){
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ANKI_LOGIN, 0)
         increment_reward()
     }
     make_invisible(ankiLoginPopup)
@@ -1386,30 +1387,30 @@ anki_login_close_button.addEventListener("click", function () {
 anki_login_ok_button.addEventListener("click", function () {
     if(anki_login_username_index != anki_login_password_index){
         make_visible(failedLoginPopup)
-        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 0)) {
-            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 0)
+        if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 0)) {
+            openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 0)
             increment_reward()
         }
         make_invisible(ankiLoginPopup)
         return;
     }
-    if(!ankiLoginRewardMap.getReward(AnkiLoginRewardNames.LOGIN, 0)) {
-        ankiLoginRewardMap.assignReward(AnkiLoginRewardNames.LOGIN, 0)
+    if(!ankiLoginRewards.getReward(AnkiLoginRewards.AnkiLoginRewardNames.LOGIN, 0)) {
+        ankiLoginRewards.assignReward(AnkiLoginRewards.AnkiLoginRewardNames.LOGIN, 0)
         increment_reward()
     }
-    set_index(current_account_index, anki_login_username_index)
-    set_innerHTML(get_innerHTML('current_account'), "Current account: " + account_names[current_account_index])
+    current_account_index = anki_login_username_index
+    set_innerHTML(get_element_by_id('current_account'), "Current account: " + account_names[current_account_index])
     make_invisible(ankiLoginPopup)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ABOUT_PAGE, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ABOUT_PAGE, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ABOUT_PAGE, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ABOUT_PAGE, 1)
         increment_reward()
     }
 })
 
 //button to close the about page
 about_page_close_button.addEventListener("click", function (){
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.ABOUT_PAGE, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.ABOUT_PAGE, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ABOUT_PAGE, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ABOUT_PAGE, 1)
         increment_reward()
     }
     make_invisible(aboutPagePopup)
@@ -1417,8 +1418,8 @@ about_page_close_button.addEventListener("click", function (){
 
 //button to close the failed login popup
 close_failed_login_popup.addEventListener("click", function (){
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.UNSUCCESSFUL_LOGIN, 1)
         increment_reward()
     }
     make_invisible(failedLoginPopup)
@@ -1427,46 +1428,51 @@ close_failed_login_popup.addEventListener("click", function (){
 function main_page_row_event(index){
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
+    console.log(current_decks)
     if(index < current_decks.length) {
-        if(!mainPageRewardMap.getReward(MainPageRewardNames.CHANGE_DECK, index) && current_profiles[current_profile_index].deck_index != index) { 
-            mainPageRewardMap.assignReward(MainPageRewardNames.CHANGE_DECK, index)
+        console.log(mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.CHANGE_DECK,0))
+        console.log(mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.CHANGE_DECK,1))
+        console.log(mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.CHANGE_DECK,2))
+
+        if(!mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.CHANGE_DECK, index) /*&& current_profiles[current_profile_index].deck_index != index*/) { 
+            mainPageRewards.assignReward(MainPageRewards.MainPageRewardNames.CHANGE_DECK, index)
             increment_reward()
         }
-        set_index(current_profiles[current_profile_index].deck_index, index)
-        set_innerHTML(get_innerHTML('current_deck'), "Current deck: " + current_decks[current_profile.deck_index].name)
+        current_profiles[current_profile_index].index = index
+        set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + current_decks[current_profile.index].name)
     }
 }
 
 function import_deck_popup_row_event(index){
-    if(!importDeckRewardMap.getReward(ImportDeckRewardNames.CHANGE_DECK, index) && deck_import_index != index) {
-        importDeckRewardMap.assignReward(ImportDeckRewardNames.CHANGE_DECK, index)
+    if(!importDeckRewards.getReward(ImportDeckRewards.ImportDeckRewardNames.CHANGE_DECK, index) && deck_import_index != index) {
+        importDeckRewards.assignReward(ImportDeckRewards.ImportDeckRewardNames.CHANGE_DECK, index)
         increment_reward()
     }
-    set_index(deck_import_index, index)
-    set_innerHTML(get_innerHTML('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
+    deck_import_index = index
+    set_innerHTML(get_element_by_id('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
 }
 
 function export_deck_click_event(index) {
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
-    if(!exportDeckRewardMap.getReward(ExportDeckRewardNames.EXPORT, index) && deck_export_index != index) {
-        exportDeckRewardMap.assignReward(ExportDeckRewardNames.EXPORT, index)
+    if(!exportDeckRewards.getReward(ExportDeckRewards.ExportDeckRewardNames.EXPORT, index) && deck_export_index != index) {
+        exportDeckRewards.assignReward(ExportDeckRewards.ExportDeckRewardNames.EXPORT, index)
         increment_reward()
     }
     if(current_decks.length > index){
-        set_index(deck_export_index, 0)
-        set_innerHTML(get_innerHTML('deck_to_export'), "Deck to export: " + current_decks[deck_export_index].name)
+        deck_export_index = 0
+        set_innerHTML(get_element_by_id('deck_to_export'), "Deck to export: " + current_decks[deck_export_index].name)
     }
 }
 
 function switch_profile_popup_click_event(index){
     if(current_profiles.length > index){
-        if(!profileRewardMap.getReward(ProfileRewardNames.CHANGE_PROFILE, index) && switch_profile_index != index) {
-            profileRewardMap.assignReward(ProfileRewardNames.CHANGE_PROFILE, index)
+        if(!profileRewards.getReward(ProfileRewards.ProfileRewardNames.CHANGE_PROFILE, index) && switch_profile_index != index) {
+            profileRewards.assignReward(ProfileRewards.ProfileRewardNames.CHANGE_PROFILE, index)
             increment_reward()
         }
-        set_index(switch_profile_index, index)
-        set_innerHTML(get_innerHTML('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
+        switch_profile_index = index
+        set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
     }
 }
 
@@ -1475,12 +1481,12 @@ function study_deck_popup_row_event(index){
     const current_decks = current_profile.decks
     
     if(index < current_decks.length) {
-        if(!studyDeckRewardMap.getReward(StudyDeckRewardNames.STUDY_DECK, index) && study_deck_temporary_index != index) {
-            studyDeckRewardMap.assignReward(StudyDeckRewardNames.STUDY_DECK, index)
+        if(!studyDeckRewards.getReward(StudyDeckRewards.StudyDeckRewardNames.STUDY_DECK, index) && study_deck_temporary_index != index) {
+            studyDeckRewards.assignReward(StudyDeckRewards.StudyDeckRewardNames.STUDY_DECK, index)
             increment_reward()
         }
-        set_index(study_deck_temporary_index, index)
-        set_innerHTML(get_innerHTML('deck_to_study'), current_decks[study_deck_temporary_index].name)
+        study_deck_temporary_index = index
+        set_innerHTML(get_element_by_id('deck_to_study'), current_decks[study_deck_temporary_index].name)
     }
 }
 
@@ -1504,8 +1510,8 @@ for(let i = 0; i < 5; i++) {
 }
 
 function import_deck_popup_cancel_button_event(){
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.IMPORT_DECK, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.IMPORT_DECK, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.IMPORT_DECK, 1)) {
+        openClosePopupRewardMap.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.IMPORT_DECK, 1)
         increment_reward()
     }
     make_invisible(importDeckPopup)
@@ -1516,8 +1522,8 @@ provide_event_to_item(import_deck_popup_cancel_button, import_deck_popup_cancel_
 function import_deck_popup_help_button_event() {
     make_invisible(importDeckPopup)
     make_visible(leadsToExternalWebsitePopup)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
         increment_reward()
     }
 }
@@ -1527,8 +1533,8 @@ provide_event_to_item(import_deck_popup_help_button, import_deck_popup_help_butt
 function export_deck_popup_help_button_event() {
     make_invisible(exportDeckPopup)
     make_visible(leadsToExternalWebsitePopup)
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
         increment_reward()
     }
 }
@@ -1539,8 +1545,8 @@ function import_deck_popup_add_button_event() {
     const current_profile = current_profiles[current_profile_index]
     const current_decks = current_profile.decks
     if(current_decks.length == 5) {
-        if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)) {
-            openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)
+        if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)) {
+            openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.AT_LEAST_ONE_DECK, 0)
             increment_reward()
         }
         make_visible(alreadyFiveDecksPopup)
@@ -1548,8 +1554,8 @@ function import_deck_popup_add_button_event() {
         return
     }
     if(current_decks.includes(importable_decks[deck_import_index])) {
-        if(!importDeckRewardMap.getReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)) {
-            importDeckRewardMap.assignReward(OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)
+        if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)) {
+            openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DECK_ALREADY_EXISTS, 0)
             increment_reward()
         }
         make_visible(deckExistsPopup)
@@ -1557,8 +1563,8 @@ function import_deck_popup_add_button_event() {
         return
     }
     current_profiles[current_profile_index].decks.push(importable_decks[deck_import_index])
-    if(!importDeckRewardMap.getReward(ImportDeckRewardNames.IMPORT_DECK, 0)) {
-        importDeckRewardMap.assignReward(ImportDeckRewardNames.IMPORT_DECK, 0)
+    if(!importDeckRewards.getReward(ImportDeckRewards.ImportDeckRewardNames.IMPORT_DECK, 0)) {
+        importDeckRewards.assignReward(ImportDeckRewards.ImportDeckRewardNames.IMPORT_DECK, 0)
         increment_reward()
     }
     make_invisible(importDeckPopup)
@@ -1568,30 +1574,30 @@ function import_deck_popup_add_button_event() {
 provide_event_to_item(import_deck_popup_add_button, import_deck_popup_add_button_event)
 
 function rename_profile_button_event() {
-    if(!profileRewardMap.getReward(ProfileRewardNames.RENAME_PROFILE, 1)) {
-        profileRewardMap.assignReward(ProfileRewardNames.RENAME_PROFILE, 1)
+    if(!profileRewards.getReward(ProfileRewards.ProfileRewardNames.RENAME_PROFILE, 1)) {
+        profileRewards.assignReward(ProfileRewards.ProfileRewardNames.RENAME_PROFILE, 1)
         increment_reward()
     }
     modulo_index_increment(rename_profile_index, 5)
-    set_innerHTML(get_innerHTML('rename_profile_popup_row'), profile_names[rename_profile_index])
+    set_innerHTML(get_element_by_id('rename_profile_popup_row'), profile_names[rename_profile_index])
 }
 
 provide_event_to_item(rename_profile_button, rename_profile_button_event)
 
 function add_profile_button_event() {
-    if(!profileRewardMap.getReward(ProfileRewardNames.ADD_PROFILE, 1)) {
-        profileRewardMap.assignReward(ProfileRewardNames.ADD_PROFILE, 1)
+    if(!profileRewards.getReward(ProfileRewards.ProfileRewardNames.ADD_PROFILE, 1)) {
+        profileRewards.assignReward(ProfileRewards.ProfileRewardNames.ADD_PROFILE, 1)
         increment_reward()
     }
     modulo_index_increment(add_profile_index, 5)
-    set_innerHTML(get_innerHTML('add_profile_popup_row'), profile_names[add_profile_index])
+    set_innerHTML(get_element_by_id('add_profile_popup_row'), profile_names[add_profile_index])
 }
 
 provide_event_to_item(add_profile_button, add_profile_button_event)
 
 function preferences_page_help_button_event(){
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.LEADS_TO_EXTERNAL_WEBSITE, 0)
         increment_reward()
     }
     make_invisible(preferencesPage)
@@ -1601,8 +1607,8 @@ function preferences_page_help_button_event(){
 provide_event_to_item(preferences_page_help_button, preferences_page_help_button_event)
 
 function preferences_page_close_button_event() {
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1) 
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.PREFERENCES_PAGE, 1) 
         increment_reward()
     }
     make_invisible(preferencesPage)
@@ -1616,7 +1622,7 @@ function increment_counter(variable, value) {
 
 function click_counter(variable, increment, identifier){
     const newValue = increment_counter(variable, increment)
-    set_innerHTML(get_innerHTML(identifier), newValue)
+    set_innerHTML(get_element_by_id(identifier), newValue)
 }
 
 provide_event_to_item(increment_1, function() {return click_counter(preferences_page_counter_1, 1, 'counter_1')})
@@ -1655,11 +1661,11 @@ for (let i = 1; i <= 14; i++) {
 }
 
 function preferences_page_text_button_event(){
-    if(!preferencesPageRewardMap.getReward(PreferencesPageRewardNames.TEXT_BUTTON, 0)) {
-        preferencesPageRewardMap.assignReward(PreferencesPageRewardNames.TEXT_BUTTON, 0)
+    if(!preferencesPageRewards.getReward(PreferencesPageRewards.PreferencesPageRewardNames.TEXT_BUTTON, 0)) {
+        preferencesPageRewardMap.assignReward(PreferencesPageRewards.PreferencesPageRewardNames.TEXT_BUTTON, 0)
         increment_reward()
     }
-    set_innerHTML(get_innerHTML('preferences_page_box_5'), "Text")
+    set_innerHTML(get_element_by_id('preferences_page_box_5'), "Text")
 }
 
 provide_event_to_item(preferences_page_text_button, preferences_page_text_button_event)

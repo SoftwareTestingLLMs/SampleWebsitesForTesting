@@ -20,9 +20,7 @@ export function initializeRewardMap() {
     const rewardNames = Object.values(AddCardRewardNames);
     const rewardValues = Object.values(AddCardRewardValues);
     for (let i = 0; i < rewardNames.length; i++) {
-        for (let j = 0; j < rewardValues[i].length; j++) {
-            map.set(rewardNames[i], rewardValues[j]);
-        }
+        map.set(rewardNames[i],rewardValues[i]);
     }
     return map;
 }
