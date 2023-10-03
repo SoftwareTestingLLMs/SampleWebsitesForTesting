@@ -125,11 +125,6 @@ function increment_reward() {
     set_innerHTML(get_element_by_id('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
 }
 
-function reset_reward() {
-    total_sum_of_reward = 0
-    set_innerHTML(get_element_by_id('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
-}
-
 function get_innerHTML(identifier) {
     return get_element_by_id(identifier).innerHTML
 }
@@ -150,8 +145,8 @@ function modulo_index_increment(indexName, modulo) {
     return (indexName + 1) % modulo
 }
 
-function erase_names(identifier, names) {
-    for(let i = 0; i < names.length; i++){
+function erase_names(identifier, loop_length) {
+    for(let i = 0; i < loop_length; i++){
         set_innerHTML(get_element_by_id((identifier + (i+1)).toString()),"");
     }
 }
@@ -176,6 +171,10 @@ function provide_event_to_item(item, event) {
     item.addEventListener("click", event);
 }
 
+function provide_event_to_item_change(item, event) {
+    item.addEventListener("change", event);
+}
+
 function get_element_by_id(identifier){
     return document.getElementById(identifier)
 }
@@ -197,23 +196,29 @@ function importDeckPopupLoad() {
     deck_import_index = 0
     set_innerHTML(get_element_by_id('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
     make_visible(importDeckPopup)
+    erase_names('import_deck_popup_row_', 5)
     update_names('import_deck_popup_row_', importable_decks.map(a => a.name))
 }
 
 //function to set the export popup
 function exportDeckPopupLoad() {
     deck_export_index = 0
+    const current_decks = current_profiles[current_profile_index].decks
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.EXPORT_DECK, 0)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.EXPORT_DECK, 0)
         increment_reward()
     }
     make_visible(exportDeckPopup)
+    set_innerHTML(get_element_by_id('deck_to_export'), "Deck to export: " + current_decks[deck_export_index].name)
+    erase_names('export_deck_popup_row_', 5)
+    update_names('export_deck_popup_row_', current_decks.map(a => a.name))
     set_innerHTML(get_element_by_id('exported_decks_number'), "Number of exported decks: " + exported_decks.length)
 }
 
 //function to set the profile popup
 function switchProfilePopupLoad() {
-    loadProfileNames()
+    erase_names('switch_profile_popup_row_', 5)
+    update_names('switch_profile_popup_row_', current_profiles.map(a => a.name))
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 0)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 0)
         increment_reward()
@@ -241,6 +246,7 @@ function switchToSchedulingTab() {
     const items_to_show = ['checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text']
     change_visible_items(items_to_hide, items_to_show)
 }
+provide_event_to_item(preferences_page_box_2, switchToSchedulingTab)
 
 //function to hide the elements which are not in the preferences-basic tab and display the elements in preferences-basic tab
 function switchToBasicTab() {
@@ -253,6 +259,7 @@ function switchToBasicTab() {
     change_visible_items(items_to_hide, items_to_show)
 }
 
+provide_event_to_item(preferences_page_box_1, switchToBasicTab)
 //function to hide the elements which are not in the preferences-network tab and display the elements in preferences-network tab
 function switchToNetworkTab() {
     if(!preferencesPageRewards.getReward(PreferencesPageRewards.PreferencesPageRewardNames.TAB, 2)){
@@ -263,6 +270,7 @@ function switchToNetworkTab() {
     const items_to_show = ['checkbox_11', 'checkbox_12', 'checkbox_13', 'checkbox_14']
     change_visible_items(items_to_hide, items_to_show)
 }
+provide_event_to_item(preferences_page_box_3, switchToNetworkTab)
 
 //function to hide the elements which are not in the preferences-backups tab and display the elements in preferences-backups tab
 function switchToBackupsTab() {
@@ -274,14 +282,7 @@ function switchToBackupsTab() {
     const items_to_show = ['increment_decrement_5', 'number_of_backups_text']
     change_visible_items(items_to_hide, items_to_show)
 }
-
-//function to load the present profile names to the rows of switch profile popup
-function loadProfileNames() {
-    for(let i = 0; i < current_profiles.length; i++) {
-        set_innerHTML(get_element_by_id('switch_profile_popup_row_' + (i+1).toString()), current_profiles[i].name)
-    }
-    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
-}
+provide_event_to_item(preferences_page_box_4, switchToBackupsTab)
 
 //function to switch between showing/not showing the answer of a question 
 function showAnswer() {
@@ -314,11 +315,17 @@ function showAnswer() {
 }
 
 provide_event_to_item(show_answer, showAnswer)
-provide_event_to_item(next_question, showAnswer )
+provide_event_to_item(next_question, showAnswer)
+provide_event_to_item_change(dd1, dropdown1Call)
+provide_event_to_item_change(dd2, dropdown2Call)
+provide_event_to_item_change(dd3, dropdown3Call)
+provide_event_to_item_change(dd4, dropdown4Call)
+
 
 //function to assign functions to the components of the first dropdown
 function dropdown1Call() {
     var x = get_element_by_id("dd1").value;
+    get_element_by_id("dd1").selectedIndex = 0
     switch(x) {
         case "switch_profile":
         if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 0)) {
@@ -365,28 +372,38 @@ function dropdown1Call() {
 
 //function to assign functions to the components of the second dropdown
 function dropdown2Call() {
+    get_element_by_id("dd2").selectedIndex = 0
+    if(dropdownRewards.getReward(DropdownRewards.DropdownRewardNames.DROPDOWN_2, 0) && 
+        !dropdownRewards.getReward(DropdownRewards.DropdownRewardNames.DROPDOWN_2, 1)){
+        dropdownRewards.assignReward(DropdownRewards.DropdownRewardNames.DROPDOWN_2, 1)
+        increment_reward()
+    }
     if(!dropdownRewards.getReward(DropdownRewards.DropdownRewardNames.DROPDOWN_2, 0)) {
         dropdownRewards.assignReward(DropdownRewards.DropdownRewardNames.DROPDOWN_2, 0)
         increment_reward()
     }
     if(get_display('book_logo') == "none"){
-        set_display(get_display('book_logo'), "block")
+        set_display('book_logo', "block")
         if(!openClosePopupsRewards.getReward(OpenClosePopupsRewardNames.BOOK_LOGO, 0)){
             openClosePopupsRewards.assignReward(OpenClosePopupsRewardNames.BOOK_LOGO, 0)
             increment_reward()
+            return
         } 
     }else {
-        set_display(get_display('book_logo'), "none")
+        set_display('book_logo', "none")
         if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.BOOK_LOGO, 1)){
             openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.BOOK_LOGO, 1)
             increment_reward()
+            return
         } 
     }
 }
+provide_event_to_item(book_logo_dd, dropdown2Call)
 
 //function to assign functions to the components of the third dropdown
 function dropdown3Call() {
     var x = get_element_by_id("dd3").value;
+    get_element_by_id("dd3").selectedIndex = 0
     switch(x) {
         case "check_media":
         if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CHECK_MEDIA, 0)){
@@ -411,6 +428,8 @@ function dropdown3Call() {
         study_deck_temporary_index = 0
         set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_profiles[current_profile_index].decks[study_deck_temporary_index].name)
         make_visible(studyDeckPopup)
+        erase_names('study_deck_popup_row_', 5)
+        update_names('study_deck_popup_row_', current_profiles[current_profile_index].decks.map(a => a.name))
         break;
         case "preferences":
         if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.PREFERENCES_PAGE, 0)){
@@ -429,6 +448,7 @@ function dropdown3Call() {
 //function to assign functions to the components of the fourth dropdown
 function dropdown4Call() {
     var x = get_element_by_id("dd4").value;
+    get_element_by_id("dd4").selectedIndex = 0
     switch(x) {
         case "guide":
         if(!dropdownRewards.getReward(DropdownRewards.DropdownRewardNames.DROPDOWN_4, 0)) {
@@ -468,7 +488,9 @@ function dropdown4Call() {
 
 //function to show the components which are present on the main page and hide the other components
 function openMainPage() {
-    if(!mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.STUDY_NOW, 1)){
+    console.log()
+    if(!mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.STUDY_NOW, 1) 
+        && !Array.from(switchProfilePopup.classList).includes("show")){
         mainPageRewards.assignReward(MainPageRewards.MainPageRewardNames.STUDY_NOW, 1)
         increment_reward()
     }
@@ -490,7 +512,8 @@ function openMainPage() {
     set_display("current_deck_study", "none")
     set_display("current_card_number_study", "none")
     set_display("number_of_cards_study", "none")
-
+    erase_names("deck_row_", 5)
+    update_names("deck_row_", current_profiles[current_profile_index].decks.map(a => a.name))
     for(let i = 1; i <= 5; i++) {
         set_display("deck_row_" + i, "block")
     }
@@ -669,9 +692,11 @@ set_innerHTML(get_element_by_id('total_reward'), "Total sum of rewards:" + total
 
 //button to close the switch profile page and open the main page
 switch_profile_popup_open_button.addEventListener("click", function () {
-    const current_profile = current_profiles[current_profile_index]
+    const current_profile = current_profiles[switch_profile_index]
     const current_decks = current_profile.decks
-
+    
+    erase_names("deck_row_", 5)
+    current_profile_index = switch_profile_index
 
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)
@@ -681,10 +706,9 @@ switch_profile_popup_open_button.addEventListener("click", function () {
         profileRewards.assignReward(ProfileRewards.ProfileRewardNames.OPEN_PROFILE, 0)
         increment_reward()
     }
-    make_invisible(switchProfilePopup)
     openMainPage()
-    current_profile_index = switch_profile_index
-    update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
+    make_invisible(switchProfilePopup)
+    
     set_innerHTML(get_element_by_id('current_profile'), "Current profile: " + current_profile.name)
     set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + current_decks[current_profile.index].name)
     set_innerHTML(get_element_by_id('current_account'), "Current account: " + account_names[current_account_index])
@@ -697,8 +721,9 @@ add_card_button.addEventListener("click", function () {
     const current_decks = current_profile.decks
     const current_deck = current_decks[current_profile.index]
     const current_cards = current_deck.cards
-    
-    current_cards.push(new_card);
+
+    current_profiles[current_profile_index].decks[current_profile.index].cards.push(new_card)
+
     set_innerHTML(get_element_by_id('number_of_cards_study'), "Current number of cards: " + current_cards.length)
     
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.ADD_CARD, 1)){
@@ -831,16 +856,16 @@ close_deck_exists_popup_button.addEventListener("click", function() {
     make_invisible(deckExistsPopup)
 })
 
-/*
+
 //button to close the check media popup
 check_media_close_button.addEventListener("click", function() {
-    if(!openClosePopupRewardMap.getReward(OpenClosePopupsRewardNames.CHECK_MEDIA, 1)) {
-        openClosePopupRewardMap.assignReward(OpenClosePopupsRewardNames.CHECK_MEDIA, 1)
+    if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CHECK_MEDIA, 1)) {
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CHECK_MEDIA, 1)
         increment_reward()
     }
     make_invisible(checkMediaPopup)
 })
-*/
+
 
 //button to close the leads to external website popup
 closeLeadsToExternalWebsitePopup.addEventListener("click", function () {
@@ -866,7 +891,6 @@ switch_profile_popup_open_backup_button.addEventListener("click", function () {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)
         increment_reward()
     }
-    make_invisible(switchProfilePopup)
     //location.reload();
 });
 
@@ -957,10 +981,10 @@ delete_deck_yes_button.addEventListener("click", function () {
         make_visible(atLeastOneDeckPopup)
         return;
     }
-    erase_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
     current_decks.splice(current_profile.index, 1);
     current_profile.index = 0
     set_innerHTML(get_element_by_id('current_deck'), "Current deck: " + current_decks[current_profile.index].name)
+    erase_names('deck_row_', 5)
     update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DELETE_DECK, 1)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.DELETE_DECK, 1)
@@ -1000,9 +1024,9 @@ edit_front_side_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
 
-    current_card.front += " edited"
-    
-    if(get_innerHTML('question').length <= 50) {
+    console.log(get_innerHTML('edit_card_row_1').length)
+    if(get_innerHTML('edit_card_row_1').length <= 50) {
+        current_card.front += " edited"
         if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_FRONT, 0)) {
             editCardRewards.assignReward(EditCardRewards.EditCardRewardNames.EDIT_FRONT, 0)
             increment_reward()
@@ -1020,14 +1044,14 @@ edit_back_side_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
     
-    current_card.back += " edited"
-
-    if(get_innerHTML('answer').length <= 50) {
+    console.log(get_innerHTML('edit_card_row_2').length)
+    if(get_innerHTML('edit_card_row_2').length <= 50) {
+        current_card.back += " edited"
         if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_BACK, 0)) {
             editCardRewards.assignReward(EditCardRewards.EditCardRewardNames.EDIT_BACK, 0)
             increment_reward()
         }
-        set_innerHTML(get_element_by_id('answer'), "Question: " + current_card.back)
+        set_innerHTML(get_element_by_id('answer'), "Answer: " + current_card.back)
         set_innerHTML(get_element_by_id('edit_card_row_2'), current_card.back)  
     }
 })
@@ -1040,11 +1064,11 @@ edit_tag_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
     
-    current_card.tag += " edited"
-
+    console.log(get_innerHTML('edit_card_row_3').length)
     if(get_innerHTML('edit_card_row_3').length <= 50) {
-        if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.EDIT_CARD, 2)) {
-            openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.EDIT_CARD, 2)
+        current_card.tag += " edited"
+        if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_TAG, 0)) {
+            editCardRewards.assignReward(EditCardRewards.EditCardRewardNames.EDIT_TAG, 0)
             increment_reward()
         }
         set_innerHTML(get_element_by_id('edit_card_row_3'), current_card.tag)  
@@ -1156,7 +1180,9 @@ close_rename_profile_popup_button.addEventListener("click", function () {
     }
     make_invisible(renameProfilePopup)
     rename_profile_index = 0
-    set_innerHTML(get_element_by_id('rename_profile_popup_row'), profile_names[rename_profile_index])
+    erase_names('switch_profile_popup_row_', 5)
+    update_names('switch_profile_popup_row_', current_profiles.map(a => a.name))
+    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
 })
 
 //button to close the profile exists popup and open the switch profile popup
@@ -1188,6 +1214,7 @@ rename_profile_popup_ok_button.addEventListener("click", function () {
         increment_reward()
     }
     current_profiles[switch_profile_index].name = profile_names[rename_profile_index]
+    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
     switchProfilePopupLoad()
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 1)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 1)
@@ -1222,7 +1249,7 @@ add_profile_popup_ok_button.addEventListener("click", function () {
         profileRewards.assignReward(ProfileRewards.ProfileRewardNames.ADD_PROFILE, 0)
         increment_reward()
     }
-    const new_profile = new Profile(profile_names[add_profile_index], default_deck, 0)
+    const new_profile = new Profile(profile_names[add_profile_index], [default_deck], 0)
     
     current_profiles.push(new_profile)
     switchProfilePopupLoad()
@@ -1259,8 +1286,10 @@ switch_profile_popup_delete_button.addEventListener("click", function () {
         increment_reward()
     }
     current_profiles.splice(switch_profile_index, 1)
+    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
     switch_profile_index = 0
-    loadProfileNames()
+    erase_names('switch_profile_popup_row_', 5)
+    update_names('switch_profile_popup_row_', current_profiles.map(a => a.name))
 })
 
 //button to remove a card in the study page iff there is more than one card
@@ -1298,7 +1327,7 @@ remove_card.addEventListener("click", function() {
 switch_profile_popup_add_button.addEventListener("click", function () {
     make_visible(addProfilePopup)
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 0)) {
-        openClosePopupsRewards.assignReward(openClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 0)
+        openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.RENAME_PROFILE, 0)
         increment_reward()
     }
 })
@@ -1337,13 +1366,14 @@ create_new_deck_add_button.addEventListener("click", function () {
             return;
         }   
     }
-    const new_deck = new Deck(Object.values(DeckNames)[create_deck_index], default_deck.cards, 0)
+    const new_deck = new Deck(Object.values(DeckNames)[create_deck_index], [new Card("Front text","Back text","Some tag")], 0)
     current_profiles[current_profile_index].decks.push(new_deck)
     if(!openClosePopupsRewards.getReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CREATE_DECK, 1)) {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.CREATE_DECK, 1)
         increment_reward()
     }
     make_invisible(createNewDeckPopup)
+    erase_names('deck_row_', 5)
     update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
 })
 
@@ -1461,7 +1491,7 @@ function export_deck_click_event(index) {
         increment_reward()
     }
     if(current_decks.length > index){
-        deck_export_index = 0
+        deck_export_index = index
         set_innerHTML(get_element_by_id('deck_to_export'), "Deck to export: " + current_decks[deck_export_index].name)
     }
 }
@@ -1487,7 +1517,7 @@ function study_deck_popup_row_event(index){
             increment_reward()
         }
         study_deck_temporary_index = index
-        set_innerHTML(get_element_by_id('deck_to_study'), current_decks[study_deck_temporary_index].name)
+        set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + current_decks[study_deck_temporary_index].name)
     }
 }
 
@@ -1578,6 +1608,7 @@ function import_deck_popup_add_button_event() {
     }
 
     make_invisible(importDeckPopup)
+    erase_names('deck_row_', 5)
     update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
 }
 
@@ -1588,7 +1619,7 @@ function rename_profile_button_event() {
         profileRewards.assignReward(ProfileRewards.ProfileRewardNames.RENAME_PROFILE, 1)
         increment_reward()
     }
-    modulo_index_increment(rename_profile_index, 5)
+    rename_profile_index = modulo_index_increment(rename_profile_index, 5)
     set_innerHTML(get_element_by_id('rename_profile_popup_row'), profile_names[rename_profile_index])
 }
 
@@ -1599,7 +1630,7 @@ function add_profile_button_event() {
         profileRewards.assignReward(ProfileRewards.ProfileRewardNames.ADD_PROFILE, 1)
         increment_reward()
     }
-    modulo_index_increment(add_profile_index, 5)
+    add_profile_index = modulo_index_increment(add_profile_index, 5)
     set_innerHTML(get_element_by_id('add_profile_popup_row'), profile_names[add_profile_index])
 }
 
