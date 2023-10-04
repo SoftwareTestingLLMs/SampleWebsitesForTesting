@@ -55,6 +55,8 @@ let preferences_page_counter_3 = 0
 let preferences_page_counter_4 = 0
 let preferences_page_counter_5 = 0
 
+let preferences_page_counters = [preferences_page_counter_1, preferences_page_counter_2, preferences_page_counter_3,
+    preferences_page_counter_4, preferences_page_counter_5]
 
 //default deck with name "Deck Name 1"
 let default_deck_cards = [new Card("Front text","Back text","Some tag")]
@@ -76,6 +78,7 @@ new Card("3","drei",""), new Card("4","vier",""), new Card("5","fünf",""), new 
 new Card("7","sieben",""), new Card("8","acht",""), new Card("9","neun",""), new Card("10","zehn","")]
 let german_deck = new Deck(DeckNames.GERMAN_DECK, german_deck_cards, 0)
 
+//initial three profiles
 let alice = new Profile(ProfileNames.ALICE, [default_deck], 0)
 let bob = new Profile(ProfileNames.BOB, [default_deck], 0)
 let carol = new Profile(ProfileNames.CAROL, [default_deck], 0)
@@ -83,6 +86,7 @@ let carol = new Profile(ProfileNames.CAROL, [default_deck], 0)
 //array of the present profiles
 let current_profiles = [alice,bob,carol]
 
+//values as arrays
 let account_passwords = Object.values(AccountPasswords)
 let account_names = Object.values(AccountNames)
 let deck_names = Object.values(DeckNames)
@@ -93,18 +97,17 @@ const importable_decks = [dutch_deck, german_deck, english_deck]
 let exported_decks = []
 
 //rewards as map
-
-
 const rewards = [AddCardRewards ,AnkiLoginRewards, CreateDeckRewards, DeleteDeckRewards,
     DropdownRewards, EditCardRewards, ExportDeckRewards, ImportDeckRewards, 
     MainPageRewards, OpenClosePopupsRewards, PreferencesPageRewards, ProfileRewards,
     StudyDeckRewards]
 
+
 for(var i = 0; i < rewards.length; i++) {
     rewards[i].initializeRewardMap()
 }
 
-
+//reward objects
 let addCardRewards = new AddCardRewards.default
 let ankiLoginRewards = new AnkiLoginRewards.default
 let createDeckRewards = new CreateDeckRewards.default 
@@ -125,10 +128,12 @@ function increment_reward() {
     set_innerHTML(get_element_by_id('total_reward'),"Total sum of rewards:" + total_sum_of_reward)
 }
 
+//return html of an object with identifier to edit the inner html
 function get_innerHTML(identifier) {
     return get_element_by_id(identifier).innerHTML
 }
 
+//set the value of inner html
 function set_innerHTML(identifier, newString){
     identifier.innerHTML = newString
 }
@@ -145,26 +150,21 @@ function modulo_index_increment(indexName, modulo) {
     return (indexName + 1) % modulo
 }
 
+//clear the enumerated values with an identifier
 function erase_names(identifier, loop_length) {
     for(let i = 0; i < loop_length; i++){
         set_innerHTML(get_element_by_id((identifier + (i+1)).toString()),"");
     }
 }
 
+
 function update_names(identifier, names){
-    //cleanExportableDeckNames
-    //cleanStudyDeckNames
-    //cleanMainPageDeckNames
-    //cleanProfileNames
-    //loadImportableDecks
-    //loadExportableDecks
-    //loadStudyPopupDecks
-    //loadMainPageDecks
     for(let i = 0; i < names.length; i++){
         set_innerHTML(get_element_by_id((identifier + (i+1)).toString()),names[i]);
     }
 }
 
+//initialize the present decks on load
 update_names('deck_row_', current_profiles[current_profile_index].decks.map(a => a.name))
 
 function provide_event_to_item(item, event) {
@@ -235,6 +235,11 @@ function change_visible_items(items_to_hide, items_to_show){
         set_display(items_to_show[i], "block")
     }
 }
+//set the functions of preferences dropdowns
+provide_event_to_item_change(preferences_dd_1, preferencesdd1)
+provide_event_to_item_change(preferences_dd_2, preferencesdd2)
+provide_event_to_item_change(preferences_dd_3, preferencesdd3)
+provide_event_to_item_change(preferences_dd_4, preferencesdd4)
 
 //function to hide the elements which are not in the preferences-scheduling tab and display the elements in preferences-scheduling tab
 function switchToSchedulingTab() {
@@ -246,7 +251,6 @@ function switchToSchedulingTab() {
     const items_to_show = ['checkbox_6', 'checkbox_7', 'checkbox_8', 'checkbox_9', 'checkbox_10', 'increment_decrement_2', 'increment_decrement_3', 'increment_decrement_4', 'learn_ahead_text', 'timebox_time_text', 'next_day_text']
     change_visible_items(items_to_hide, items_to_show)
 }
-provide_event_to_item(preferences_page_box_2, switchToSchedulingTab)
 
 //function to hide the elements which are not in the preferences-basic tab and display the elements in preferences-basic tab
 function switchToBasicTab() {
@@ -260,6 +264,10 @@ function switchToBasicTab() {
 }
 
 provide_event_to_item(preferences_page_box_1, switchToBasicTab)
+provide_event_to_item(preferences_page_box_2, switchToSchedulingTab)
+provide_event_to_item(preferences_page_box_3, switchToNetworkTab)
+provide_event_to_item(preferences_page_box_4, switchToBackupsTab)
+
 //function to hide the elements which are not in the preferences-network tab and display the elements in preferences-network tab
 function switchToNetworkTab() {
     if(!preferencesPageRewards.getReward(PreferencesPageRewards.PreferencesPageRewardNames.TAB, 2)){
@@ -270,7 +278,6 @@ function switchToNetworkTab() {
     const items_to_show = ['checkbox_11', 'checkbox_12', 'checkbox_13', 'checkbox_14']
     change_visible_items(items_to_hide, items_to_show)
 }
-provide_event_to_item(preferences_page_box_3, switchToNetworkTab)
 
 //function to hide the elements which are not in the preferences-backups tab and display the elements in preferences-backups tab
 function switchToBackupsTab() {
@@ -282,7 +289,6 @@ function switchToBackupsTab() {
     const items_to_show = ['increment_decrement_5', 'number_of_backups_text']
     change_visible_items(items_to_hide, items_to_show)
 }
-provide_event_to_item(preferences_page_box_4, switchToBackupsTab)
 
 //function to switch between showing/not showing the answer of a question 
 function showAnswer() {
@@ -365,7 +371,6 @@ function dropdown1Call() {
             dropdownRewards.assignReward(DropdownRewards.DropdownRewardNames.DROPDOWN_1, 3)
             increment_reward()
         }
-        //location.reload()
         break;
     }
 }
@@ -398,7 +403,6 @@ function dropdown2Call() {
         } 
     }
 }
-provide_event_to_item(book_logo_dd, dropdown2Call)
 
 //function to assign functions to the components of the third dropdown
 function dropdown3Call() {
@@ -488,7 +492,6 @@ function dropdown4Call() {
 
 //function to show the components which are present on the main page and hide the other components
 function openMainPage() {
-    console.log()
     if(!mainPageRewards.getReward(MainPageRewards.MainPageRewardNames.STUDY_NOW, 1) 
         && !Array.from(switchProfilePopup.classList).includes("show")){
         mainPageRewards.assignReward(MainPageRewards.MainPageRewardNames.STUDY_NOW, 1)
@@ -679,8 +682,8 @@ set_innerHTML(get_element_by_id('current_deck_study'), "Current deck: " + initia
 set_innerHTML(get_element_by_id('deck_to_study'), "Deck to study: " + initial_decks[0].name)
 set_innerHTML(get_element_by_id('current_card_number_study'), "Current card number: " + (initial_deck.index + 1))
 set_innerHTML(get_element_by_id('number_of_cards_study'), "Current number of cards: " + initial_cards.length)
-set_innerHTML(get_element_by_id('question'), "Question: " + initial_cards[initial_deck.index].front)
-set_innerHTML(get_element_by_id('answer'), "Answer: " + initial_cards[initial_deck.index].back)
+set_innerHTML(get_element_by_id('question'), "Question: " + initial_card.front)
+set_innerHTML(get_element_by_id('answer'), "Answer: " + initial_card.back)
 set_innerHTML(get_element_by_id('deck_to_import'), "Deck to import: " + importable_decks[deck_import_index].name)
 set_innerHTML(get_element_by_id('counter_1'), preferences_page_counter_1)
 set_innerHTML(get_element_by_id('counter_2'), preferences_page_counter_2)
@@ -891,7 +894,6 @@ switch_profile_popup_open_backup_button.addEventListener("click", function () {
         openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.SWITCH_PROFILE, 1)
         increment_reward()
     }
-    //location.reload();
 });
 
 //button to close the downgrade popup
@@ -1024,7 +1026,6 @@ edit_front_side_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
 
-    console.log(get_innerHTML('edit_card_row_1').length)
     if(get_innerHTML('edit_card_row_1').length <= 50) {
         current_card.front += " edited"
         if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_FRONT, 0)) {
@@ -1044,7 +1045,6 @@ edit_back_side_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
     
-    console.log(get_innerHTML('edit_card_row_2').length)
     if(get_innerHTML('edit_card_row_2').length <= 50) {
         current_card.back += " edited"
         if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_BACK, 0)) {
@@ -1064,7 +1064,6 @@ edit_tag_button.addEventListener("click", function (){
     const current_cards = current_deck.cards
     const current_card = current_cards[current_deck.index]
     
-    console.log(get_innerHTML('edit_card_row_3').length)
     if(get_innerHTML('edit_card_row_3').length <= 50) {
         current_card.tag += " edited"
         if(!editCardRewards.getReward(EditCardRewards.EditCardRewardNames.EDIT_TAG, 0)) {
@@ -1230,6 +1229,8 @@ add_profile_popup_ok_button.addEventListener("click", function () {
             openClosePopupsRewards.assignReward(OpenClosePopupsRewards.OpenClosePopupsRewardNames.PROFILE_EXISTS, 0)
             increment_reward()
         }
+        make_invisible(addProfilePopup)
+        make_invisible(switchProfilePopup)
         make_visible(profileExistsPopup)
         return
     }
@@ -1285,10 +1286,10 @@ switch_profile_popup_delete_button.addEventListener("click", function () {
         profileRewards.assignReward(ProfileRewards.ProfileRewardNames.DELETE_PROFILE, 0)
         increment_reward()
     }
-    current_profiles.splice(switch_profile_index, 1)
-    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
-    switch_profile_index = 0
     erase_names('switch_profile_popup_row_', 5)
+    current_profiles.splice(switch_profile_index, 1)
+    switch_profile_index != 0 ? switch_profile_index -= 1: switch_profile_index = 0
+    set_innerHTML(get_element_by_id('profile_to_open'), "Profile to open: " + current_profiles[switch_profile_index].name)
     update_names('switch_profile_popup_row_', current_profiles.map(a => a.name))
 })
 
@@ -1664,37 +1665,7 @@ function increment_counter(variable, value) {
 function click_counter(variable, increment, identifier){
     const newValue = increment_counter(variable, increment)
     set_innerHTML(get_element_by_id(identifier), newValue)
-}
-
-provide_event_to_item(increment_1, function() {return click_counter(preferences_page_counter_1, 1, 'counter_1')})
-provide_event_to_item(decrement_1, function() {return increment_counter(preferences_page_counter_1, -1, 'counter_1')})
-provide_event_to_item(increment_2, function() {return click_counter(preferences_page_counter_2, 1, 'counter_2')})
-provide_event_to_item(decrement_2, function() {return increment_counter(preferences_page_counter_2, -1, 'counter_2')})
-provide_event_to_item(increment_3, function() {return click_counter(preferences_page_counter_3, 1, 'counter_3')})
-provide_event_to_item(decrement_3, function() {return increment_counter(preferences_page_counter_3, -1, 'counter_3')})
-provide_event_to_item(increment_4, function() {return click_counter(preferences_page_counter_4, 1, 'counter_4')})
-provide_event_to_item(decrement_4, function() {return increment_counter(preferences_page_counter_4, -1, 'counter_4')})
-provide_event_to_item(increment_5, function() {return click_counter(preferences_page_counter_5, 1, 'counter_5')})
-provide_event_to_item(decrement_5, function() {return increment_counter(preferences_page_counter_5, -1, 'counter_5')})
-
-//assign (de)selecting functionalities to the checkboxes
-for (let i = 1; i <= 14; i++) {
-        const checkboxes = [checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6, checkbox_7,
-            checkbox_8, checkbox_9, checkbox_10, checkbox_11, checkbox_12, checkbox_13, checkbox_14]
-        checkboxes[i-1].addEventListener("change", 
-        (event) => {
-            if(!preferencesPageRewards.getReward(PreferencesPageRewardNames.TAB, 0) && event.target.checked){
-                preferencesPageRewards.assignReward(PreferencesPageRewardNames.CHECKBOX_ + ("i+1"), 0)
-                increment_reward()
-                return
-            }
-            else if(!preferencesPageRewards.getReward(PreferencesPageRewardNames.TAB, 1)){
-                preferencesPageRewards.assignReward(PreferencesPageRewardNames.CHECKBOX_ + ("i+1"), 1)
-                increment_reward()
-                return
-            }
-        }
-    )
+    return newValue
 }
 
 function preferences_page_text_button_event(){
@@ -1707,3 +1678,45 @@ function preferences_page_text_button_event(){
 
 provide_event_to_item(preferences_page_text_button, preferences_page_text_button_event)
 
+for (let i = 1; i <= 5; i++) {
+    const buttons = [[increment_1,decrement_1], [increment_2,decrement_2], [increment_3,decrement_3], [increment_4,decrement_4], [increment_5,decrement_5]]
+    const button_rewards = Object.values(PreferencesPageRewards.PreferencesPageRewardNames).slice(20, 25)
+    buttons[i-1][0].addEventListener("click", function () {
+        if(!preferencesPageRewards.getReward(button_rewards[i-1], 0)){
+            preferencesPageRewards.assignReward(button_rewards[i-1], 0)
+            increment_reward()
+        }
+        preferences_page_counters[i-1] = click_counter(preferences_page_counters[i-1], 1, ("counter_" + i).toString())
+        set_innerHTML(get_element_by_id('total_reward'), "Total sum of rewards:" + total_sum_of_reward)
+    })
+
+    buttons[i-1][1].addEventListener("click", function () {
+        if(!preferencesPageRewards.getReward(button_rewards[i-1], 1)){
+            preferencesPageRewards.assignReward(button_rewards[i-1], 1)
+            increment_reward()
+        }
+        preferences_page_counters[i-1] = click_counter(preferences_page_counters[i-1], -1, ("counter_" + i).toString())
+        set_innerHTML(get_element_by_id('total_reward'), "Total sum of rewards:" + total_sum_of_reward)
+    })
+}
+
+for (let i = 1; i <= 14; i++) {
+    const checkboxes = [checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6, checkbox_7,
+        checkbox_8, checkbox_9, checkbox_10, checkbox_11, checkbox_12, checkbox_13, checkbox_14]
+    checkboxes[i-1].addEventListener("change", 
+    (event) => {
+        const checkbox_rewards = Object.values(PreferencesPageRewards.PreferencesPageRewardNames).slice(1, 15)
+        if(!preferencesPageRewards.getReward(checkbox_rewards[i-1], 0) && event.target.checked){
+            preferencesPageRewards.assignReward(checkbox_rewards[i-1], 0)
+            increment_reward()
+            return
+        }
+        else if(!preferencesPageRewards.getReward(checkbox_rewards[i-1], 1)){
+            preferencesPageRewards.assignReward(checkbox_rewards[i-1], 1)
+            increment_reward()
+            return
+        }
+        set_innerHTML(get_element_by_id('total_reward'), "Total sum of rewards:" + total_sum_of_reward)
+    }
+)
+}
