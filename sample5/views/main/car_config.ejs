@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturalNets</title>
+    <link rel="stylesheet" type="text/css" href="/css/main/basicStyle.css">
+    <link rel="stylesheet" href="css/main/car_config.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="box" id="settings">
+            <a class="btn btn-primary" id="btn_settings" href="/setting/txt_printer_page" role="button">Settings</a>
+        </div>
+        <div class="box">
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+                style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+                <a role="button" id="btn_txt_printer" class="btn btn-primary mt-2" href="/txt_printer">Text
+                    Printer</a>
+                <a role="button" id="btn_calculator" class="btn btn-primary mt-2"
+                    href="/calculator">Calculator</a>
+                <a role="button" id="btn_car_config" class="btn btn-primary mt-2" href="/car_config">Car
+                    Configuraton</a>
+                <a role="button" id="btn_fig_printer" class="btn btn-primary mt-2" href="/fig_printer">Figure
+                    Printer</a>
+            </div>
+        </div>
+        <div class="box">
+            <div id="selec_car_config_grp">
+                <p class="h4" id="title_car_config" style="color: white;">Choose a car configuration:</p>
+                <div class="form-check car_config" id="Model_div">
+                    <p class="h6" style="color: white;">First select the car model:</p>
+                    <select class="form-select car_config_selec" style="color: #0747A6; background-color: white;" name="Model" id="Model"
+                        onchange="selectedCar();  addOption(getNextConfig(this));displayPropConfig(getNextConfig(this));saveDisplayed(this.id);  saveDisplayed(getNextConfig(this)); saveValue(this.id)"
+                        onfocus="this.selectedIndex = -1;">
+                    </select>
+                </div>
+
+                <div class="form-check car_config" id="Tire_div" style="display: none;">
+                    <p class="h6" style="color: white;">Now choose the tires:</p>
+                    <select class="form-select car_config_selec" style="color: #0747A6; background-color: white;" name="Tire" id="Tire"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
+                        onfocus="this.selectedIndex = -1;">
+                    </select>
+                </div>
+
+                <div class="form-check car_config" id="Interior_div" style="display: none;">
+                    <p class="h6" style="color: white;">Next the interior design:</p>
+                    <select class="form-select car_config_selec" style="color: #0747A6; background-color: white;" name="Interior" id="Interior"
+                        onchange="addOption(getNextConfig(this)); displayPropConfig(getNextConfig(this)); saveDisplayed(getNextConfig(this)) ; saveValue(this.id)"
+                        onfocus="this.selectedIndex = -1;">
+                    </select>
+                </div>
+
+                <div class="form-check car_config" id="Engine_div" style="display: none;">
+                    <p class="h6" style="color: white;">Finally the propulsion system:</p>
+                    <select class="form-select car_config_selec" style="color: #0747A6; background-color: white;" name="Engine" id="Engine"
+                        onchange="displayConfigBtn(); saveDisplayed('btn_display_config'); saveValue(this.id)"
+                        onfocus="this.selectedIndex = -1;">
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn_display_config" style="display: none;color:#0747A6;border-color: #0747A6; background-color:  white;"
+                    onclick=displayResultConfig()>Show
+                    Configuration</button>
+            </div>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="modalConfig" tabindex="-1" aria-labelledby="modalConfigLabel" data-bs-backdrop="static"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0747A6;color: white;">
+                    <h5 class="modal-title" id="modalConfigLabel" >Your Car Configuration:</h5>
+                </div>
+                <div class="modal-body" id="conifgContent" style="color: #0747A6;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="resetConfig()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/main/car_config.js"></script>
+<script type="application/javascript" src="js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+</html>

@@ -1,0 +1,25 @@
+/*Special style for functionality to print text*/
+#txt_content {
+  background-color: #14417c;
+  border: 3px solid black;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 70%;
+}
+
+.figure_ops {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.fig_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=fig_printer.css.map */

@@ -1,0 +1,22 @@
+.btn_printer {
+  height: 25px;
+  width: 150px;
+  margin: 10px;
+}
+
+.txt_config {
+  border: 6px solid #0747A6;
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 5px;
+  width: 200px;
+  text-align: start;
+}
+
+.car_cb_group {
+  border: 6px solid #0747A6;
+  padding: 5px;
+  margin: 10px;
+  width: 200px;
+  text-align: left;
+}/*# sourceMappingURL=setting.css.map */

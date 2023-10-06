@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturalNets</title>
+    <link rel="stylesheet" type="text/css" href="/css/main/basicStyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/setting/setting.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="box" id="txt_settings">Configure the settings of your model</div>
+        <div class="box">
+            <div class="btn-group-vertical btn-group" role="group" aria-label="menu"
+                style="margin-top: 5%;margin-left: 5%; margin-right: 5%;width: 80%;">
+                <a role="button" id="btn_txt_printer" class="btn btn-primary mt-2" href="/setting/txt_printer_page">Text
+                    Printer</a>
+                <a role="button" id="btn_calculator" class="btn btn-primary mt-2"
+                    href="/setting/calculator_page">Calculator</a>
+                <a role="button" id="btn_car_config" class="btn btn-primary mt-2" href="/setting/car_config_page">Car
+                    Configuraton</a>
+                <a role="button" id="btn_car_config" class="btn btn-primary mt-2"
+                    href="/setting/fig_printer_page">Figure
+                    Printer</a>
+            </div>
+        </div>
+        <div class="box" style="align-items: center;flex-direction: column;">
+            <div>
+            <div class="car_cb_group" id="tire_config"style="color: white;">
+                <p class="h6" style="color: black;">Tire size: </p>
+                <input type="checkbox" id="eighteen" value="18" name="tire" onchange="calcProp()" />
+                <label for="eighteen">18</label><br>
+                <input type="checkbox" id="nineteen" value="19" name="tire" onchange="calcProp()" />
+                <label for="nineteen">19</label><br>
+                <input type="checkbox" id="twenty" value="20" name="tire" onchange="calcProp()" />
+                <label for="twenty">20</label><br>
+                <input type="checkbox" id="twentyTwo" value="22" name="tire" onchange="calcProp()" />
+                <label for="twentyTwo">22</label>
+            </div>
+            <div class="car_cb_group" id="interior_config" style="color: white;">
+                <p class="h6" style="color: black;">Interior style: </p>
+                <input type="checkbox" id="modern" value="modern" name="interior" onchange="calcProp()" />
+                <label for="modern">Modern</label><br>
+                <input type="checkbox" id="sport" value="sport" name="interior" onchange="calcProp()" />
+                <label for="sport">Sport</label><br>
+                <input type="checkbox" id="vintage" value="vintage" name="interior" onchange="calcProp()" />
+                <label for="vintage">Vintage</label>
+            </div>
+            <div class="car_cb_group" id="engine_config" style="color: white;">
+                <p class="h6" style="color: black;">Engine type: </p>
+                <input type="checkbox" id="combustionA" value="Combustion Engine A" name="engine"
+                    onchange="calcProp()" />
+                <label for="combustionA">Combustion Engine A</label><br>
+                <input type="checkbox" id="combustionB" value="Combustion Engine B" name="engine"
+                    onchange="calcProp()" />
+                <label for="combustionB">Combustion Engine B</label><br>
+                <input type="checkbox" id="combustionC" value="Combustion Engine C" name="engine"
+                    onchange="calcProp()" />
+                <label for="combustionC">Combustion Engine C</label><br>
+                <input type="checkbox" id="electricA" name="engine" value="Electric Motor A" onchange="calcProp()" />
+                <label for="electricA">Electric Motor A</label><br>
+                <input type="checkbox" id="electricB" name="engine" value="Electric Motor B" onchange="calcProp()" />
+                <label for="electricB">Electric Motor B</label>
+            </div>
+                <a class="btn btn-primary" style="width:100%" id="btn_close" href="../car_config" role="button">Close</a>
+
+            </div>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="modalDisabledCars" tabindex="-1" aria-labelledby="modalDisabledCarsLabel"
+        data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0747A6;color: white;">
+                    <h5 class="modal-title" id="modalMinimuLabel">Folllowed cars are disabled:</h5>
+                </div>
+                <div class="modal-body" style="color: #0747A6;">
+                    <p id="txtDisabledCars"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_close" class="btn btn-primary"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/setting/algo_car_config.js"></script>
+<script src="../js/setting/car_config_page.js"></script>
+<script type="application/javascript" src="../js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+</html>
